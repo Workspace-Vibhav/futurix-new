@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html id="html" lang="es-ES">
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>(()=>{class RocketLazyLoadScripts{constructor(){this.v="2.0.5",this.userEvents=["keydown","keyup","mousedown","mouseup","mousemove","mouseover","mouseout","touchmove","touchstart","touchend","touchcancel","wheel","click","dblclick","input"],this.attributeEvents=["onblur","onclick","oncontextmenu","ondblclick","onfocus","onmousedown","onmouseenter","onmouseleave","onmousemove","onmouseout","onmouseover","onmouseup","onmousewheel","onscroll","onsubmit"]}async t(){this.i(),this.o(),/iP(ad|hone)/.test(navigator.userAgent)&&this.h(),this.u(),this.l(this),this.m(),this.k(this),this.p(this),this._(),await Promise.all([this.R(),this.L()]),this.lastBreath=Date.now(),this.S(this),this.P(),this.D(),this.O(),this.M(),await this.C(this.delayedScripts.normal),await this.C(this.delayedScripts.defer),await this.C(this.delayedScripts.async),await this.T(),await this.F(),await this.j(),await this.A(),window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this.everythingLoaded=!0,this.lastTouchEnd&&await new Promise(t=>setTimeout(t,500-Date.now()+this.lastTouchEnd)),this.I(),this.H(),this.U(),this.W()}i(){this.CSPIssue=sessionStorage.getItem("rocketCSPIssue"),document.addEventListener("securitypolicyviolation",t=>{this.CSPIssue||"script-src-elem"!==t.violatedDirective||"data"!==t.blockedURI||(this.CSPIssue=!0,sessionStorage.setItem("rocketCSPIssue",!0))},{isRocket:!0})}o(){window.addEventListener("pageshow",t=>{this.persisted=t.persisted,this.realWindowLoadedFired=!0},{isRocket:!0}),window.addEventListener("pagehide",()=>{this.onFirstUserAction=null},{isRocket:!0})}h(){let t;function e(e){t=e}window.addEventListener("touchstart",e,{isRocket:!0}),window.addEventListener("touchend",function i(o){o.changedTouches[0]&&t.changedTouches[0]&&Math.abs(o.changedTouches[0].pageX-t.changedTouches[0].pageX)<10&&Math.abs(o.changedTouches[0].pageY-t.changedTouches[0].pageY)<10&&o.timeStamp-t.timeStamp<200&&(window.removeEventListener("touchstart",e,{isRocket:!0}),window.removeEventListener("touchend",i,{isRocket:!0}),"INPUT"===o.target.tagName&&"text"===o.target.type||(o.target.dispatchEvent(new TouchEvent("touchend",{target:o.target,bubbles:!0})),o.target.dispatchEvent(new MouseEvent("mouseover",{target:o.target,bubbles:!0})),o.target.dispatchEvent(new PointerEvent("click",{target:o.target,bubbles:!0,cancelable:!0,detail:1,clientX:o.changedTouches[0].clientX,clientY:o.changedTouches[0].clientY})),event.preventDefault()))},{isRocket:!0})}q(t){this.userActionTriggered||("mousemove"!==t.type||this.firstMousemoveIgnored?"keyup"===t.type||"mouseover"===t.type||"mouseout"===t.type||(this.userActionTriggered=!0,this.onFirstUserAction&&this.onFirstUserAction()):this.firstMousemoveIgnored=!0),"click"===t.type&&t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),"touchstart"===this.lastEvent&&"touchend"===t.type&&(this.lastTouchEnd=Date.now()),"click"===t.type&&(this.lastTouchEnd=0),this.lastEvent=t.type,t.composedPath&&t.composedPath()[0].getRootNode()instanceof ShadowRoot&&(t.rocketTarget=t.composedPath()[0]),this.savedUserEvents.push(t)}u(){this.savedUserEvents=[],this.userEventHandler=this.q.bind(this),this.userEvents.forEach(t=>window.addEventListener(t,this.userEventHandler,{passive:!1,isRocket:!0})),document.addEventListener("visibilitychange",this.userEventHandler,{isRocket:!0})}U(){this.userEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!1,isRocket:!0})),document.removeEventListener("visibilitychange",this.userEventHandler,{isRocket:!0}),this.savedUserEvents.forEach(t=>{(t.rocketTarget||t.target).dispatchEvent(new window[t.constructor.name](t.type,t))})}m(){const t="return false",e=Array.from(this.attributeEvents,t=>"data-rocket-"+t),i="["+this.attributeEvents.join("],[")+"]",o="[data-rocket-"+this.attributeEvents.join("],[data-rocket-")+"]",s=(e,i,o)=>{o&&o!==t&&(e.setAttribute("data-rocket-"+i,o),e["rocket"+i]=new Function("event",o),e.setAttribute(i,t))};new MutationObserver(t=>{for(const n of t)"attributes"===n.type&&(n.attributeName.startsWith("data-rocket-")||this.everythingLoaded?n.attributeName.startsWith("data-rocket-")&&this.everythingLoaded&&this.N(n.target,n.attributeName.substring(12)):s(n.target,n.attributeName,n.target.getAttribute(n.attributeName))),"childList"===n.type&&n.addedNodes.forEach(t=>{if(t.nodeType===Node.ELEMENT_NODE)if(this.everythingLoaded)for(const i of[t,...t.querySelectorAll(o)])for(const t of i.getAttributeNames())e.includes(t)&&this.N(i,t.substring(12));else for(const e of[t,...t.querySelectorAll(i)])for(const t of e.getAttributeNames())this.attributeEvents.includes(t)&&s(e,t,e.getAttribute(t))})}).observe(document,{subtree:!0,childList:!0,attributeFilter:[...this.attributeEvents,...e]})}I(){this.attributeEvents.forEach(t=>{document.querySelectorAll("[data-rocket-"+t+"]").forEach(e=>{this.N(e,t)})})}N(t,e){const i=t.getAttribute("data-rocket-"+e);i&&(t.setAttribute(e,i),t.removeAttribute("data-rocket-"+e))}k(t){Object.defineProperty(HTMLElement.prototype,"onclick",{get(){return this.rocketonclick||null},set(e){this.rocketonclick=e,this.setAttribute(t.everythingLoaded?"onclick":"data-rocket-onclick","this.rocketonclick(event)")}})}S(t){function e(e,i){let o=e[i];e[i]=null,Object.defineProperty(e,i,{get:()=>o,set(s){t.everythingLoaded?o=s:e["rocket"+i]=o=s}})}e(document,"onreadystatechange"),e(window,"onload"),e(window,"onpageshow");try{Object.defineProperty(document,"readyState",{get:()=>t.rocketReadyState,set(e){t.rocketReadyState=e},configurable:!0}),document.readyState="loading"}catch(t){console.log("WPRocket DJE readyState conflict, bypassing")}}l(t){this.originalAddEventListener=EventTarget.prototype.addEventListener,this.originalRemoveEventListener=EventTarget.prototype.removeEventListener,this.savedEventListeners=[],EventTarget.prototype.addEventListener=function(e,i,o){o&&o.isRocket||!t.B(e,this)&&!t.userEvents.includes(e)||t.B(e,this)&&!t.userActionTriggered||e.startsWith("rocket-")||t.everythingLoaded?t.originalAddEventListener.call(this,e,i,o):(t.savedEventListeners.push({target:this,remove:!1,type:e,func:i,options:o}),"mouseenter"!==e&&"mouseleave"!==e||t.originalAddEventListener.call(this,e,t.savedUserEvents.push,o))},EventTarget.prototype.removeEventListener=function(e,i,o){o&&o.isRocket||!t.B(e,this)&&!t.userEvents.includes(e)||t.B(e,this)&&!t.userActionTriggered||e.startsWith("rocket-")||t.everythingLoaded?t.originalRemoveEventListener.call(this,e,i,o):t.savedEventListeners.push({target:this,remove:!0,type:e,func:i,options:o})}}J(t,e){this.savedEventListeners=this.savedEventListeners.filter(i=>{let o=i.type,s=i.target||window;return e!==o||t!==s||(this.B(o,s)&&(i.type="rocket-"+o),this.$(i),!1)})}H(){EventTarget.prototype.addEventListener=this.originalAddEventListener,EventTarget.prototype.removeEventListener=this.originalRemoveEventListener,this.savedEventListeners.forEach(t=>this.$(t))}$(t){t.remove?this.originalRemoveEventListener.call(t.target,t.type,t.func,t.options):this.originalAddEventListener.call(t.target,t.type,t.func,t.options)}p(t){let e;function i(e){return t.everythingLoaded?e:e.split(" ").map(t=>"load"===t||t.startsWith("load.")?"rocket-jquery-load":t).join(" ")}function o(o){function s(e){const s=o.fn[e];o.fn[e]=o.fn.init.prototype[e]=function(){return this[0]===window&&t.userActionTriggered&&("string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=i(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(t=>{const e=arguments[0][t];delete arguments[0][t],arguments[0][i(t)]=e})),s.apply(this,arguments),this}}if(o&&o.fn&&!t.allJQueries.includes(o)){const e={DOMContentLoaded:[],"rocket-DOMContentLoaded":[]};for(const t in e)document.addEventListener(t,()=>{e[t].forEach(t=>t())},{isRocket:!0});o.fn.ready=o.fn.init.prototype.ready=function(i){function s(){parseInt(o.fn.jquery)>2?setTimeout(()=>i.bind(document)(o)):i.bind(document)(o)}return"function"==typeof i&&(t.realDomReadyFired?!t.userActionTriggered||t.fauxDomReadyFired?s():e["rocket-DOMContentLoaded"].push(s):e.DOMContentLoaded.push(s)),this},s("on"),s("one"),s("off"),t.allJQueries.push(o)}e=o}t.allJQueries=[],o(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){o(t)}})}P(){const t=new Map;document.write=document.writeln=function(e){const i=document.currentScript,o=document.createRange(),s=i.parentElement;let n=t.get(i);void 0===n&&(n=i.nextSibling,t.set(i,n));const c=document.createDocumentFragment();o.setStart(c,0),c.appendChild(o.createContextualFragment(e)),s.insertBefore(c,n)}}async R(){return new Promise(t=>{this.userActionTriggered?t():this.onFirstUserAction=t})}async L(){return new Promise(t=>{document.addEventListener("DOMContentLoaded",()=>{this.realDomReadyFired=!0,t()},{isRocket:!0})})}async j(){return this.realWindowLoadedFired?Promise.resolve():new Promise(t=>{window.addEventListener("load",t,{isRocket:!0})})}M(){this.pendingScripts=[];this.scriptsMutationObserver=new MutationObserver(t=>{for(const e of t)e.addedNodes.forEach(t=>{"SCRIPT"!==t.tagName||!t.src||t.noModule||t.isWPRocket||this.pendingScripts.push({script:t,promise:new Promise(e=>{const i=()=>{const i=this.pendingScripts.findIndex(e=>e.script===t);i>=0&&this.pendingScripts.splice(i,1),e()};t.addEventListener("load",i,{isRocket:!0}),t.addEventListener("error",i,{isRocket:!0}),setTimeout(i,1e3)})})})}),this.scriptsMutationObserver.observe(document,{childList:!0,subtree:!0})}async F(){await this.X(),this.pendingScripts.length?(await this.pendingScripts[0].promise,await this.F()):this.scriptsMutationObserver.disconnect()}D(){this.delayedScripts={normal:[],async:[],defer:[]},document.querySelectorAll("script[type$=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _(){await this.L();let t=[];document.querySelectorAll("script[type$=rocketlazyloadscript][data-rocket-src]").forEach(e=>{let i=e.getAttribute("data-rocket-src");if(i&&!i.startsWith("data:")){i.startsWith("//")&&(i=location.protocol+i);try{const o=new URL(i).origin;o!==location.origin&&t.push({src:o,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}catch(t){}}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this.Y(t,"preconnect")}async G(t){if(await this.K(),!0!==t.noModule||!("noModule"in HTMLScriptElement.prototype))return new Promise(e=>{let i;function o(){(i||t).setAttribute("data-rocket-status","executed"),e()}try{if(navigator.userAgent.includes("Firefox/")||""===navigator.vendor||this.CSPIssue)i=document.createElement("script"),[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),i.setAttribute(e,t.nodeValue))}),t.text&&(i.text=t.text),t.nonce&&(i.nonce=t.nonce),i.hasAttribute("src")?(i.addEventListener("load",o,{isRocket:!0}),i.addEventListener("error",()=>{i.setAttribute("data-rocket-status","failed-network"),e()},{isRocket:!0}),setTimeout(()=>{i.isConnected||e()},1)):(i.text=t.text,o()),i.isWPRocket=!0,t.parentNode.replaceChild(i,t);else{const i=t.getAttribute("data-rocket-type"),s=t.getAttribute("data-rocket-src");i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",o,{isRocket:!0}),t.addEventListener("error",i=>{this.CSPIssue&&i.target.src.startsWith("data:")?(console.log("WPRocket: CSP fallback activated"),t.removeAttribute("src"),this.G(t).then(e)):(t.setAttribute("data-rocket-status","failed-network"),e())},{isRocket:!0}),s?(t.fetchPriority="high",t.removeAttribute("data-rocket-src"),t.src=s):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}}catch(i){t.setAttribute("data-rocket-status","failed-transform"),e()}});t.setAttribute("data-rocket-status","skipped")}async C(t){const e=t.shift();return e?(e.isConnected&&await this.G(e),this.C(t)):Promise.resolve()}O(){this.Y([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}Y(t,e){this.trash=this.trash||[];let i=!0;var o=document.createDocumentFragment();t.forEach(t=>{const s=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(s&&!s.startsWith("data:")){const n=document.createElement("link");n.href=s,n.rel=e,"preconnect"!==e&&(n.as="script",n.fetchPriority=i?"high":"low"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),t.nonce&&(n.nonce=t.nonce),o.appendChild(n),this.trash.push(n),i=!1}}),document.head.appendChild(o)}W(){this.trash.forEach(t=>t.remove())}async T(){try{document.readyState="interactive"}catch(t){}this.fauxDomReadyFired=!0;try{await this.K(),this.J(document,"readystatechange"),document.dispatchEvent(new Event("rocket-readystatechange")),await this.K(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.K(),this.J(document,"DOMContentLoaded"),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this.K(),this.J(window,"DOMContentLoaded"),window.dispatchEvent(new Event("rocket-DOMContentLoaded"))}catch(t){console.error(t)}}async A(){try{document.readyState="complete"}catch(t){}try{await this.K(),this.J(document,"readystatechange"),document.dispatchEvent(new Event("rocket-readystatechange")),await this.K(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.K(),this.J(window,"load"),window.dispatchEvent(new Event("rocket-load")),await this.K(),window.rocketonload&&window.rocketonload(),await this.K(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this.K(),this.J(window,"pageshow");const t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this.K(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}catch(t){console.error(t)}}async K(){Date.now()-this.lastBreath>45&&(await this.X(),this.lastBreath=Date.now())}async X(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}B(t,e=window){return e===document&&"readystatechange"===t||(e===document&&"DOMContentLoaded"===t||(e===window&&"DOMContentLoaded"===t||(e===window&&"load"===t||e===window&&"pageshow"===t)))}static run(){(new RocketLazyLoadScripts).t()}}RocketLazyLoadScripts.run()})();
+</script>
+            <!-- Google Tag Manager -->
+        <script type="text/rocketlazyloadscript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-XXXXXXXXXX');</script>
+        <!-- End Google Tag Manager -->
+    
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimal-ui, viewport-fit=cover">
+    <meta name="google" content="notranslate">
+    <base href="/">
+
+    <title> &raquo; Fund of Funds</title><link rel="preload" data-rocket-preload as="image" href="https://www.tresmarescapital.com/wp-content/uploads/2025/11/img.jpg" fetchpriority="high">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://www.tresmarescapital.com/wp-content/themes/tresmares/img/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="https://www.tresmarescapital.com/wp-content/themes/tresmares/img/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="https://www.tresmarescapital.com/wp-content/themes/tresmares/img/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.tresmarescapital.com/wp-content/themes/tresmares/img/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Tres Mares Capital" />
+    <meta name="msapplication-TileColor" content="#ff0000">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="https://www.tresmarescapital.com/wp-content/themes/tresmares/img/favicon/site.webmanifest" />
+
+    <link data-minify="1" href="https://www.tresmarescapital.com/wp-content/cache/min/1/wp-content/themes/tresmares/style.css?ver=1781092130" rel="stylesheet">
+    <link rel="preload" href="https://www.tresmarescapital.com/wp-content/themes/tresmares/js/vendor.min.js" as="script">
+    <link rel="preload" href="https://www.tresmarescapital.com/wp-content/themes/tresmares/js/app.min.js" as="script">
+    <script type="text/rocketlazyloadscript">history.scrollRestoration = "manual"</script>
+
+    <meta name='robots' content='max-image-preview:large' />
+<link rel="alternate" hreflang="en" href="https://www.tresmarescapital.com/en/financial-solutions/fund-of-funds/" />
+<link rel="alternate" hreflang="es" href="https://www.tresmarescapital.com/soluciones-financieras/fund-of-funds/" />
+<link rel="alternate" hreflang="x-default" href="https://www.tresmarescapital.com/soluciones-financieras/fund-of-funds/" />
+<script type="text/rocketlazyloadscript" data-minify="1" id="cookieyes" data-rocket-type="text/javascript" data-rocket-src="https://www.tresmarescapital.com/wp-content/cache/min/1/client_data/649e9a5e7b29101bdb76c15c/script.js?ver=1781092130" data-rocket-defer defer></script>
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://www.tresmarescapital.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.tresmarescapital.com%2Fsoluciones-financieras%2Ffund-of-funds%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://www.tresmarescapital.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.tresmarescapital.com%2Fsoluciones-financieras%2Ffund-of-funds%2F&#038;format=xml" />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-color]){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<script id="wpml-cookie-js-extra">
+var wpml_cookies = {"wp-wpml_current_language":{"value":"es","expires":1,"path":"/"}};
+var wpml_cookies = {"wp-wpml_current_language":{"value":"es","expires":1,"path":"/"}};
+//# sourceURL=wpml-cookie-js-extra
+</script>
+<script type="text/rocketlazyloadscript" data-minify="1" data-wp-strategy="defer" defer id="wpml-cookie-js" data-rocket-src="https://www.tresmarescapital.com/wp-content/cache/min/1/wp-content/plugins/sitepress-multilingual-cms/res/js/cookies/language-cookie.js?ver=1781092130"></script>
+<script id="wpml-browser-redirect-js-extra">
+var wpml_browser_redirect_params = {"pageLanguage":"es","languageUrls":{"en_us":"https://www.tresmarescapital.com/en/financial-solutions/fund-of-funds/","en":"https://www.tresmarescapital.com/en/financial-solutions/fund-of-funds/","us":"https://www.tresmarescapital.com/en/financial-solutions/fund-of-funds/","es_es":"https://www.tresmarescapital.com/soluciones-financieras/fund-of-funds/","es":"https://www.tresmarescapital.com/soluciones-financieras/fund-of-funds/"},"cookie":{"name":"_icl_visitor_lang_js","domain":"www.tresmarescapital.com","path":"/","expiration":24}};
+//# sourceURL=wpml-browser-redirect-js-extra
+</script>
+<script data-minify="1" id="wpml-browser-redirect-js" src="https://www.tresmarescapital.com/wp-content/cache/min/1/wp-content/plugins/sitepress-multilingual-cms/dist/js/browser-redirect/app.js?ver=1781092130" data-rocket-defer defer></script>
+<link rel="https://api.w.org/" href="https://www.tresmarescapital.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://www.tresmarescapital.com/wp-json/wp/v2/pages/363" /><meta name="generator" content="WordPress 7.0.4" />
+<link rel="canonical" href="https://www.tresmarescapital.com/soluciones-financieras/fund-of-funds/" />
+<link rel='shortlink' href='https://www.tresmarescapital.com/?p=363' />
+<meta name="generator" content="WPML ver:4.9.5 stt:1,2;" />
+<meta name="msapplication-TileImage" content="sdt58ZGF2aWQudmF6cXVlekB0cmVzbWFyZXNjYXBpdGFsLmNvbTouRE5ucVpFVnIqZzgzVktEL3dwLWxvZ2luLnBocA==" />
+<meta name="google" content="aHR0cHM6Ly93d3cudHJlc21hcmVzY2FwaXRhbC5jb20vd3AtbG9naW4ucGhw"  /><style type="text/css" id="simple-css-output">/* Estilo base botones */body .cky-btn.cky-btn-customize,body .cky-btn.cky-btn-reject,body .cky-btn.cky-btn-accept { color: #ffffff !important; border-color: #ffffff !important; background: transparent !important;}/* Sin subrayado por defecto */body .cky-btn.cky-btn-customize,body .cky-btn.cky-btn-reject { text-decoration: none !important;}/* Subrayado en hover */body .cky-btn.cky-btn-customize:hover,body .cky-btn.cky-btn-reject:hover { text-decoration: underline !important; text-underline-offset: 0.2em;}/* Accept subrayado siempre */body .cky-btn.cky-btn-accept { text-decoration: underline !important; text-underline-offset: 0.2em;}/* Link a la política de Cookies */body * a.cky-policy,body a.cky-policy,.cky-consent-container a.cky-policy { color: #ffffff !important; text-decoration: underline !important; border-color: transparent !important;}</style><link rel="icon" href="https://www.tresmarescapital.com/wp-content/uploads/2026/07/cropped-logo_icon-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://www.tresmarescapital.com/wp-content/uploads/2026/07/cropped-logo_icon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.tresmarescapital.com/wp-content/uploads/2026/07/cropped-logo_icon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://www.tresmarescapital.com/wp-content/uploads/2026/07/cropped-logo_icon-270x270.png" />
+<style id="wp-custom-css">
+.component--holder .content .generalmeetings .body .columns .item:last-child .row:not(:first-child), .component--holder .content .docsregulations .body .columns .item:last-child .row:not(:first-child){
+	    padding-bottom: 2.500vw;
+}
+</style>
+<meta name="generator" content="WP Rocket 3.21.3" data-wpr-features="wpr_delay_js wpr_defer_js wpr_minify_js wpr_oci wpr_image_dimensions wpr_minify_css wpr_preload_links wpr_desktop" /></head>
+<body class="wp-singular page-template page-template-template-flexible page-template-template-flexible-php page page-id-363 page-child parent-pageid-14 wp-theme-tresmares">
+            <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+    
+    
+    <div  id="app" data-taxi>
+
+
+
+
+<div  id="flexible" class="flexible" data-taxi-view="default" data-taxi-nocache data-taxi-slug="fund-of-funds">
+
+    
+        
+<header  class="header" id="header" data-component="header">
+    <div class="box" data-desktop></div>
+    <div class="container --wide">
+        <div class="columns">
+            <div class="item">
+                <a href="https://www.tresmarescapital.com/" class="brand" aria-label="Go to Home page" data-desktop>
+                    <svg width="190" height="60" viewBox="0 0 190 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 29.4854H13.0404V31.4398H7.58222V45.1204H5.42528V31.4398H0V29.4854Z" fill="#2B2B2B"/>
+    <path d="M34.8086 34.7516C34.8992 37.0003 33.442 39.0201 31.2686 39.658V39.7643L35.3355 44.7361V45.1531H32.9316L28.8153 40.0668H24.0239V45.1449H21.8752V29.4854H28.4613C32.3965 29.4854 34.8086 31.3416 34.8086 34.7516ZM28.4119 31.4806H24.0239V38.1533H28.6177C30.9228 38.1533 32.5529 37.1148 32.5529 34.8824C32.5529 32.65 30.9228 31.4398 28.4119 31.4398V31.4806Z" fill="#2B2B2B"/>
+    <path d="M55.1598 38.3496H46.8778V43.166H56.4194V45.1204H44.7209V29.4854H56.4194V31.4398H46.8778V36.4443H55.1598V38.3496Z" fill="#2B2B2B"/>
+    <path d="M65.9962 41.972C67.3546 42.986 69.0176 43.5175 70.7217 43.4767C73.3644 43.4767 74.5005 42.4627 74.5005 41.0235C74.5005 39.6906 73.6031 39.0118 70.3842 38.1042C66.6054 37.0329 64.9013 35.8881 64.9013 33.4676C64.9013 30.7855 67.1076 29.1664 70.8041 29.1664C74.7392 29.1664 76.4681 30.6792 76.4681 30.6792L75.2908 32.4455C73.9736 31.5541 72.4012 31.1044 70.8041 31.1535C68.68 31.1535 67.1817 31.9712 67.1817 33.4268C67.1817 34.5961 68.1532 35.1931 71.298 36.0517C75.4143 37.172 76.8056 38.5539 76.8056 40.958C76.8056 43.5421 74.9698 45.521 70.7464 45.521C66.5231 45.521 64.819 43.6157 64.819 43.6157L65.9962 41.972Z" fill="#2B2B2B"/>
+    <path d="M99.6095 34.1546L94.283 39.8051H93.7067L88.4132 34.1792V45.1204H86.2645V29.4854H86.8654L94.0278 36.9922L101.256 29.4854H101.832V45.1204H99.6095V34.1546Z" fill="#2B2B2B"/>
+    <path d="M118.03 29.4854H118.483L126.32 45.1204H123.851L122.566 42.5691H113.938L112.654 45.1204H110.184L118.03 29.4854ZM118.376 33.7131H118.112L115.042 40.4021L114.885 40.6638H121.628L121.471 40.4021L118.376 33.7131Z" fill="#2B2B2B"/>
+    <path d="M147.675 34.7516C147.766 37.0003 146.309 39.0201 144.135 39.658V39.7643L148.186 44.7033V45.1204H145.807L141.69 40.0423H136.891V45.1204H134.742V29.4854H141.328C145.263 29.4854 147.675 31.3416 147.675 34.7516ZM141.27 31.4806H136.891V38.1533H141.484C143.79 38.1533 145.42 37.1148 145.42 34.8824C145.42 32.65 143.79 31.4398 141.27 31.4398V31.4806Z" fill="#2B2B2B"/>
+    <path d="M168.033 38.3496H159.718V43.166H169.268V45.1204H157.594V29.4854H169.293V31.4398H159.718V36.4443H168.033V38.3496Z" fill="#2B2B2B"/>
+    <path d="M178.858 41.972C180.216 42.986 181.879 43.5175 183.583 43.4767C186.226 43.4767 187.354 42.4627 187.354 41.0235C187.354 39.6906 186.465 39.0118 183.238 38.1042C179.459 37.0329 177.755 35.8881 177.755 33.4676C177.755 30.7855 179.961 29.1664 183.657 29.1664C187.593 29.1664 189.321 30.6792 189.321 30.6792L188.144 32.4455C186.819 31.5623 185.255 31.1126 183.657 31.1698C181.533 31.1698 180.035 31.9875 180.035 33.4431C180.035 34.6125 181.007 35.2094 184.151 36.068C188.268 37.1883 189.659 38.5703 189.659 40.9744C189.659 43.5584 187.823 45.5373 183.6 45.5373C179.376 45.5373 177.672 43.632 177.672 43.632L178.858 41.972Z" fill="#2B2B2B"/>
+    <path d="M78.0409 59.1146C77.4646 59.7115 76.6578 60.0304 75.8263 59.9977C73.8917 59.9078 72.4016 58.2723 72.4921 56.3506C72.5827 54.5598 74.0234 53.1288 75.8263 53.0388C76.6578 53.0061 77.4646 53.325 78.0409 53.922L77.7775 54.2818C77.2588 53.7748 76.559 53.4886 75.8263 53.5049C74.1469 53.5949 72.8626 55.0095 72.9532 56.6777C73.0355 58.2232 74.2786 59.4498 75.8263 59.5316C76.559 59.5316 77.2671 59.2454 77.7775 58.7139L78.0409 59.1146Z" fill="#2B2B2B"/>
+    <path d="M82.6707 53.1505H82.8024L85.9226 59.8068H85.3875L84.7206 58.433H80.7443L80.0857 59.8068H79.5588L82.6707 53.1505ZM82.7695 54.1481H82.6954L81.0489 57.8197L80.9748 57.9669H84.5066L84.4407 57.8197L82.7695 54.1481Z" fill="#2B2B2B"/>
+    <path d="M88.0874 53.1505H90.6066C92.2037 53.1505 93.1422 53.8946 93.1422 55.3338C93.1422 56.773 92.2037 57.6234 90.5572 57.6234H88.5402V59.8395H88.0874V53.1505ZM90.5572 53.6084H88.532V57.1328H90.5572C91.8003 57.1328 92.64 56.6013 92.64 55.3502C92.64 54.099 91.8415 53.6411 90.5984 53.6411L90.5572 53.6084Z" fill="#2B2B2B"/>
+    <path d="M96.0917 59.8395H95.6136V53.1505H96.0917V59.8395Z" fill="#2B2B2B"/>
+    <path d="M98.3677 53.1505H103.554V53.6084H101.2V59.8068H100.722V53.6411H98.3677V53.1505Z" fill="#2B2B2B"/>
+    <path d="M107.345 53.1505H107.469L110.597 59.8068H110.054L109.395 58.433H105.419L104.76 59.8068H104.233L107.345 53.1505ZM107.444 54.1481H107.362L105.715 57.8197L105.633 57.9669H109.173L109.107 57.8197L107.444 54.1481Z" fill="#2B2B2B"/>
+    <path d="M112.789 59.8395V53.1505H113.258V59.357H117.218V59.8068L112.789 59.8395Z" fill="#2B2B2B"/>
+    <path d="M94.5644 0H94.0375L83.0223 22.553H85.4427L87.5996 18.2681L88.851 15.8231L94.1528 4.3585H94.4491L99.7839 15.8231L101.035 18.2681L103.192 22.553H105.654L94.5644 0Z" fill="#2B2B2B"/>
+    <path d="M109.789 22.5522H112.259L102.38 2.54232H102.084C102.084 2.54232 100.182 6.63097 100.067 6.84358L101.343 9.42761L102.084 7.43235H102.388L109.789 22.5522Z" fill="#2B2B2B"/>
+    <path d="M78.7993 22.5522H76.3296L86.2087 2.54232H86.5051C86.5051 2.54232 88.3738 6.63097 88.4891 6.86811C88.0692 7.68584 87.6658 8.58535 87.2295 9.42761L86.5051 7.43235H86.2004L78.7993 22.5522Z" fill="#2B2B2B"/>
+    <path d="M0 29.4854H13.0404V31.4398H7.58222V45.1204H5.42528V31.4398H0V29.4854Z" fill="#2B2B2B"/>
+    <path d="M34.8086 34.7516C34.8992 37.0003 33.442 39.0201 31.2686 39.658V39.7643L35.3355 44.7361V45.1531H32.9316L28.8153 40.0668H24.0239V45.1449H21.8752V29.4854H28.4613C32.3965 29.4854 34.8086 31.3416 34.8086 34.7516ZM28.4119 31.4806H24.0239V38.1533H28.6177C30.9228 38.1533 32.5529 37.1148 32.5529 34.8824C32.5529 32.65 30.9228 31.4398 28.4119 31.4398V31.4806Z" fill="#2B2B2B"/>
+    <path d="M55.1598 38.3496H46.8778V43.166H56.4194V45.1204H44.7209V29.4854H56.4194V31.4398H46.8778V36.4443H55.1598V38.3496Z" fill="#2B2B2B"/>
+    <path d="M65.9962 41.972C67.3546 42.986 69.0176 43.5175 70.7217 43.4767C73.3644 43.4767 74.5005 42.4627 74.5005 41.0235C74.5005 39.6906 73.6031 39.0118 70.3842 38.1042C66.6054 37.0329 64.9013 35.8881 64.9013 33.4676C64.9013 30.7855 67.1076 29.1664 70.8041 29.1664C74.7392 29.1664 76.4681 30.6792 76.4681 30.6792L75.2908 32.4455C73.9736 31.5541 72.4012 31.1044 70.8041 31.1535C68.68 31.1535 67.1817 31.9712 67.1817 33.4268C67.1817 34.5961 68.1532 35.1931 71.298 36.0517C75.4143 37.172 76.8056 38.5539 76.8056 40.958C76.8056 43.5421 74.9698 45.521 70.7464 45.521C66.5231 45.521 64.819 43.6157 64.819 43.6157L65.9962 41.972Z" fill="#2B2B2B"/>
+    <path d="M99.6095 34.1546L94.283 39.8051H93.7067L88.4132 34.1792V45.1204H86.2645V29.4854H86.8654L94.0278 36.9922L101.256 29.4854H101.832V45.1204H99.6095V34.1546Z" fill="#2B2B2B"/>
+    <path d="M118.03 29.4854H118.483L126.32 45.1204H123.851L122.566 42.5691H113.938L112.654 45.1204H110.184L118.03 29.4854ZM118.376 33.7131H118.112L115.042 40.4021L114.885 40.6638H121.628L121.471 40.4021L118.376 33.7131Z" fill="#2B2B2B"/>
+    <path d="M147.675 34.7516C147.766 37.0003 146.309 39.0201 144.135 39.658V39.7643L148.186 44.7033V45.1204H145.807L141.69 40.0423H136.891V45.1204H134.742V29.4854H141.328C145.263 29.4854 147.675 31.3416 147.675 34.7516ZM141.27 31.4806H136.891V38.1533H141.484C143.79 38.1533 145.42 37.1148 145.42 34.8824C145.42 32.65 143.79 31.4398 141.27 31.4398V31.4806Z" fill="#2B2B2B"/>
+    <path d="M168.033 38.3496H159.718V43.166H169.268V45.1204H157.594V29.4854H169.293V31.4398H159.718V36.4443H168.033V38.3496Z" fill="#2B2B2B"/>
+    <path d="M178.858 41.972C180.216 42.986 181.879 43.5175 183.583 43.4767C186.226 43.4767 187.354 42.4627 187.354 41.0235C187.354 39.6906 186.465 39.0118 183.238 38.1042C179.459 37.0329 177.755 35.8881 177.755 33.4676C177.755 30.7855 179.961 29.1664 183.657 29.1664C187.593 29.1664 189.321 30.6792 189.321 30.6792L188.144 32.4455C186.819 31.5623 185.255 31.1126 183.657 31.1698C181.533 31.1698 180.035 31.9875 180.035 33.4431C180.035 34.6125 181.007 35.2094 184.151 36.068C188.268 37.1883 189.659 38.5703 189.659 40.9744C189.659 43.5584 187.823 45.5373 183.6 45.5373C179.376 45.5373 177.672 43.632 177.672 43.632L178.858 41.972Z" fill="#2B2B2B"/>
+    <path d="M78.0409 59.1146C77.4646 59.7115 76.6578 60.0304 75.8263 59.9977C73.8917 59.9078 72.4016 58.2723 72.4921 56.3506C72.5827 54.5598 74.0234 53.1288 75.8263 53.0388C76.6578 53.0061 77.4646 53.325 78.0409 53.922L77.7775 54.2818C77.2588 53.7748 76.559 53.4886 75.8263 53.5049C74.1469 53.5949 72.8626 55.0095 72.9532 56.6777C73.0355 58.2232 74.2786 59.4498 75.8263 59.5316C76.559 59.5316 77.2671 59.2454 77.7775 58.7139L78.0409 59.1146Z" fill="#2B2B2B"/>
+    <path d="M82.6707 53.1505H82.8024L85.9226 59.8068H85.3875L84.7206 58.433H80.7443L80.0857 59.8068H79.5588L82.6707 53.1505ZM82.7695 54.1481H82.6954L81.0489 57.8197L80.9748 57.9669H84.5066L84.4407 57.8197L82.7695 54.1481Z" fill="#2B2B2B"/>
+    <path d="M88.0874 53.1505H90.6066C92.2037 53.1505 93.1422 53.8946 93.1422 55.3338C93.1422 56.773 92.2037 57.6234 90.5572 57.6234H88.5402V59.8395H88.0874V53.1505ZM90.5572 53.6084H88.532V57.1328H90.5572C91.8003 57.1328 92.64 56.6013 92.64 55.3502C92.64 54.099 91.8415 53.6411 90.5984 53.6411L90.5572 53.6084Z" fill="#2B2B2B"/>
+    <path d="M96.0917 59.8395H95.6136V53.1505H96.0917V59.8395Z" fill="#2B2B2B"/>
+    <path d="M98.3677 53.1505H103.554V53.6084H101.2V59.8068H100.722V53.6411H98.3677V53.1505Z" fill="#2B2B2B"/>
+    <path d="M107.345 53.1505H107.469L110.597 59.8068H110.054L109.395 58.433H105.419L104.76 59.8068H104.233L107.345 53.1505ZM107.444 54.1481H107.362L105.715 57.8197L105.633 57.9669H109.173L109.107 57.8197L107.444 54.1481Z" fill="#2B2B2B"/>
+    <path d="M112.789 59.8395V53.1505H113.258V59.357H117.218V59.8068L112.789 59.8395Z" fill="#2B2B2B"/>
+    <path class="red" d="M94.5644 0H94.0375L83.0223 22.553H85.4427L87.5996 18.2681L88.851 15.8231L94.1528 4.3585H94.4491L99.7839 15.8231L101.035 18.2681L103.192 22.553H105.654L94.5644 0Z" fill="#2B2B2B"/>
+    <path d="M109.789 22.5522H112.259L102.38 2.54232H102.084C102.084 2.54232 100.182 6.63097 100.067 6.84358L101.343 9.42761L102.084 7.43235H102.388L109.789 22.5522Z" fill="#2B2B2B"/>
+    <path d="M78.7993 22.5522H76.3296L86.2087 2.54232H86.5051C86.5051 2.54232 88.3738 6.63097 88.4891 6.86811C88.0692 7.68584 87.6658 8.58535 87.2295 9.42761L86.5051 7.43235H86.2004L78.7993 22.5522Z" fill="#2B2B2B"/>
+</svg>
+                </a>
+                <a href="https://www.tresmarescapital.com/" class="brand" aria-label="Go to Home page" data-mobile>
+                    <svg width="48" height="36" viewBox="0 0 48 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M24.2512 3H23.5504L8.89844 32.9999H12.1179L14.987 27.3001L16.6515 24.0478L23.7037 8.79766H24.0979L31.1939 24.0478L32.8584 27.3001L35.7275 32.9999H39.0018L24.2512 3Z" fill="#E41613"/>
+    <path d="M44.503 33H47.7882L34.6474 6.38293H34.2532C34.2532 6.38293 31.7236 11.8216 31.5703 12.1045L33.2677 15.5417L34.2532 12.8876H34.6584L44.503 33Z" fill="#2B2B2B"/>
+    <path d="M3.28519 33H0L13.1408 6.38293H13.535C13.535 6.38293 16.0208 11.8216 16.1741 12.1371C15.6156 13.2248 15.079 14.4213 14.4986 15.5417L13.535 12.8876H13.1298L3.28519 33Z" fill="#2B2B2B"/>
+</svg>
+                </a>
+            </div>
+            <div class="item" data-desktop>
+                <ul id="menu-header" class="menu menu-header"><li id="menu-item-380" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-380"><a href="https://www.tresmarescapital.com/nosotros/">Nosotros</a></li>
+<li id="menu-item-384" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-ancestor current-menu-parent current-page-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-384"><a href="https://www.tresmarescapital.com/soluciones-financieras/">Soluciones</a>
+<ul class="sub-menu">
+	<li id="menu-item-388" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-388"><a href="https://www.tresmarescapital.com/soluciones-financieras/private-equity/" class="submenu-item"><div class="image --color"><img fetchpriority="high" width="588" height="460" src="https://www.tresmarescapital.com/wp-content/uploads/2025/11/img.jpg" alt="Private Equity"></div><div class="flex floating --center"><div class="menu-icon --private-equity"><span></span></div><div class="title">Private Equity</div></div></a></li>
+	<li id="menu-item-385" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-385"><a href="https://www.tresmarescapital.com/soluciones-financieras/direct-lending/" class="submenu-item"><div class="image --color"><img width="588" height="460" src="https://www.tresmarescapital.com/wp-content/uploads/2025/11/img-1.jpg" alt="Direct Lending"></div><div class="flex floating --center"><div class="menu-icon --direct-lending"><span></span></div><div class="title">Direct Lending</div></div></a></li>
+	<li id="menu-item-387" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-363 current_page_item menu-item-387 is-active "><a href="https://www.tresmarescapital.com/soluciones-financieras/fund-of-funds/" class="submenu-item"><div class="image --color"><img width="588" height="460" src="https://www.tresmarescapital.com/wp-content/uploads/2025/11/img-2.jpg" alt="Fund of Funds"></div><div class="flex floating --center"><div class="menu-icon --fund-of-funds"><span></span></div><div class="title">Fund of Funds</div></div></a></li>
+	<li id="menu-item-386" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-386"><a href="https://www.tresmarescapital.com/soluciones-financieras/fund-financing/" class="submenu-item"><div class="image --color"><img width="588" height="460" src="https://www.tresmarescapital.com/wp-content/uploads/2025/11/img-3.jpg" alt="Fund Financing"></div><div class="flex floating --center"><div class="menu-icon --fund-financing"><span></span></div><div class="title">Fund Financing</div></div></a></li>
+</ul>
+</li>
+<li id="menu-item-382" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-382"><a href="https://www.tresmarescapital.com/portfolio/">Portfolio</a></li>
+<li id="menu-item-377" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-377"><a href="https://www.tresmarescapital.com/equipo/">Equipo</a></li>
+<li id="menu-item-375" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-375"><a href="https://www.tresmarescapital.com/inversores/">Inversores</a></li>
+<li id="menu-item-376" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-376"><a href="https://www.tresmarescapital.com/contacto/">Contacto</a></li>
+</ul>            </div>
+            <div class="item" data-desktop>
+                <div class="lang">
+                                            <a href="https://www.tresmarescapital.com/soluciones-financieras/fund-of-funds/" class="lang-item is-current">ES</a>
+                        <a href="https://www.tresmarescapital.com/en/financial-solutions/fund-of-funds/" class="lang-item">EN</a>
+                                    </div>
+                <a href="https://investorsfront.tresmarescapital.mscope.tech/" target="_blank" class="button --primary"><div class="button-text"><span>Portal Inversores</span></div></a>            </div>
+            <div class="item" data-mobile>
+                <div class="navigation">
+                    <div class="content">
+                        <ul id="menu-mobile" class="menu menu-header"><li id="menu-item-1111" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1111"><a href="https://www.tresmarescapital.com/nosotros/">Nosotros</a></li>
+<li id="menu-item-1119" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1119"><a>Soluciones</a>
+<ul class="sub-menu">
+	<li id="menu-item-1117" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1117"><a href="https://www.tresmarescapital.com/soluciones-financieras/private-equity/" class="submenu-item"><div class="flex floating --center"><div class="menu-icon 1023"><span></span></div><div class="title">Private Equity</div></div></a></li>
+</ul>
+</li>
+<li id="menu-item-1112" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1112"><a href="https://www.tresmarescapital.com/portfolio/">Portfolio</a></li>
+<li id="menu-item-1108" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1108"><a href="https://www.tresmarescapital.com/equipo/">Equipo</a></li>
+<li id="menu-item-1110" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1110"><a href="https://www.tresmarescapital.com/inversores/">Inversores</a></li>
+<li id="menu-item-1107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1107"><a href="https://www.tresmarescapital.com/contacto/">Contacto</a></li>
+</ul>                        <div class="lang">
+                                                            <a href="https://www.tresmarescapital.com/soluciones-financieras/fund-of-funds/" class="lang-item is-current">ES</a>
+                                <a href="https://www.tresmarescapital.com/en/financial-solutions/fund-of-funds/" class="lang-item">EN</a>
+                                                    </div>
+                        <a href="https://investorsfront.tresmarescapital.mscope.tech/" target="_blank" class="button --primary"><div class="button-text"><span>Portal Inversores</span></div></a>                        
+<div id="menu-sidebar" class="menu-sidebar">
+    <div class="mask"></div>
+        <div class="inner" data-lenis-prevent>
+        <ul id="menu-solutions" class="menu menu--solutions"><li id="menu-item-1653" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1653"><a href="https://www.tresmarescapital.com/soluciones-financieras/direct-lending/" class="submenu-item"><div class="flex floating --center"><div class="menu-icon --direct-lending"><span></span></div><div class="title">Direct Lending</div></div></a></li>
+<li id="menu-item-1654" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1654"><a href="https://www.tresmarescapital.com/soluciones-financieras/fund-financing/" class="submenu-item"><div class="flex floating --center"><div class="menu-icon --fund-financing"><span></span></div><div class="title">Fund Financing</div></div></a></li>
+<li id="menu-item-1655" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-363 current_page_item menu-item-1655 is-active "><a href="https://www.tresmarescapital.com/soluciones-financieras/fund-of-funds/" class="submenu-item"><div class="flex floating --center"><div class="menu-icon --fund-of-funds"><span></span></div><div class="title">Fund of Funds</div></div></a></li>
+<li id="menu-item-1656" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1656"><a href="https://www.tresmarescapital.com/soluciones-financieras/private-equity/" class="submenu-item"><div class="flex floating --center"><div class="menu-icon --private-equity"><span></span></div><div class="title">Private Equity</div></div></a></li>
+<li id="menu-item-1652" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-page-parent menu-item-1652"><a href="https://www.tresmarescapital.com/soluciones-financieras/">Ir a Soluciones</a></li>
+</ul>    </div>
+    <div class="closer"></div>
+</div>
+
+                    </div>
+                </div>
+                <div class="box" data-mobile></div>
+                <div id="trigger" class="trigger">
+                    <div class="bars">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+        <main  id="main" class="main">
+        <!-- WebGL in Home page -->
+        
+                    
+                                
+                
+<section class="component component--herosolutions"  data-component="herosolutions">
+    
+    <div class="container --full">
+        <div id="herosolutions-svg" class="image --color"></div>
+        <div class="title display --3xlarge"  data-desktop>Fund of<br />
+Funds
+</div>        <div class="text-block-left">
+            <div class="wysiwyg text --large --bold"><p>Logramos acceder a las mejores estrategias de Buyout y Growth gracias a nuestra visión del mercado y las relaciones con la industria, construyendo carteras diversificadas por tamaño, sector y geografía.</p>
+</div>        </div>
+         <div class="details">
+                            <div class="group">
+                    <div class="title text --xsmall --uppercase" >Lanzamiento</div>                    <div class="wysiwyg text --bold --xsmall --na">2025</div>                </div>
+                            <div class="group">
+                    <div class="title text --xsmall --uppercase" >AUMS</div>                    <div class="wysiwyg text --bold --xsmall --na">€600M+</div>                </div>
+                            <div class="group">
+                    <div class="title text --xsmall --uppercase" >Fondos</div>                    <div class="wysiwyg text --bold --xsmall --na">2 Activos</div>                </div>
+                            <div class="group">
+                    <div class="title text --xsmall --uppercase" >Segmento objetivo</div>                    <div class="wysiwyg text --bold --xsmall --na">Minorista</div>                </div>
+                            <div class="group">
+                    <div class="title text --xsmall --uppercase" >Estrategia</div>                    <div class="wysiwyg text --bold --xsmall --na">PE FoF & Secundarios</div>                </div>
+                            <div class="group">
+                    <div class="title text --xsmall --uppercase" >Empleados</div>                    <div class="wysiwyg text --bold --xsmall --na">+5</div>                </div>
+                    </div>
+    </div>
+</section>
+
+            
+                                
+                
+<section class="component component--gallerysticky small"  data-component="gallerysticky">
+    
+    <div class="container --full">
+                            <div class="columns">
+                                    <div class="item item-0">
+                        <div class="image " style="aspect-ratio: 1;"><img width="200" height="200" src="https://www.tresmarescapital.com/wp-content/uploads/2025/11/fund_of_funds_gallery_01-200x200.jpg" data-src="https://www.tresmarescapital.com/wp-content/uploads/2025/11/fund_of_funds_gallery_01.jpg" alt=""></div>                    </div>
+                                    <div class="item item-1">
+                        <div class="image " style="aspect-ratio: 0.8;"><img width="200" height="250" src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/01fund-of-funds-solution-200x250.jpg" data-src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/01fund-of-funds-solution.jpg" alt=""></div>                    </div>
+                                    <div class="item item-2">
+                        <div class="image " style="aspect-ratio: 1.5;"><img width="200" height="133" src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/02fund-of-funds-solution-200x133.jpg" data-src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/02fund-of-funds-solution.jpg" alt=""></div>                    </div>
+                                    <div class="item item-3">
+                        <div class="image " style="aspect-ratio: 0.8135593220339;"><img width="200" height="246" src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/03fund-of-funds-solution-200x246.jpg" data-src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/03fund-of-funds-solution.jpg" alt=""></div>                    </div>
+                            </div>
+                <div class="text-block-left">
+                            <div class="title display --large --fill"  data-desktop>Mejoramos la experiencia del inversor y la eficiencia operativa.
+</div>                        <div class="wysiwyg text --large --bold"><p>Gracias a una estrategia basada en dos pilares, ofrecemos a los inversores acceso institucional a oportunidades exclusivas de Private Equity, optimizando su experiencia y la eficiencia operativa de la gestora.</p>
+</div>                            <div class="actions">
+                                                                <div class="link "><div class="text"></div></div>                                    </div>
+                    </div>
+    </div>
+</section>
+
+            
+                                
+                <section class="component component--tablethreecols"  data-component="tablethreecols">
+    
+    <div class="container --full">
+        <div class="waves">
+            <svg width="2400" height="1160" viewBox="0 0 2400 1160" fill="none" xmlns="http://www.w3.org/2000/svg" data-desktop>
+    <g clip-path="url(#clip0_2530_51567)">
+        <mask id="mask0_2530_51567" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-279" y="0" width="2680" height="2426">
+            <path d="M-278.012 2424.51L2399.5 2424.51L2399.5 0.987163L-278.012 0.987305L-278.012 2424.51Z" fill="white" stroke="white"/>
+        </mask>
+        <g mask="url(#mask0_2530_51567)">
+            <path d="M2945.83 1147.95C2713.02 1042.89 2440.88 1017.41 2153.44 1063.72C1836.79 1114.73 1480.1 1261.63 1160.47 1126C560.837 871.549 990.292 310.44 338.163 86.9713C128.704 15.2053 -208.7 -10.5189 -451.953 2.30685" stroke="white" stroke-width="0.04" stroke-miterlimit="10"/>
+            <path d="M2954.7 1139.51C2721.94 1034.46 2449.76 1008.97 2162.31 1055.28C1845.66 1106.29 1488.97 1253.2 1169.34 1117.57C569.708 863.115 999.163 302.006 347.034 78.5369C137.575 6.77083 -199.828 -18.9535 -443.082 -6.12773" stroke="white" stroke-width="0.07" stroke-miterlimit="10"/>
+            <path d="M2963.59 1131.08C2730.83 1026.02 2458.65 1000.54 2171.2 1046.85C1854.55 1097.86 1497.86 1244.76 1178.23 1109.13C578.599 854.681 1008.05 293.572 355.925 70.1027C146.465 -1.66339 -190.938 -27.3876 -434.191 -14.5618" stroke="white" stroke-width="0.11" stroke-miterlimit="10"/>
+            <path d="M2972.43 1122.61C2739.67 1017.55 2467.49 992.073 2180.04 1038.38C1863.39 1089.39 1506.7 1236.3 1187.07 1100.67C587.439 846.213 1016.89 285.104 364.765 61.6351C155.305 -10.1309 -182.098 -35.8551 -425.352 -23.0051" stroke="white" stroke-width="0.15" stroke-miterlimit="10"/>
+            <path d="M2981.31 1114.17C2748.55 1009.14 2476.37 983.638 2188.92 1029.95C1872.28 1080.96 1515.59 1227.86 1195.95 1092.23C596.321 837.779 1025.78 276.67 373.648 53.2008C164.188 -18.5653 -173.215 -44.2894 -416.469 -31.4394" stroke="white" stroke-width="0.19" stroke-miterlimit="10"/>
+            <path d="M2990.21 1105.74C2757.45 1000.69 2485.26 975.205 2197.82 1021.51C1881.17 1072.53 1524.44 1219.43 1204.85 1083.8C605.216 829.345 1034.67 268.236 382.542 44.7673C173.127 -26.9987 -164.321 -52.7231 -407.574 -39.873" stroke="white" stroke-width="0.22" stroke-miterlimit="10"/>
+            <path d="M2999.04 1097.3C2766.27 992.247 2494.09 966.765 2206.64 1013.07C1890 1064.09 1533.26 1210.99 1213.67 1075.36C614.044 820.906 1043.5 259.797 391.37 36.328C181.911 -35.4381 -155.493 -61.1622 -398.746 -48.3365" stroke="white" stroke-width="0.26" stroke-miterlimit="10"/>
+            <path d="M3007.92 1088.84C2775.11 983.784 2502.97 958.302 2215.53 1004.61C1898.88 1055.62 1542.15 1202.53 1222.56 1066.9C622.927 812.443 1052.38 251.334 400.253 27.8651C190.794 -43.9009 -146.61 -69.6251 -389.863 -56.7993" stroke="white" stroke-width="0.3" stroke-miterlimit="10"/>
+            <path d="M3016.77 1080.4C2784 975.35 2511.82 949.868 2224.37 996.177C1907.73 1047.19 1551.04 1194.09 1231.4 1058.46C631.775 804.009 1061.23 242.9 409.101 19.4309C199.641 -52.3352 -137.762 -78.0595 -381.016 -65.2337" stroke="white" stroke-width="0.34" stroke-miterlimit="10"/>
+            <path d="M3025.64 1071.96C2792.88 966.907 2520.7 941.425 2233.25 987.734C1916.6 1038.75 1559.91 1185.65 1240.28 1050.02C640.65 795.566 1070.1 234.457 417.976 10.9878C208.516 -60.7782 -128.887 -86.5026 -372.141 -73.6768" stroke="white" stroke-width="0.37" stroke-miterlimit="10"/>
+            <path d="M3034.54 1063.53C2801.77 958.473 2529.59 932.991 2242.14 979.299C1925.5 1030.31 1568.81 1177.21 1249.17 1041.59C649.544 787.131 1079 226.022 426.87 2.55335C217.411 -69.2127 -119.993 -94.9369 -363.246 -82.1111" stroke="white" stroke-width="0.41" stroke-miterlimit="10"/>
+            <path d="M3043.36 1055.09C2810.59 950.039 2538.41 924.557 2250.96 970.865C1934.32 1021.88 1577.63 1168.78 1257.99 1033.15C658.364 778.697 1087.82 217.588 435.691 -5.88064C226.231 -77.6467 -111.172 -103.371 -354.426 -90.5452" stroke="white" stroke-width="0.45" stroke-miterlimit="10"/>
+            <path d="M3052.25 1046.63C2819.48 941.576 2547.3 916.094 2259.85 962.403C1943.21 1013.41 1586.52 1160.32 1266.88 1024.69C667.255 770.235 1096.71 209.126 444.581 -14.3433C235.122 -86.1094 -102.282 -111.834 -345.535 -99.0079" stroke="white" stroke-width="0.48" stroke-miterlimit="10"/>
+            <path d="M3061.09 1038.19C2828.32 933.132 2556.14 907.651 2268.69 953.959C1952.05 1004.97 1595.36 1151.87 1275.72 1016.25C676.095 761.791 1105.55 200.682 453.421 -22.787C243.961 -94.553 -93.4417 -120.277 -336.695 -107.451" stroke="white" stroke-width="0.52" stroke-miterlimit="10"/>
+            <path d="M3069.96 1029.76C2837.2 924.703 2565.02 899.221 2277.57 945.53C1960.92 996.542 1604.24 1143.44 1284.6 1007.82C684.97 753.362 1114.42 192.253 462.296 -31.2159C252.837 -102.982 -84.5667 -128.706 -327.82 -115.856" stroke="white" stroke-width="0.56" stroke-miterlimit="10"/>
+            <path d="M3078.86 1021.31C2846.09 916.255 2573.91 890.773 2286.46 937.082C1969.82 988.094 1613.13 1135 1293.49 999.368C693.865 744.913 1123.32 183.805 471.191 -39.6643C261.731 -111.43 -75.6722 -137.155 -318.926 -124.329" stroke="white" stroke-width="0.6" stroke-miterlimit="10"/>
+            <path d="M3087.71 1012.86C2854.95 907.831 2582.76 882.325 2295.31 928.633C1978.67 979.645 1621.94 1126.55 1302.35 990.919C702.716 736.465 1132.17 175.356 480.042 -48.1128C270.583 -119.879 -66.8207 -145.603 -310.074 -132.753" stroke="white" stroke-width="0.63" stroke-miterlimit="10"/>
+            <path d="M3096.58 1004.41C2863.82 899.353 2591.63 873.872 2304.19 920.18C1987.54 971.192 1630.85 1118.09 1311.22 982.466C711.587 728.012 1141.04 166.903 488.913 -56.566C279.454 -128.332 -57.9496 -154.056 -301.203 -141.206" stroke="white" stroke-width="0.67" stroke-miterlimit="10"/>
+            <path d="M3105.45 995.979C2872.68 890.924 2600.5 865.442 2313.05 911.751C1996.41 962.763 1639.68 1109.67 1320.08 974.037C720.454 719.583 1149.91 158.474 497.781 -64.9949C288.321 -136.761 -49.0824 -162.485 -292.336 -149.659" stroke="white" stroke-width="0.71" stroke-miterlimit="10"/>
+            <path d="M3114.28 987.54C2881.47 882.485 2609.34 857.003 2321.89 903.312C2005.24 954.324 1648.56 1101.23 1328.92 965.598C729.29 711.143 1158.74 150.034 506.616 -73.4344C297.157 -145.2 -40.2464 -170.925 -283.5 -158.075" stroke="white" stroke-width="0.74" stroke-miterlimit="10"/>
+            <path d="M3123.2 979.105C2890.44 874.051 2618.26 848.569 2330.81 894.877C2014.16 945.89 1657.47 1092.79 1337.84 957.164C738.208 702.709 1167.66 141.6 515.534 -81.8687C306.075 -153.635 -31.3285 -179.359 -274.582 -166.509" stroke="white" stroke-width="0.78" stroke-miterlimit="10"/>
+            <path d="M3132.06 970.643C2899.3 865.588 2627.12 840.106 2339.67 886.415C2023.02 937.427 1666.29 1084.33 1346.7 948.701C747.067 694.247 1176.52 133.138 524.394 -90.3311C314.934 -162.097 -22.4691 -187.821 -265.723 -174.971" stroke="white" stroke-width="0.82" stroke-miterlimit="10"/>
+            <path d="M3140.91 962.204C2908.14 857.149 2635.96 831.667 2348.51 877.976C2031.87 928.988 1675.18 1075.89 1355.54 940.262C755.915 685.808 1185.37 124.699 533.241 -98.7701C323.782 -170.536 -13.6214 -196.26 -256.875 -183.435" stroke="white" stroke-width="0.86" stroke-miterlimit="10"/>
+            <path d="M3149.8 953.77C2917.04 848.739 2644.85 823.233 2357.41 869.542C2040.76 920.554 1684.07 1067.46 1364.44 931.828C764.806 677.374 1194.26 116.265 542.132 -107.204C332.673 -178.97 -4.73076 -204.694 -247.984 -191.868" stroke="white" stroke-width="0.89" stroke-miterlimit="10"/>
+            <path d="M3158.63 945.336C2925.86 840.281 2653.68 814.799 2366.23 861.108C2049.59 912.12 1692.9 1059.02 1373.26 923.394C773.634 668.939 1203.09 107.831 550.96 -115.638C341.5 -187.404 4.09731 -213.129 -239.156 -200.303" stroke="white" stroke-width="0.93" stroke-miterlimit="10"/>
+            <path d="M3167.51 936.872C2934.75 831.842 2662.57 806.336 2375.12 852.644C2058.47 903.657 1701.79 1050.56 1382.15 914.931C782.52 660.476 1211.98 99.3674 559.847 -124.101C350.387 -195.867 12.984 -221.592 -230.27 -208.766" stroke="white" stroke-width="0.97" stroke-miterlimit="10"/>
+            <path d="M3176.4 928.43C2943.64 823.375 2671.46 797.893 2384.01 844.201C2067.32 895.214 1710.63 1042.12 1391.04 906.488C791.407 652.033 1220.86 90.9243 568.734 -132.545C359.274 -204.311 21.8708 -230.035 -221.383 -217.209" stroke="white" stroke-width="1.01" stroke-miterlimit="10"/>
+            <path d="M3185.23 920C2952.46 814.945 2680.28 789.464 2392.83 835.772C2076.19 886.784 1719.5 1033.69 1399.87 898.058C800.235 643.604 1229.69 82.4949 577.562 -140.974C368.102 -212.74 30.6989 -238.464 -212.555 -225.614" stroke="white" stroke-width="1.04" stroke-miterlimit="10"/>
+            <path d="M3194.13 911.557C2961.37 806.502 2689.19 781.02 2401.74 827.329C2085.09 878.341 1728.36 1025.24 1408.77 889.615C809.138 635.161 1238.59 74.0518 586.464 -149.417C377.004 -221.183 39.6012 -246.907 -203.652 -234.057" stroke="white" stroke-width="1.08" stroke-miterlimit="10"/>
+            <path d="M3202.95 903.118C2970.19 798.063 2698.01 772.581 2410.56 818.89C2093.91 869.902 1737.22 1016.8 1417.59 881.176C817.958 626.722 1247.41 65.6129 595.285 -157.856C385.825 -229.622 48.4215 -255.346 -194.832 -242.521" stroke="white" stroke-width="1.12" stroke-miterlimit="10"/>
+            <path d="M3211.84 894.655C2979.08 789.6 2706.9 764.118 2419.45 810.427C2102.8 861.439 1746.11 1008.34 1426.48 872.713C826.849 618.259 1256.3 57.1497 604.175 -166.319C394.716 -238.085 57.3122 -263.809 -185.941 -250.984" stroke="white" stroke-width="1.15" stroke-miterlimit="10"/>
+            <path d="M3220.73 886.231C2987.96 781.176 2715.78 755.694 2428.33 802.002C2111.69 853.015 1755 999.917 1435.37 864.289C835.736 609.834 1265.19 48.7254 613.062 -174.743C403.602 -246.51 66.1989 -272.234 -177.055 -259.408" stroke="white" stroke-width="1.19" stroke-miterlimit="10"/>
+            <path d="M3229.57 877.782C2996.81 772.727 2724.63 747.246 2437.18 793.554C2120.53 844.566 1763.85 991.469 1444.21 855.84C844.579 601.386 1274.03 40.2771 621.906 -183.192C412.446 -254.958 75.0427 -280.682 -168.211 -267.832" stroke="white" stroke-width="1.23" stroke-miterlimit="10"/>
+            <path d="M3238.46 869.343C3005.7 764.288 2733.51 738.807 2446.07 785.115C2129.42 836.127 1772.73 983.03 1453.1 847.402C853.466 592.947 1282.92 31.8381 630.792 -191.631C421.333 -263.397 83.9294 -289.121 -159.324 -276.295" stroke="white" stroke-width="1.27" stroke-miterlimit="10"/>
+            <path d="M3247.33 860.89C3014.56 755.86 2742.38 730.354 2454.93 776.662C2138.29 827.674 1781.55 974.577 1461.96 838.948C862.333 584.494 1291.79 23.3851 639.66 -200.084C430.2 -271.85 92.7965 -297.574 -150.457 -284.748" stroke="white" stroke-width="1.3" stroke-miterlimit="10"/>
+            <path d="M3256.16 852.446C3023.4 747.415 2751.22 721.909 2463.77 768.217C2147.12 819.23 1790.43 966.132 1470.8 830.504C871.169 576.049 1300.62 14.9404 648.495 -208.528C439.036 -280.294 101.632 -306.019 -141.621 -293.193" stroke="white" stroke-width="1.34" stroke-miterlimit="10"/>
+            <path d="M3265.06 844.013C3032.29 738.982 2760.11 713.476 2472.66 759.785C2156.02 810.797 1799.33 957.699 1479.69 822.071C880.064 567.617 1309.52 6.50764 657.39 -216.961C447.93 -288.727 110.527 -314.452 -132.727 -301.626" stroke="white" stroke-width="1.38" stroke-miterlimit="10"/>
+            <path d="M3273.88 835.568C3041.12 730.514 2768.94 705.032 2481.49 751.34C2164.85 802.352 1808.16 949.255 1488.52 813.627C888.892 559.172 1318.35 -1.93672 666.218 -225.406C456.758 -297.172 119.355 -322.896 -123.898 -310.07" stroke="white" stroke-width="1.41" stroke-miterlimit="10"/>
+            <path d="M3282.79 827.134C3050.02 722.079 2777.84 696.597 2490.39 742.906C2173.75 793.918 1817.06 940.82 1497.42 805.192C897.794 550.738 1327.25 -10.3711 675.12 -233.84C465.661 -305.606 128.257 -331.33 -114.996 -318.504" stroke="white" stroke-width="1.45" stroke-miterlimit="10"/>
+            <path d="M3291.66 818.672C3058.9 713.617 2786.72 688.135 2499.27 734.444C2182.62 785.456 1825.93 932.358 1506.3 796.73C906.669 542.276 1336.12 -18.833 683.995 -242.302C474.536 -314.068 137.132 -339.792 -106.121 -326.966" stroke="white" stroke-width="1.49" stroke-miterlimit="10"/>
+            <path d="M3300.5 810.238C3067.74 705.183 2795.56 679.701 2508.11 726.01C2191.46 777.022 1834.77 923.924 1515.14 788.296C915.509 533.842 1344.96 -27.2673 692.835 -250.736C483.376 -322.502 145.972 -348.226 -97.2812 -335.401" stroke="white" stroke-width="1.53" stroke-miterlimit="10"/>
+            <path d="M3309.38 801.804C3076.62 696.749 2804.44 671.267 2516.99 717.576C2200.35 768.588 1843.66 915.49 1524.02 779.862C924.392 525.408 1353.85 -35.7014 701.718 -259.17C492.258 -330.936 154.855 -356.661 -88.3984 -343.835" stroke="white" stroke-width="1.56" stroke-miterlimit="10"/>
+            <path d="M3318.27 793.364C3085.5 688.309 2813.32 662.827 2525.87 709.136C2209.23 760.148 1852.54 907.05 1532.9 771.422C933.275 516.968 1362.73 -44.1411 710.601 -267.61C501.141 -339.376 163.738 -365.1 -79.5156 -352.25" stroke="white" stroke-width="1.6" stroke-miterlimit="10"/>
+            <path d="M3327.11 784.902C3094.35 679.847 2822.17 654.366 2534.72 700.674C2218.08 751.686 1861.39 898.589 1541.75 762.96C942.122 508.506 1371.58 -52.603 719.449 -276.072C509.989 -347.838 172.586 -373.562 -70.668 -360.712" stroke="white" stroke-width="1.64" stroke-miterlimit="10"/>
+            <path d="M3335.99 776.468C3103.23 671.437 2831.04 645.931 2543.6 692.24C2226.95 743.252 1870.22 890.154 1550.63 754.526C950.997 500.072 1380.45 -61.0373 728.324 -284.506C518.864 -356.272 181.461 -381.996 -61.793 -369.146" stroke="white" stroke-width="1.68" stroke-miterlimit="10"/>
+            <path d="M3344.88 768.029C3112.12 662.998 2839.94 637.492 2552.49 683.801C2235.85 734.813 1879.11 881.715 1559.52 746.087C959.892 491.633 1389.35 -69.4763 737.218 -292.945C527.758 -364.711 190.355 -390.435 -52.8984 -377.61" stroke="white" stroke-width="1.71" stroke-miterlimit="10"/>
+            <path d="M3353.71 759.586C3120.95 654.531 2848.77 629.049 2561.32 675.358C2244.67 726.37 1887.99 873.272 1568.35 737.644C968.72 483.19 1398.17 -77.9194 746.046 -301.388C536.586 -373.154 199.183 -398.879 -44.0703 -386.053" stroke="white" stroke-width="1.75" stroke-miterlimit="10"/>
+            <path d="M3362.59 751.146C3129.83 646.091 2857.65 620.61 2570.2 666.918C2253.56 717.93 1896.82 864.833 1577.23 729.205C977.603 474.75 1407.06 -86.3588 754.929 -309.828C545.469 -381.594 208.066 -407.318 -35.1875 -394.468" stroke="white" stroke-width="1.79" stroke-miterlimit="10"/>
+            <path d="M3371.43 742.688C3138.67 637.633 2866.49 612.152 2579.04 658.46C2262.4 709.472 1905.66 856.375 1586.07 720.746C986.443 466.292 1415.9 -94.8169 763.769 -318.286C554.309 -390.052 216.906 -415.776 -26.3477 -402.95" stroke="white" stroke-width="1.82" stroke-miterlimit="10"/>
+            <path d="M3380.32 734.259C3147.55 629.204 2875.37 603.722 2587.92 650.031C2271.28 701.043 1914.59 847.945 1594.96 712.317C995.325 457.862 1424.78 -103.247 772.652 -326.715C563.192 -398.481 225.789 -424.206 -17.4648 -411.356" stroke="white" stroke-width="1.86" stroke-miterlimit="10"/>
+            <path d="M3389.2 725.811C3156.44 620.781 2884.26 595.275 2596.81 641.583C2280.17 692.595 1923.48 839.497 1603.84 703.869C1004.21 449.415 1433.67 -111.694 781.538 -335.163C572.079 -406.929 234.675 -432.653 -8.57812 -419.827" stroke="white" stroke-width="1.9" stroke-miterlimit="10"/>
+            <path d="M3398.05 717.363C3165.29 612.308 2893.11 586.826 2605.66 633.135C2289.01 684.147 1932.33 831.049 1612.69 695.421C1013.06 440.967 1442.51 -120.143 790.386 -343.611C580.926 -415.377 243.523 -441.102 0.269531 -428.252" stroke="white" stroke-width="1.94" stroke-miterlimit="10"/>
+            <path d="M3406.93 708.913C3174.17 603.859 2901.99 578.377 2614.54 624.685C2297.89 675.697 1941.2 822.6 1621.57 686.972C1021.94 432.517 1451.39 -128.592 799.265 -352.061C589.805 -423.827 252.402 -449.551 9.14844 -436.725" stroke="white" stroke-width="1.97" stroke-miterlimit="10"/>
+            <path d="M3415.75 700.479C3182.99 595.424 2910.81 569.943 2623.36 616.251C2306.72 667.263 1950.03 814.165 1630.39 678.537C1030.76 424.083 1460.22 -137.026 808.089 -360.495C598.63 -432.261 261.226 -457.985 17.9727 -445.159" stroke="white" stroke-width="2.01" stroke-miterlimit="10"/>
+            <path d="M3424.64 692.036C3191.88 587.006 2919.7 561.5 2632.25 607.808C2315.6 658.82 1958.87 805.723 1639.28 670.094C1039.65 415.64 1469.1 -145.469 816.976 -368.938C607.516 -440.704 270.113 -466.428 26.8594 -453.602" stroke="white" stroke-width="2.05" stroke-miterlimit="10"/>
+            <path d="M3433.53 683.612C3200.77 578.581 2928.59 553.075 2641.14 599.384C2324.49 650.396 1967.81 797.298 1648.17 661.67C1048.54 407.216 1477.99 -153.893 825.866 -377.362C616.407 -449.128 279.004 -474.852 35.75 -462.027" stroke="white" stroke-width="2.08" stroke-miterlimit="10"/>
+            <path d="M3442.38 675.14C3209.61 570.109 2937.43 544.603 2649.98 590.912C2333.34 641.924 1976.65 788.826 1657.01 653.198C1057.38 398.744 1486.84 -162.365 834.71 -385.834C625.25 -457.6 287.847 -483.324 44.5938 -470.499" stroke="white" stroke-width="2.12" stroke-miterlimit="10"/>
+            <path d="M3451.25 666.7C3218.49 561.646 2946.31 536.164 2658.86 582.472C2342.22 633.485 1985.53 780.387 1665.89 644.759C1066.26 390.304 1495.72 -170.805 843.589 -394.274C634.13 -466.04 296.726 -491.764 53.4727 -478.914" stroke="white" stroke-width="2.16" stroke-miterlimit="10"/>
+            <path d="M3460.15 658.258C3227.38 553.203 2955.2 527.721 2667.75 574.029C2351.11 625.042 1994.42 771.944 1674.78 636.316C1075.15 381.861 1504.61 -179.248 852.48 -402.717C643.02 -474.483 305.617 -500.207 62.3633 -487.357" stroke="white" stroke-width="2.2" stroke-miterlimit="10"/>
+            <path d="M3468.99 649.832C3236.23 544.777 2964.05 519.295 2676.6 565.604C2359.95 616.616 2003.22 763.518 1683.63 627.89C1084 373.436 1513.45 -187.673 861.324 -411.142C651.864 -482.908 314.461 -508.632 71.207 -495.782" stroke="white" stroke-width="2.23" stroke-miterlimit="10"/>
+            <path d="M3477.86 641.393C3245.1 536.338 2972.92 510.856 2685.47 557.165C2368.82 608.177 2012.13 755.079 1692.5 619.451C1092.87 364.997 1522.32 -196.112 870.195 -419.581C660.735 -491.347 323.332 -517.071 80.0781 -504.246" stroke="white" stroke-width="2.27" stroke-miterlimit="10"/>
+            <path d="M3486.71 632.936C3253.95 527.881 2981.76 502.399 2694.31 548.708C2377.67 599.72 2020.98 746.622 1701.35 610.994C1101.72 356.54 1531.17 -204.569 879.042 -428.038C669.583 -499.804 332.179 -525.528 88.9258 -512.678" stroke="white" stroke-width="2.31" stroke-miterlimit="10"/>
+            <path d="M3495.58 624.502C3262.81 519.447 2990.63 493.965 2703.18 540.274C2386.54 591.286 2029.85 738.188 1710.21 602.56C1110.58 348.105 1540.04 -213.004 887.91 -436.472C678.45 -508.239 341.047 -533.963 97.793 -521.113" stroke="white" stroke-width="2.35" stroke-miterlimit="10"/>
+            <path d="M3504.49 616.063C3271.72 511.032 2999.54 485.526 2712.09 531.834C2395.45 582.846 2038.76 729.749 1719.12 594.121C1119.49 339.666 1548.95 -221.443 896.82 -444.911C687.36 -516.678 349.957 -542.402 106.703 -529.576" stroke="white" stroke-width="2.38" stroke-miterlimit="10"/>
+            <path d="M3513.31 607.619C3280.55 502.589 3008.37 477.083 2720.92 523.391C2404.28 574.403 2047.59 721.306 1727.95 585.678C1128.32 331.223 1557.78 -229.886 905.648 -453.355C696.188 -525.121 358.785 -550.845 115.531 -538.019" stroke="white" stroke-width="2.42" stroke-miterlimit="10"/>
+            <path d="M3522.2 599.185C3289.44 494.155 3017.26 468.649 2729.81 514.957C2413.16 565.969 2056.47 712.872 1736.84 577.243C1137.21 322.789 1566.66 -238.32 914.534 -461.789C705.075 -533.555 367.672 -559.279 124.418 -546.453" stroke="white" stroke-width="2.46" stroke-miterlimit="10"/>
+            <path d="M3531.06 590.722C3298.3 485.691 3026.12 460.185 2738.67 506.494C2422.02 557.506 2065.33 704.408 1745.7 568.78C1146.07 314.326 1575.52 -246.783 923.394 -470.252C713.934 -542.018 376.531 -567.742 133.277 -554.917" stroke="white" stroke-width="2.49" stroke-miterlimit="10"/>
+            <path d="M3539.91 582.278C3307.15 477.224 3034.97 451.742 2747.52 498.05C2430.87 549.063 2074.18 695.965 1754.55 560.337C1154.92 305.882 1584.37 -255.227 932.245 -478.695C722.786 -550.461 385.382 -576.186 142.129 -563.36" stroke="white" stroke-width="2.53" stroke-miterlimit="10"/>
+            <path d="M3548.8 573.845C3316.03 468.79 3043.85 443.308 2756.4 489.617C2439.76 540.629 2083.03 687.531 1763.44 551.903C1163.81 297.448 1593.26 -263.661 941.132 -487.129C731.672 -558.896 394.269 -584.62 151.016 -571.794" stroke="white" stroke-width="2.57" stroke-miterlimit="10"/>
+            <path d="M3557.68 565.405C3324.92 460.375 3052.74 434.869 2765.29 481.177C2448.64 532.189 2091.95 679.092 1772.32 543.463C1172.69 289.009 1602.14 -272.1 950.015 -495.569C740.555 -567.335 403.152 -593.059 159.898 -580.209" stroke="white" stroke-width="2.61" stroke-miterlimit="10"/>
+            <path d="M3566.52 556.952C3333.76 451.897 3061.58 426.415 2774.13 472.724C2457.48 523.736 2100.75 670.638 1781.16 535.01C1181.53 280.556 1610.98 -280.553 958.855 -504.022C749.395 -575.788 411.992 -601.512 168.738 -588.662" stroke="white" stroke-width="2.64" stroke-miterlimit="10"/>
+            <path d="M3575.42 548.513C3342.66 443.458 3070.47 417.977 2783.03 464.285C2466.38 515.297 2109.69 662.199 1790.06 526.571C1190.43 272.117 1619.88 -288.992 967.753 -512.461C758.294 -584.227 420.89 -609.951 177.637 -597.126" stroke="white" stroke-width="2.68" stroke-miterlimit="10"/>
+            <path d="M3584.23 540.08C3351.47 435.025 3079.29 409.543 2791.84 455.852C2475.19 506.864 2118.46 653.766 1798.87 518.138C1199.24 263.684 1628.69 -297.425 976.566 -520.894C767.106 -592.66 429.703 -618.384 186.449 -605.559" stroke="white" stroke-width="2.72" stroke-miterlimit="10"/>
+            <path d="M3593.13 531.646C3360.36 426.615 3088.18 401.109 2800.73 447.418C2484.09 498.43 2127.35 645.332 1807.76 509.704C1208.13 255.25 1637.59 -305.859 985.46 -529.328C776.001 -601.094 438.597 -626.818 195.344 -613.993" stroke="white" stroke-width="2.75" stroke-miterlimit="10"/>
+            <path d="M3602 523.193C3369.24 418.162 3097.06 392.656 2809.61 438.965C2492.96 489.977 2136.23 636.879 1816.64 501.251C1217.01 246.797 1646.46 -314.312 994.335 -537.781C784.876 -609.547 447.472 -635.272 204.219 -622.446" stroke="white" stroke-width="2.79" stroke-miterlimit="10"/>
+            <path d="M3610.85 514.74C3378.09 409.709 3105.9 384.203 2818.46 430.512C2501.81 481.524 2145.08 628.426 1825.49 492.798C1225.86 238.343 1655.31 -322.766 1003.18 -546.234C793.723 -618 456.32 -643.725 213.066 -630.899" stroke="white" stroke-width="2.83" stroke-miterlimit="10"/>
+            <path d="M3619.74 506.286C3386.98 401.232 3114.79 375.75 2827.35 422.058C2510.7 473.07 2153.97 619.973 1834.38 484.345C1234.75 229.89 1664.2 -331.219 1012.07 -554.688C802.614 -626.454 465.211 -652.178 221.957 -639.352" stroke="white" stroke-width="2.87" stroke-miterlimit="10"/>
+            <path d="M3628.58 497.866C3395.82 392.835 3123.64 367.329 2836.19 413.638C2519.55 464.65 2162.81 611.552 1843.22 475.924C1243.59 221.469 1673.05 -339.64 1020.92 -563.108C811.458 -634.875 474.054 -660.599 230.801 -647.749" stroke="white" stroke-width="2.9" stroke-miterlimit="10"/>
+            <path d="M3637.45 489.422C3404.69 384.368 3132.51 358.886 2845.06 405.194C2528.42 456.206 2171.73 603.109 1852.09 467.481C1252.46 213.026 1681.92 -348.083 1029.79 -571.552C820.329 -643.318 482.925 -669.042 239.672 -656.192" stroke="white" stroke-width="2.94" stroke-miterlimit="10"/>
+            <path d="M3646.34 480.983C3413.58 375.929 3141.4 350.447 2853.95 396.755C2537.31 447.768 2180.57 594.67 1860.98 459.042C1261.35 204.587 1690.81 -356.522 1038.68 -579.991C829.219 -651.757 491.816 -677.481 248.563 -664.655" stroke="white" stroke-width="2.98" stroke-miterlimit="10"/>
+            <path d="M3655.17 472.525C3422.41 367.495 3150.22 341.989 2862.78 388.297C2546.13 439.309 2189.4 586.212 1869.81 450.584C1270.18 196.129 1699.63 -364.98 1047.5 -588.449C838.044 -660.215 500.64 -685.939 257.387 -673.089" stroke="white" stroke-width="3.02" stroke-miterlimit="10"/>
+            <path d="M3664.07 464.092C3431.3 359.037 3159.12 333.555 2871.67 379.864C2555.03 430.876 2198.3 577.778 1878.7 442.15C1279.08 187.696 1708.53 -373.413 1056.4 -596.882C846.942 -668.648 509.539 -694.372 266.285 -681.522" stroke="white" stroke-width="3.05" stroke-miterlimit="10"/>
+            <path d="M3672.94 455.643C3440.18 350.612 3167.99 325.106 2880.55 371.415C2563.9 422.427 2207.17 569.329 1887.58 433.701C1287.95 179.247 1717.4 -381.862 1065.27 -605.331C855.813 -677.097 518.41 -702.821 275.156 -689.996" stroke="white" stroke-width="3.09" stroke-miterlimit="10"/>
+            <path d="M3681.79 447.219C3449.03 342.188 3176.85 316.682 2889.4 362.99C2572.75 414.003 2216.06 560.905 1896.43 425.277C1296.8 170.822 1726.25 -390.287 1074.12 -613.755C864.665 -685.521 527.261 -711.246 284.008 -698.42" stroke="white" stroke-width="3.13" stroke-miterlimit="10"/>
+            <path d="M3690.67 438.747C3457.91 333.716 3185.72 308.21 2898.28 354.519C2581.63 405.531 2224.94 552.433 1905.31 416.805C1305.68 162.351 1735.13 -398.758 1083 -622.227C873.544 -693.993 536.14 -719.717 292.887 -706.892" stroke="white" stroke-width="3.16" stroke-miterlimit="10"/>
+            <path d="M3699.5 430.312C3466.73 325.282 3194.55 299.776 2907.1 346.084C2590.46 397.096 2233.77 543.998 1914.13 408.37C1314.51 153.916 1743.96 -407.193 1091.83 -630.662C882.372 -702.428 544.968 -728.152 301.715 -715.326" stroke="white" stroke-width="3.2" stroke-miterlimit="10"/>
+            <path d="M3708.4 421.878C3475.63 316.847 3203.45 291.341 2916 337.65C2599.36 388.662 2242.62 535.564 1923.03 399.936C1323.4 145.482 1752.86 -415.627 1100.73 -639.096C891.27 -710.862 553.867 -736.586 310.613 -723.761" stroke="white" stroke-width="3.24" stroke-miterlimit="10"/>
+            <path d="M3717.28 413.444C3484.51 308.389 3212.33 282.907 2924.88 329.216C2608.24 380.228 2251.55 527.13 1931.91 391.502C1332.28 137.048 1761.74 -424.061 1109.61 -647.53C900.149 -719.296 562.746 -745.02 319.492 -732.195" stroke="white" stroke-width="3.28" stroke-miterlimit="10"/>
+            <path d="M3726.11 404.967C3493.35 299.912 3221.17 274.43 2933.72 320.738C2617.07 371.751 2260.38 518.653 1940.75 383.025C1341.12 128.57 1770.57 -432.539 1118.45 -656.007C908.985 -727.773 571.582 -753.498 328.328 -740.648" stroke="white" stroke-width="3.31" stroke-miterlimit="10"/>
+            <path d="M3735 396.538C3502.24 291.507 3230.06 266.001 2942.61 312.31C2625.97 363.322 2269.28 510.224 1949.64 374.596C1350.01 120.142 1779.47 -440.967 1127.34 -664.436C917.879 -736.202 580.476 -761.927 337.223 -749.101" stroke="white" stroke-width="3.35" stroke-miterlimit="10"/>
+            <path d="M3743.88 388.103C3511.12 283.048 3238.94 257.567 2951.49 303.875C2634.84 354.887 2278.15 501.79 1958.52 366.162C1358.89 111.707 1788.34 -449.402 1136.21 -672.871C926.754 -744.637 589.351 -770.361 346.098 -757.535" stroke="white" stroke-width="3.39" stroke-miterlimit="10"/>
+            <path d="M3752.74 379.665C3519.97 274.61 3247.79 249.128 2960.34 295.437C2643.7 346.449 2287.01 493.351 1967.37 357.723C1367.74 103.269 1797.2 -457.84 1145.07 -681.309C935.61 -753.075 598.207 -778.799 354.953 -765.949" stroke="white" stroke-width="3.42" stroke-miterlimit="10"/>
+            <path d="M3761.6 371.231C3528.84 266.2 3256.66 240.694 2969.21 287.003C2652.56 338.015 2295.88 484.917 1976.24 349.289C1376.61 94.8344 1806.07 -466.275 1153.94 -689.744C944.477 -761.51 607.074 -787.234 363.82 -774.384" stroke="white" stroke-width="3.46" stroke-miterlimit="10"/>
+            <path d="M3770.49 362.773C3537.73 257.742 3265.54 232.236 2978.1 278.545C2661.45 329.557 2304.76 476.459 1985.13 340.831C1385.5 86.3766 1814.95 -474.732 1162.82 -698.201C953.364 -769.967 615.961 -795.692 372.707 -782.866" stroke="white" stroke-width="3.5" stroke-miterlimit="10"/>
+            <path d="M3779.33 354.339C3546.57 249.308 3274.39 223.802 2986.94 270.11C2670.29 321.123 2313.61 468.025 1993.97 332.397C1394.34 77.9424 1823.8 -483.167 1171.67 -706.636C962.208 -778.402 624.804 -804.126 381.551 -791.3" stroke="white" stroke-width="3.54" stroke-miterlimit="10"/>
+            <path d="M3788.22 345.894C3555.45 240.864 3283.27 215.358 2995.82 261.666C2679.18 312.678 2322.44 459.581 2002.85 323.952C1403.22 69.498 1832.68 -491.611 1180.55 -715.08C971.09 -786.846 633.687 -812.57 390.434 -799.744" stroke="white" stroke-width="3.57" stroke-miterlimit="10"/>
+            <path d="M3797.06 337.451C3564.29 232.421 3292.11 206.915 3004.66 253.223C2688.02 304.235 2331.28 451.138 2011.69 315.509C1412.06 61.0551 1841.52 -500.054 1189.39 -723.523C979.93 -795.289 642.527 -821.013 399.273 -808.187" stroke="white" stroke-width="3.61" stroke-miterlimit="10"/>
+            <path d="M3805.93 328.988C3573.17 223.933 3300.99 198.452 3013.54 244.76C2696.89 295.772 2340.2 442.674 2020.57 307.046C1420.94 52.5919 1850.39 -508.517 1198.27 -731.986C988.805 -803.752 651.402 -829.476 408.148 -816.65" stroke="white" stroke-width="3.65" stroke-miterlimit="10"/>
+            <path d="M3814.82 320.554C3582.06 215.499 3309.87 190.017 3022.42 236.326C2705.78 287.338 2349.05 434.24 2029.46 298.612C1429.83 44.1577 1859.28 -516.951 1207.15 -740.42C997.692 -812.186 660.289 -837.91 417.035 -825.085" stroke="white" stroke-width="3.69" stroke-miterlimit="10"/>
+            <path d="M3823.66 312.121C3590.9 207.09 3318.72 181.584 3031.27 227.892C2714.62 278.905 2357.89 425.807 2038.3 290.179C1438.67 35.7244 1868.12 -525.385 1216 -748.853C1006.54 -820.619 669.132 -846.344 425.879 -833.518" stroke="white" stroke-width="3.72" stroke-miterlimit="10"/>
+            <path d="M3832.53 303.672C3599.77 198.642 3327.59 173.136 3040.14 219.444C2723.49 270.456 2366.76 417.359 2047.17 281.73C1447.54 27.2761 1876.99 -533.833 1224.87 -757.302C1015.41 -829.068 678.004 -854.792 434.75 -841.942" stroke="white" stroke-width="3.76" stroke-miterlimit="10"/>
+            <path d="M3841.43 295.252C3608.67 190.197 3336.49 164.716 3049.04 211.024C2732.39 262.036 2375.7 408.938 2056.07 273.31C1456.44 18.8559 1885.89 -542.253 1233.76 -765.722C1024.31 -837.488 686.902 -863.212 443.648 -850.386" stroke="white" stroke-width="3.8" stroke-miterlimit="10"/>
+            <path d="M3850.26 286.78C3617.5 181.749 3345.32 156.243 3057.87 202.552C2741.22 253.564 2384.54 400.466 2064.9 264.838C1465.27 10.3838 1894.73 -550.725 1242.6 -774.194C1033.14 -845.96 695.734 -871.684 452.48 -858.858" stroke="white" stroke-width="3.83" stroke-miterlimit="10"/>
+            <path d="M3859.15 278.346C3626.39 173.315 3354.21 147.809 3066.76 194.118C2750.11 245.13 2393.43 392.032 2073.79 256.404C1474.16 1.94986 1903.62 -559.159 1251.49 -782.628C1042.03 -854.394 704.625 -880.118 461.371 -867.293" stroke="white" stroke-width="3.87" stroke-miterlimit="10"/>
+            <path d="M3868 269.912C3635.23 164.881 3363.05 139.375 3075.6 185.684C2758.96 236.696 2402.23 383.598 2082.63 247.97C1483 -6.48447 1912.46 -567.593 1260.33 -791.062C1050.87 -862.828 713.468 -888.553 470.215 -875.727" stroke="white" stroke-width="3.91" stroke-miterlimit="10"/>
+            <path d="M3876.86 261.467C3644.1 156.437 3371.92 130.931 3084.47 177.239C2767.82 228.251 2411.13 375.154 2091.5 239.525C1491.87 -14.929 1921.32 -576.038 1269.19 -799.507C1059.74 -871.273 722.332 -896.997 479.078 -884.171" stroke="white" stroke-width="3.95" stroke-miterlimit="10"/>
+            <path d="M3885.77 253.005C3653 147.95 3380.82 122.469 3093.37 168.777C2776.73 219.789 2420.04 366.692 2100.4 231.063C1500.77 -23.3909 1930.23 -584.5 1278.1 -807.969C1068.64 -879.735 731.238 -905.459 487.984 -892.633" stroke="white" stroke-width="3.98" stroke-miterlimit="10"/>
+            <path d="M3894.6 244.571C3661.84 139.516 3389.65 114.035 3102.21 160.343C2785.56 211.355 2428.87 358.258 2109.24 222.629C1509.61 -31.825 1939.06 -592.934 1286.93 -816.403C1077.47 -888.169 740.07 -913.893 496.816 -901.067" stroke="white" stroke-width="4.02" stroke-miterlimit="10"/>
+            <path d="M3903.47 236.147C3670.71 131.116 3398.53 105.61 3111.08 151.919C2794.44 202.931 2437.7 349.833 2118.11 214.205C1518.48 -40.2494 1947.94 -601.358 1295.81 -824.827C1086.35 -896.593 748.945 -922.318 505.691 -909.492" stroke="white" stroke-width="4.06" stroke-miterlimit="10"/>
+            <path d="M3912.35 227.694C3679.59 122.663 3407.4 97.1569 3119.96 143.465C2803.31 194.478 2446.58 341.38 2126.99 205.752C1527.36 -48.7026 1956.81 -609.812 1304.68 -833.28C1095.22 -905.046 757.82 -930.771 514.566 -917.945" stroke="white" stroke-width="4.1" stroke-miterlimit="10"/>
+            <path d="M3921.2 219.235C3688.43 114.205 3416.25 88.6988 3128.8 135.007C2812.16 186.019 2455.47 332.922 2135.83 197.294C1536.2 -57.1608 1965.66 -618.27 1313.53 -841.739C1104.07 -913.505 766.668 -939.229 523.414 -926.379" stroke="white" stroke-width="4.13" stroke-miterlimit="10"/>
+            <path d="M3930.09 210.796C3697.33 105.766 3425.15 80.2599 3137.7 126.568C2821.06 177.581 2464.37 324.483 2144.73 188.855C1545.1 -65.5997 1974.56 -626.709 1322.43 -850.178C1112.97 -921.944 775.566 -947.668 532.313 -934.842" stroke="white" stroke-width="4.17" stroke-miterlimit="10"/>
+            <path d="M3938.93 202.362C3706.16 97.3073 3433.98 71.8254 3146.53 118.134C2829.89 169.146 2473.2 316.048 2153.56 180.42C1553.93 -74.0342 1983.39 -635.143 1331.26 -858.612C1121.8 -930.378 784.398 -956.102 541.145 -943.276" stroke="white" stroke-width="4.21" stroke-miterlimit="10"/>
+            <path d="M3947.81 193.928C3715.05 88.897 3442.86 63.391 3155.42 109.7C2838.77 160.712 2482.08 307.614 2162.45 171.986C1562.82 -82.4685 1992.27 -643.577 1340.14 -867.046C1130.68 -938.812 793.281 -964.537 550.027 -951.711" stroke="white" stroke-width="4.24" stroke-miterlimit="10"/>
+            <path d="M3956.7 185.485C3723.94 80.4541 3451.76 54.9481 3164.31 101.257C2847.67 152.269 2490.98 299.171 2171.34 163.543C1571.71 -90.9115 2001.17 -652.02 1349.04 -875.489C1139.58 -947.255 802.175 -972.98 558.922 -960.154" stroke="white" stroke-width="4.28" stroke-miterlimit="10"/>
+            <path d="M3965.53 177.022C3732.76 71.991 3460.58 46.485 3173.13 92.7935C2856.49 143.806 2499.8 290.708 2180.16 155.08C1580.53 -99.3746 2009.99 -660.484 1357.86 -883.952C1148.4 -955.719 810.996 -981.443 567.742 -968.617" stroke="white" stroke-width="4.32" stroke-miterlimit="10"/>
+            <path d="M3974.41 168.587C3741.65 63.5326 3469.46 38.0507 3182.01 84.3592C2865.37 135.371 2508.64 282.274 2189.05 146.645C1589.42 -107.809 2018.87 -668.918 1366.74 -892.387C1157.28 -964.153 819.879 -989.877 576.625 -977.051" stroke="white" stroke-width="4.36" stroke-miterlimit="10"/>
+            <path d="M3983.26 160.144C3750.5 55.0895 3478.32 29.6078 3190.87 75.9163C2874.22 126.928 2517.54 273.831 2197.9 138.203C1598.27 -116.252 2027.73 -677.361 1375.6 -900.83C1166.14 -972.596 828.734 -998.32 585.48 -985.494" stroke="white" stroke-width="4.39" stroke-miterlimit="10"/>
+            <path d="M3992.14 151.71C3759.37 46.6794 3487.19 21.1734 3199.74 67.482C2883.1 118.494 2526.41 265.396 2206.78 129.768C1607.15 -124.686 2036.6 -685.795 1384.47 -909.264C1175.01 -981.03 837.609 -1006.75 594.355 -993.929" stroke="white" stroke-width="4.43" stroke-miterlimit="10"/>
+            <path d="M4001.02 143.276C3768.26 38.2451 3496.08 12.7389 3208.63 59.0475C2891.99 110.06 2535.3 256.962 2215.66 121.334C1616.03 -133.121 2045.49 -694.229 1393.36 -917.698C1183.9 -989.464 846.496 -1015.19 603.242 -1002.36" stroke="white" stroke-width="4.47" stroke-miterlimit="10"/>
+            <path d="M4009.85 134.814C3777.09 29.7588 3504.91 4.27701 3217.46 50.5856C2900.81 101.598 2544.13 248.5 2224.49 112.872C1624.86 -141.583 2054.32 -702.691 1402.19 -926.16C1192.73 -997.926 855.324 -1023.65 612.07 -1010.82" stroke="white" stroke-width="4.5" stroke-miterlimit="10"/>
+            <path d="M4018.75 126.369C3785.98 21.3389 3513.8 -4.16715 3226.35 42.1414C2909.71 93.1535 2553.02 240.056 2233.38 104.428C1633.75 -150.027 2063.21 -711.136 1411.08 -934.605C1201.62 -1006.37 864.218 -1032.09 620.965 -1019.27" stroke="white" stroke-width="4.54" stroke-miterlimit="10"/>
+            <path d="M4027.62 117.935C3794.86 12.9045 3522.68 -12.6015 3235.23 33.707C2918.58 84.7192 2561.85 231.621 2242.26 95.9933C1642.63 -158.461 2072.08 -719.57 1419.96 -943.039C1210.5 -1014.8 873.093 -1040.53 629.84 -1027.7" stroke="white" stroke-width="4.58" stroke-miterlimit="10"/>
+            <path d="M4036.46 109.501C3803.7 4.47028 3531.52 -21.0357 3244.07 25.2728C2927.42 76.2849 2570.69 223.187 2251.1 87.5591C1651.47 -166.895 2080.92 -728.004 1428.8 -951.473C1219.34 -1023.24 881.933 -1048.96 638.68 -1036.14" stroke="white" stroke-width="4.62" stroke-miterlimit="10"/>
+            <path d="M4045.35 101.039C3812.59 -3.99178 3540.41 -29.4978 3252.96 16.8108C2936.32 67.8229 2579.63 214.725 2259.99 79.097C1660.36 -175.357 2089.82 -736.466 1437.69 -959.935C1228.23 -1031.7 890.824 -1057.43 647.57 -1044.6" stroke="white" stroke-width="4.65" stroke-miterlimit="10"/>
+            <path d="M4054.23 92.6047C3821.47 -12.4259 3549.28 -37.9319 3261.84 8.37661C2945.19 59.3887 2588.5 206.291 2268.87 70.6629C1669.24 -183.792 2098.69 -744.901 1446.56 -968.369C1237.1 -1040.14 899.699 -1065.86 656.445 -1053.03" stroke="white" stroke-width="4.69" stroke-miterlimit="10"/>
+            <path d="M4063.07 84.1665C3830.3 -20.8641 3558.12 -46.3703 3270.67 -0.0617472C2954.03 50.9504 2597.34 197.853 2277.7 62.2245C1678.08 -192.23 2107.53 -753.339 1455.4 -976.808C1245.94 -1048.57 908.539 -1074.3 665.285 -1061.45" stroke="white" stroke-width="4.73" stroke-miterlimit="10"/>
+            <path d="M4071.95 75.7273C3839.19 -29.3033 3567.01 -54.8093 3279.56 -8.50077C2962.91 42.5114 2606.18 189.414 2286.59 53.7855C1686.96 -200.669 2116.41 -761.778 1464.28 -985.247C1254.82 -1057.01 917.422 -1082.74 674.168 -1069.91" stroke="white" stroke-width="4.77" stroke-miterlimit="10"/>
+            <path d="M4080.79 67.2832C3848.03 -37.7475 3575.85 -63.2535 3288.4 -16.9449C2971.75 34.0672 2615.06 180.97 2295.43 45.3413C1695.8 -209.113 2125.25 -770.222 1473.12 -993.691C1263.66 -1065.46 926.261 -1091.18 683.008 -1078.36" stroke="white" stroke-width="4.8" stroke-miterlimit="10"/>
+            <path d="M4089.69 58.821C3856.93 -46.2096 3584.74 -71.7156 3297.3 -25.4071C2980.65 25.6051 2623.96 172.507 2304.33 36.8792C1704.7 -217.575 2134.15 -778.684 1482.02 -1002.15C1272.56 -1073.92 935.16 -1099.64 691.906 -1086.82" stroke="white" stroke-width="4.84" stroke-miterlimit="10"/>
+            <path d="M4098.56 50.3915C3865.8 -54.6391 3593.62 -80.1452 3306.17 -33.8367C2989.52 17.1755 2632.83 164.078 2313.2 28.4496C1713.57 -226.005 2143.02 -787.114 1490.89 -1010.58C1281.43 -1082.35 944.031 -1108.07 700.777 -1095.22" stroke="white" stroke-width="4.88" stroke-miterlimit="10"/>
+            <path d="M4107.41 41.9525C3874.65 -63.1024 3602.47 -88.5841 3315.02 -42.2756C2998.37 8.73653 2641.68 155.639 2322.05 20.0107C1722.42 -234.444 2151.87 -795.553 1499.75 -1019.02C1290.29 -1090.79 952.882 -1116.51 709.629 -1103.69" stroke="white" stroke-width="4.91" stroke-miterlimit="10"/>
+            <path d="M4116.29 33.5084C3883.53 -71.5222 3611.35 -97.0282 3323.9 -50.7197C3007.25 0.292442 2650.56 147.195 2330.93 11.5666C1731.3 -242.888 2160.75 -803.997 1508.62 -1027.47C1299.16 -1099.23 961.761 -1124.96 718.508 -1112.13" stroke="white" stroke-width="4.95" stroke-miterlimit="10"/>
+            <path d="M4125.17 25.0552C3892.4 -79.9754 3620.22 -105.481 3332.77 -59.1729C3016.13 -8.16079 2659.44 138.742 2339.8 3.1134C1740.17 -251.341 2169.63 -812.45 1517.5 -1035.92C1308.04 -1107.68 970.636 -1133.41 727.383 -1120.58" stroke="white" stroke-width="4.99" stroke-miterlimit="10"/>
+            <path d="M4134.02 16.6117C3901.25 -88.4431 3629.07 -113.925 3341.62 -67.6164C3024.98 -16.6042 2668.29 130.298 2348.65 -5.33011C1749.02 -259.784 2178.48 -820.893 1526.35 -1044.36C1316.89 -1116.13 979.488 -1141.85 736.234 -1129.03" stroke="white" stroke-width="5.03" stroke-miterlimit="10"/>
+            <path d="M4142.89 8.17782C3910.12 -96.8528 3637.94 -122.359 3350.49 -76.0503C3033.85 -25.0381 2677.16 121.864 2357.53 -13.764C1757.9 -268.218 2187.35 -829.327 1535.22 -1052.8C1325.76 -1124.56 988.359 -1150.29 745.105 -1137.46" stroke="white" stroke-width="5.06" stroke-miterlimit="10"/>
+            <path d="M4151.73 -0.260511C3918.97 -105.291 3646.79 -130.797 3359.34 -84.4887C3042.69 -33.4765 2685.96 113.426 2366.37 -22.2023C1766.74 -276.657 2196.19 -837.766 1544.07 -1061.23C1334.61 -1133 997.203 -1158.73 753.949 -1145.87" stroke="white" stroke-width="5.1" stroke-miterlimit="10"/>
+            <path d="M4160.63 -8.69502C3927.86 -113.75 3655.68 -139.232 3368.23 -92.923C3051.59 -41.9109 2694.9 104.991 2375.26 -30.6369C1775.63 -285.091 2205.09 -846.2 1552.96 -1069.67C1343.5 -1141.44 1006.1 -1167.16 762.844 -1154.31" stroke="white" stroke-width="5.14" stroke-miterlimit="10"/>
+            <path d="M4169.51 -17.1526C3936.75 -122.183 3664.56 -147.689 3377.12 -101.381C3060.47 -50.3686 2703.78 96.5337 2384.15 -39.0945C1784.52 -293.549 2213.97 -854.658 1561.84 -1078.13C1352.38 -1149.89 1014.98 -1175.62 771.727 -1162.79" stroke="white" stroke-width="5.17" stroke-miterlimit="10"/>
+            <path d="M4178.34 -25.5971C3945.58 -130.628 3673.4 -156.134 3385.95 -109.825C3069.3 -58.813 2712.61 88.0893 2392.98 -47.5389C1793.35 -301.993 2222.8 -863.102 1570.68 -1086.57C1361.22 -1158.34 1023.81 -1184.06 780.559 -1171.24" stroke="white" stroke-width="5.21" stroke-miterlimit="10"/>
+            <path d="M4187.22 -34.0312C3954.45 -139.062 3682.27 -164.568 3394.82 -118.259C3078.18 -67.2472 2721.49 79.655 2401.85 -55.9732C1802.22 -310.427 2231.68 -871.536 1579.55 -1095.01C1370.09 -1166.77 1032.69 -1192.5 789.434 -1179.67" stroke="white" stroke-width="5.25" stroke-miterlimit="10"/>
+            <path d="M4196.1 -42.4744C3963.34 -147.505 3691.16 -173.011 3403.71 -126.702C3087.06 -75.6904 2730.38 71.2119 2410.74 -64.4162C1811.11 -318.871 2240.57 -879.98 1588.44 -1103.45C1378.98 -1175.21 1041.57 -1200.94 798.32 -1188.11" stroke="white" stroke-width="5.29" stroke-miterlimit="10"/>
+        </g>
+    </g>
+    <defs>
+        <clipPath id="clip0_2530_51567">
+            <rect width="2400" height="1160" fill="white"/>
+        </clipPath>
+    </defs>
+</svg>
+<svg width="360" height="320" viewBox="0 0 360 320" fill="none" xmlns="http://www.w3.org/2000/svg" data-mobile>
+    <g clip-path="url(#clip0_3389_4604)">
+        <mask id="mask0_3389_4604" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-580" y="-90" width="1564" height="846">
+            <path d="M-579.5 755.5L983.378 755.5L983.378 -89.5001L-579.5 -89.5L-579.5 755.5Z" fill="white" stroke="white"/>
+        </mask>
+        <g mask="url(#mask0_3389_4604)">
+            <path d="M1302.57 310.386C1166.64 273.729 1007.75 264.838 839.918 280.996C655.042 298.796 446.786 350.055 260.163 302.73C-89.9373 213.942 160.804 18.1524 -219.948 -59.8234C-342.243 -84.865 -539.239 -93.8411 -681.266 -89.3657" stroke="white" stroke-width="0.04" stroke-miterlimit="10"/>
+            <path d="M1307.75 307.443C1171.84 270.786 1012.93 261.894 845.098 278.053C660.222 295.853 451.965 347.112 265.343 299.787C-84.7576 210.999 165.984 15.2091 -214.768 -62.7667C-337.063 -87.8083 -534.06 -96.7844 -676.086 -92.3091" stroke="white" stroke-width="0.07" stroke-miterlimit="10"/>
+            <path d="M1312.94 304.501C1177.04 267.843 1018.12 258.952 850.29 275.111C665.413 292.911 457.157 344.17 270.534 296.844C-79.5663 208.057 171.175 12.2667 -209.577 -65.7092C-331.872 -90.7508 -528.868 -99.7268 -670.895 -95.2515" stroke="white" stroke-width="0.11" stroke-miterlimit="10"/>
+            <path d="M1318.1 301.546C1182.2 264.888 1023.28 255.997 855.45 272.156C670.573 289.955 462.317 341.215 275.694 293.889C-74.406 205.102 176.336 9.31158 -204.416 -68.6643C-326.712 -93.7059 -523.708 -102.682 -665.734 -98.1982" stroke="white" stroke-width="0.15" stroke-miterlimit="10"/>
+            <path d="M1323.28 298.603C1187.38 261.954 1028.47 253.055 860.637 269.213C675.761 287.013 467.504 338.272 280.882 290.947C-69.2186 202.159 181.523 6.3692 -199.229 -71.6067C-321.524 -96.6483 -518.521 -105.624 -660.547 -101.141" stroke="white" stroke-width="0.19" stroke-miterlimit="10"/>
+            <path d="M1328.48 295.66C1192.58 259.003 1033.66 250.111 865.829 266.27C680.953 284.07 472.67 335.329 286.073 288.004C-64.027 199.216 186.715 3.42587 -194.037 -74.55C-316.307 -99.5916 -513.329 -108.568 -655.355 -104.084" stroke="white" stroke-width="0.22" stroke-miterlimit="10"/>
+            <path d="M1333.63 292.716C1197.73 256.058 1038.81 247.167 870.983 263.325C686.106 281.125 477.824 332.385 291.227 285.059C-58.8729 196.272 191.869 0.481544 -188.883 -77.4943C-311.179 -102.536 -508.175 -111.512 -650.201 -107.037" stroke="white" stroke-width="0.26" stroke-miterlimit="10"/>
+            <path d="M1338.82 289.762C1202.89 253.105 1044 244.214 876.17 260.372C691.294 278.172 483.011 329.431 296.415 282.106C-53.6854 193.318 197.056 -2.47157 -183.696 -80.4474C-305.991 -105.489 -502.987 -114.465 -645.014 -109.99" stroke="white" stroke-width="0.3" stroke-miterlimit="10"/>
+            <path d="M1343.98 286.819C1208.08 250.162 1049.17 241.27 881.336 257.429C696.46 275.229 488.204 326.488 301.581 279.163C-48.5193 190.375 202.222 -5.41491 -178.53 -83.3908C-300.825 -108.432 -497.821 -117.408 -639.848 -112.933" stroke="white" stroke-width="0.34" stroke-miterlimit="10"/>
+            <path d="M1349.17 283.874C1213.26 247.217 1054.35 238.325 886.518 254.484C701.642 272.284 493.385 323.543 306.762 276.217C-43.3377 187.43 207.404 -8.3602 -173.348 -86.3361C-295.643 -111.378 -492.64 -120.354 -634.666 -115.878" stroke="white" stroke-width="0.37" stroke-miterlimit="10"/>
+            <path d="M1354.36 280.93C1218.46 244.273 1059.54 235.382 891.711 251.54C706.835 269.34 498.579 320.599 311.956 273.274C-38.1443 184.486 212.597 -11.3036 -168.155 -89.2795C-290.45 -114.321 -487.446 -123.297 -629.473 -118.822" stroke="white" stroke-width="0.41" stroke-miterlimit="10"/>
+            <path d="M1359.51 277.987C1223.61 241.33 1064.69 232.438 896.862 248.597C711.985 266.397 503.729 317.656 317.106 270.331C-32.994 181.543 217.748 -14.2469 -163.004 -92.2228C-285.3 -117.264 -482.296 -126.24 -624.322 -121.765" stroke="white" stroke-width="0.45" stroke-miterlimit="10"/>
+            <path d="M1364.7 275.035C1228.8 238.378 1069.88 229.486 902.051 245.645C717.175 263.445 508.918 314.704 322.296 267.379C-27.8044 178.591 222.937 -17.1991 -157.815 -95.175C-280.11 -120.217 -477.107 -129.193 -619.133 -124.717" stroke="white" stroke-width="0.48" stroke-miterlimit="10"/>
+            <path d="M1369.86 272.089C1233.96 235.431 1075.04 226.54 907.213 242.699C722.337 260.498 514.081 311.758 327.458 264.432C-22.6424 175.645 228.099 -20.1454 -152.653 -98.1213C-274.948 -123.163 -471.945 -132.139 -613.971 -127.664" stroke="white" stroke-width="0.52" stroke-miterlimit="10"/>
+            <path d="M1375.04 269.147C1239.14 232.49 1080.23 223.598 912.395 239.757C727.519 257.557 519.262 308.816 332.64 261.491C-17.4606 172.703 233.281 -23.0868 -147.471 -101.063C-269.766 -126.104 -466.763 -135.08 -608.789 -130.597" stroke="white" stroke-width="0.56" stroke-miterlimit="10"/>
+            <path d="M1380.24 266.199C1244.34 229.542 1085.42 220.65 917.589 236.809C732.712 254.609 524.456 305.868 337.833 258.543C-12.2672 169.755 238.475 -26.035 -142.278 -104.011C-264.573 -129.053 -461.569 -138.029 -603.596 -133.553" stroke="white" stroke-width="0.6" stroke-miterlimit="10"/>
+            <path d="M1385.4 263.251C1249.5 226.602 1090.59 217.702 922.756 233.861C737.88 251.66 529.597 302.92 343.001 255.594C-7.09951 166.807 243.642 -28.9833 -137.11 -106.959C-259.405 -132.001 -456.402 -140.977 -598.428 -136.493" stroke="white" stroke-width="0.63" stroke-miterlimit="10"/>
+            <path d="M1390.58 260.302C1254.68 223.644 1095.77 214.753 927.936 230.911C743.06 248.711 534.803 299.97 348.181 252.645C-1.91966 163.857 248.822 -31.9326 -131.93 -109.908C-254.225 -134.95 -451.222 -143.926 -593.248 -139.442" stroke="white" stroke-width="0.67" stroke-miterlimit="10"/>
+            <path d="M1395.76 257.36C1259.86 220.703 1100.94 211.811 933.112 227.97C748.235 245.77 539.953 297.029 353.356 249.704C3.25604 160.916 253.998 -34.8739 -126.754 -112.85C-249.05 -137.891 -446.046 -146.867 -588.072 -142.392" stroke="white" stroke-width="0.71" stroke-miterlimit="10"/>
+            <path d="M1400.92 254.416C1264.99 217.759 1106.1 208.867 938.27 225.026C753.394 242.826 545.137 294.085 358.514 246.759C8.41425 157.972 259.156 -37.8183 -121.596 -115.794C-243.891 -140.836 -440.888 -149.812 -582.914 -145.328" stroke="white" stroke-width="0.74" stroke-miterlimit="10"/>
+            <path d="M1406.13 251.472C1270.23 214.815 1111.31 205.924 943.479 222.082C758.603 239.882 550.346 291.141 363.723 243.816C13.6232 155.028 264.365 -40.7617 -116.387 -118.738C-238.683 -143.779 -435.679 -152.755 -577.705 -148.271" stroke="white" stroke-width="0.78" stroke-miterlimit="10"/>
+            <path d="M1411.3 248.52C1275.4 211.863 1116.48 202.972 948.651 219.13C763.774 236.93 555.492 288.189 368.895 240.864C18.795 152.076 269.537 -43.7138 -111.215 -121.69C-233.51 -146.731 -430.507 -155.707 -572.533 -151.224" stroke="white" stroke-width="0.82" stroke-miterlimit="10"/>
+            <path d="M1416.46 245.576C1280.56 208.919 1121.65 200.027 953.817 216.186C768.94 233.986 560.684 285.245 374.061 237.92C23.9611 149.132 274.703 -46.6581 -106.049 -124.634C-228.345 -149.676 -425.341 -158.652 -567.367 -154.176" stroke="white" stroke-width="0.86" stroke-miterlimit="10"/>
+            <path d="M1421.66 242.633C1285.76 205.984 1126.84 197.084 959.009 213.242C774.132 231.042 565.876 282.302 379.253 234.976C29.1527 146.189 279.894 -49.6014 -100.858 -127.577C-223.153 -152.619 -420.15 -161.595 -562.176 -157.12" stroke="white" stroke-width="0.89" stroke-miterlimit="10"/>
+            <path d="M1426.81 239.689C1290.91 203.032 1131.99 194.14 964.163 210.299C779.286 228.099 571.03 279.358 384.407 232.033C34.3067 143.245 285.048 -52.5448 -95.7037 -130.521C-217.999 -155.562 -414.995 -164.538 -557.021 -160.063" stroke="white" stroke-width="0.93" stroke-miterlimit="10"/>
+            <path d="M1432 236.736C1296.1 200.087 1137.18 191.187 969.35 207.346C784.474 225.146 576.217 276.405 389.594 229.08C39.4942 140.292 290.236 -55.4979 -90.516 -133.474C-212.811 -158.515 -409.808 -167.491 -551.834 -163.016" stroke="white" stroke-width="0.97" stroke-miterlimit="10"/>
+            <path d="M1437.19 233.79C1301.29 197.133 1142.37 188.241 974.54 204.4C789.637 222.2 581.381 273.459 394.784 226.133C44.6839 137.346 295.426 -58.4442 -85.3266 -136.42C-207.622 -161.462 -404.618 -170.438 -546.645 -165.962" stroke="white" stroke-width="1.01" stroke-miterlimit="10"/>
+            <path d="M1442.34 230.848C1306.44 194.191 1147.52 185.3 979.694 201.458C794.817 219.258 586.561 270.517 399.938 223.192C49.8381 134.404 300.58 -61.3857 -80.1723 -139.362C-202.468 -164.403 -399.464 -173.379 -541.49 -168.895" stroke="white" stroke-width="1.04" stroke-miterlimit="10"/>
+            <path d="M1447.54 227.902C1311.64 191.245 1152.72 182.353 984.893 198.512C800.017 216.312 591.734 267.571 405.137 220.246C55.0373 131.458 305.779 -64.332 -74.9731 -142.308C-197.268 -167.349 -394.265 -176.326 -536.291 -171.842" stroke="white" stroke-width="1.08" stroke-miterlimit="10"/>
+            <path d="M1452.69 224.958C1316.79 188.301 1157.87 179.409 990.041 195.568C805.165 213.368 596.909 264.627 410.286 217.301C60.1857 128.514 310.928 -67.2762 -69.8246 -145.252C-192.12 -170.294 -389.116 -179.27 -531.143 -174.794" stroke="white" stroke-width="1.12" stroke-miterlimit="10"/>
+            <path d="M1457.88 222.005C1321.98 185.347 1163.06 176.456 995.233 192.615C810.356 210.414 602.1 261.674 415.477 214.348C65.3772 125.561 316.119 -70.2294 -64.6332 -148.205C-186.928 -173.247 -383.925 -182.223 -525.951 -177.748" stroke="white" stroke-width="1.15" stroke-miterlimit="10"/>
+            <path d="M1463.07 219.065C1327.17 182.408 1168.25 173.517 1000.42 189.675C815.544 207.475 607.288 258.734 420.665 211.409C70.5647 122.621 321.306 -73.1688 -59.4457 -151.145C-181.741 -176.186 -378.737 -185.162 -520.764 -180.687" stroke="white" stroke-width="1.19" stroke-miterlimit="10"/>
+            <path d="M1468.23 216.118C1332.33 179.461 1173.42 170.569 1005.58 186.728C820.708 204.528 612.452 255.787 425.829 208.462C75.7289 119.674 326.471 -76.1161 -54.2816 -154.092C-176.577 -179.134 -373.573 -188.11 -515.6 -183.626" stroke="white" stroke-width="1.23" stroke-miterlimit="10"/>
+            <path d="M1473.42 213.173C1337.52 176.515 1178.6 167.624 1010.77 183.783C825.898 201.582 617.641 252.842 431.019 205.516C80.9183 116.729 331.66 -79.0614 -49.0921 -157.037C-171.387 -182.079 -368.384 -191.055 -510.41 -186.58" stroke="white" stroke-width="1.27" stroke-miterlimit="10"/>
+            <path d="M1478.6 210.223C1342.7 173.575 1183.78 164.675 1015.95 180.833C831.073 198.633 622.791 249.892 436.194 202.567C86.0939 113.779 336.836 -82.0106 -43.9164 -159.986C-166.212 -185.028 -363.208 -194.004 -505.234 -189.529" stroke="white" stroke-width="1.3" stroke-miterlimit="10"/>
+            <path d="M1483.76 207.277C1347.85 170.628 1188.94 161.728 1021.11 177.887C836.231 195.687 627.975 246.946 441.352 199.621C91.2522 110.833 341.994 -84.9569 -38.7582 -162.933C-161.053 -187.974 -358.05 -196.95 -500.076 -192.475" stroke="white" stroke-width="1.34" stroke-miterlimit="10"/>
+            <path d="M1488.95 204.334C1353.05 167.685 1194.13 158.785 1026.3 174.944C841.427 192.744 633.17 244.003 446.548 196.677C96.4474 107.89 347.189 -87.9003 -33.563 -165.876C-155.858 -190.918 -352.855 -199.894 -494.881 -195.418" stroke="white" stroke-width="1.38" stroke-miterlimit="10"/>
+            <path d="M1494.1 201.387C1358.2 164.73 1199.29 155.839 1031.46 171.997C846.581 189.797 638.325 241.056 451.702 193.731C101.602 104.943 352.343 -90.8466 -28.4087 -168.822C-150.704 -193.864 -347.7 -202.84 -489.727 -198.365" stroke="white" stroke-width="1.41" stroke-miterlimit="10"/>
+            <path d="M1499.3 198.445C1363.4 161.788 1204.48 152.896 1036.65 169.055C851.778 186.855 643.522 238.114 456.899 190.789C106.799 102.001 357.541 -93.789 -23.2115 -171.765C-145.507 -196.806 -342.503 -205.782 -484.529 -201.307" stroke="white" stroke-width="1.45" stroke-miterlimit="10"/>
+            <path d="M1504.48 195.492C1368.58 158.835 1209.67 149.943 1041.84 166.102C856.96 183.902 648.703 235.161 462.081 187.836C111.981 99.0479 362.722 -96.7421 -18.0297 -174.718C-140.325 -199.76 -337.321 -208.736 -479.348 -204.26" stroke="white" stroke-width="1.49" stroke-miterlimit="10"/>
+            <path d="M1509.64 192.549C1373.74 155.891 1214.83 147 1047 163.159C862.12 180.958 653.864 232.218 467.241 184.892C117.141 96.1045 367.883 -99.6854 -12.8696 -177.661C-135.165 -202.703 -332.161 -211.679 -474.187 -207.204" stroke="white" stroke-width="1.53" stroke-miterlimit="10"/>
+            <path d="M1514.83 189.606C1378.93 152.949 1220.01 144.058 1052.18 160.216C867.308 178.016 659.052 229.275 472.429 181.95C122.328 93.1622 373.07 -102.628 -7.68198 -180.604C-129.977 -205.645 -326.974 -214.621 -469 -210.146" stroke="white" stroke-width="1.56" stroke-miterlimit="10"/>
+            <path d="M1520.02 186.662C1384.12 150.005 1225.2 141.113 1057.37 157.272C872.494 175.072 664.237 226.331 477.614 179.006C127.514 90.2178 378.256 -105.572 -2.49643 -183.548C-124.792 -208.59 -321.788 -217.566 -463.814 -213.082" stroke="white" stroke-width="1.6" stroke-miterlimit="10"/>
+            <path d="M1525.18 183.709C1389.28 147.051 1230.37 138.16 1062.54 154.319C877.659 172.119 669.403 223.378 482.78 176.052C132.68 87.2647 383.422 -108.525 2.66954 -186.501C-119.626 -211.543 -316.622 -220.519 -458.648 -216.035" stroke="white" stroke-width="1.64" stroke-miterlimit="10"/>
+            <path d="M1530.36 180.765C1394.46 144.117 1235.55 135.217 1067.72 151.375C882.841 169.175 674.558 220.434 487.962 173.109C137.862 84.3213 388.603 -111.469 7.85118 -189.445C-114.444 -214.486 -311.441 -223.462 -453.467 -218.978" stroke="white" stroke-width="1.68" stroke-miterlimit="10"/>
+            <path d="M1535.56 177.821C1399.66 141.172 1240.74 132.272 1072.91 148.431C888.036 166.231 679.754 217.49 493.157 170.165C143.057 81.377 393.799 -114.413 13.0464 -192.389C-109.249 -217.43 -306.245 -226.407 -448.271 -221.931" stroke="white" stroke-width="1.71" stroke-miterlimit="10"/>
+            <path d="M1540.71 174.875C1404.81 138.218 1245.9 129.326 1078.06 145.485C893.188 163.285 684.932 214.544 498.309 167.218C148.209 78.4307 398.951 -117.359 18.1988 -195.335C-104.096 -220.377 -301.093 -229.353 -443.119 -224.877" stroke="white" stroke-width="1.75" stroke-miterlimit="10"/>
+            <path d="M1545.9 171.93C1410 135.273 1251.08 126.382 1083.25 142.54C898.376 160.34 690.094 211.599 503.497 164.274C153.397 75.4863 404.138 -120.304 23.3863 -198.28C-98.909 -223.321 -295.905 -232.297 -437.932 -227.813" stroke="white" stroke-width="1.79" stroke-miterlimit="10"/>
+            <path d="M1551.06 168.978C1415.16 132.321 1256.24 123.43 1088.41 139.588C903.536 157.388 695.254 208.647 508.657 161.322C158.557 72.5342 409.299 -123.256 28.5465 -201.232C-93.7488 -226.273 -290.745 -235.249 -432.771 -230.774" stroke="white" stroke-width="1.82" stroke-miterlimit="10"/>
+            <path d="M1556.25 166.038C1420.35 129.381 1261.43 120.489 1093.6 136.648C908.724 154.448 700.467 205.707 513.845 158.382C163.744 69.5938 414.486 -126.196 33.734 -204.172C-88.5613 -229.214 -285.558 -238.19 -427.584 -233.706" stroke="white" stroke-width="1.86" stroke-miterlimit="10"/>
+            <path d="M1561.43 163.09C1425.53 126.441 1266.62 117.541 1098.79 133.7C913.911 151.499 705.655 202.759 519.032 155.433C168.932 66.6455 419.674 -129.144 38.9214 -207.12C-83.3738 -232.162 -280.37 -241.138 -422.396 -236.663" stroke="white" stroke-width="1.9" stroke-miterlimit="10"/>
+            <path d="M1566.6 160.141C1430.7 123.484 1271.78 114.593 1103.95 130.751C919.076 148.551 710.819 199.81 524.196 152.485C174.096 63.6973 424.838 -132.093 44.0856 -210.069C-78.2097 -235.11 -275.206 -244.086 -417.232 -239.602" stroke="white" stroke-width="1.94" stroke-miterlimit="10"/>
+            <path d="M1571.78 157.194C1435.88 120.537 1276.97 111.645 1109.14 127.804C924.261 145.604 716.004 196.863 529.382 149.538C179.281 60.7501 430.023 -135.04 49.2711 -213.016C-73.0242 -238.057 -270.021 -247.033 -412.047 -242.558" stroke="white" stroke-width="1.97" stroke-miterlimit="10"/>
+            <path d="M1576.94 154.251C1441.04 117.593 1282.12 108.702 1114.29 124.861C929.413 142.66 721.157 193.92 534.534 146.594C184.434 57.8067 435.176 -137.983 54.4234 -215.959C-67.8718 -241.001 -264.868 -249.977 -406.895 -245.501" stroke="white" stroke-width="2.01" stroke-miterlimit="10"/>
+            <path d="M1582.12 151.304C1446.22 114.656 1287.31 105.756 1119.48 121.914C934.601 139.714 726.318 190.973 539.721 143.648C189.621 54.8604 440.363 -140.93 59.6109 -218.905C-62.6844 -243.947 -259.681 -252.923 -401.707 -248.448" stroke="white" stroke-width="2.05" stroke-miterlimit="10"/>
+            <path d="M1587.32 148.365C1451.42 111.716 1292.5 102.816 1124.67 118.975C939.794 136.775 731.538 188.034 544.915 140.709C194.815 51.9209 445.556 -143.869 64.8042 -221.845C-57.491 -246.886 -254.487 -255.863 -396.514 -251.387" stroke="white" stroke-width="2.08" stroke-miterlimit="10"/>
+            <path d="M1592.48 145.409C1456.58 108.76 1297.66 99.8602 1129.83 116.019C944.956 133.819 736.7 185.078 550.077 137.753C199.977 48.9649 450.718 -146.825 69.9663 -224.801C-52.329 -249.843 -249.325 -258.819 -391.352 -254.343" stroke="white" stroke-width="2.12" stroke-miterlimit="10"/>
+            <path d="M1597.66 142.464C1461.76 105.806 1302.85 96.9149 1135.02 113.074C950.14 130.873 741.883 182.133 555.26 134.807C205.16 46.0195 455.902 -149.77 75.15 -227.746C-47.1452 -252.788 -244.142 -261.764 -386.168 -257.28" stroke="white" stroke-width="2.16" stroke-miterlimit="10"/>
+            <path d="M1602.85 139.517C1466.95 102.86 1308.04 93.9686 1140.21 110.127C955.331 127.927 747.075 179.186 560.452 131.861C210.352 43.0733 461.094 -152.717 80.3414 -230.693C-41.9538 -255.734 -238.95 -264.71 -380.977 -260.226" stroke="white" stroke-width="2.2" stroke-miterlimit="10"/>
+            <path d="M1608.02 136.578C1472.12 99.9207 1313.2 91.0292 1145.37 107.188C960.496 124.988 752.213 176.247 565.616 128.922C215.516 40.1338 466.258 -155.656 85.5055 -233.632C-36.7898 -258.674 -233.786 -267.65 -375.812 -263.166" stroke="white" stroke-width="2.23" stroke-miterlimit="10"/>
+            <path d="M1613.2 133.634C1477.3 96.9763 1318.38 88.0848 1150.55 104.243C965.675 122.043 757.419 173.303 570.796 125.977C220.696 37.1895 471.437 -158.6 90.6852 -236.576C-31.6101 -261.618 -228.607 -270.594 -370.633 -266.119" stroke="white" stroke-width="2.27" stroke-miterlimit="10"/>
+            <path d="M1618.36 130.682C1482.46 94.0251 1323.55 85.1337 1155.72 101.292C970.841 119.092 762.584 170.351 575.962 123.026C225.861 34.2383 476.603 -161.552 95.8512 -239.528C-26.4441 -264.569 -223.441 -273.545 -365.467 -269.061" stroke="white" stroke-width="2.31" stroke-miterlimit="10"/>
+            <path d="M1623.54 127.739C1487.64 91.0817 1328.72 82.1903 1160.89 98.3489C976.017 116.149 767.76 167.408 581.138 120.083C231.037 31.2949 481.779 -164.495 101.027 -242.471C-21.2683 -267.513 -218.265 -276.489 -360.291 -272.005" stroke="white" stroke-width="2.35" stroke-miterlimit="10"/>
+            <path d="M1628.74 124.795C1492.84 88.1459 1333.93 79.246 1166.1 95.4046C981.22 113.204 772.963 164.464 586.341 117.138C236.24 28.3506 486.982 -167.439 106.23 -245.415C-16.0652 -270.457 -213.062 -279.433 -355.088 -274.958" stroke="white" stroke-width="2.38" stroke-miterlimit="10"/>
+            <path d="M1633.9 121.848C1498 85.1996 1339.08 76.2997 1171.25 92.4583C986.374 110.258 778.118 161.517 591.495 114.192C241.395 25.4043 492.136 -170.386 111.384 -248.361C-10.9109 -273.403 -207.907 -282.379 -349.934 -277.904" stroke="white" stroke-width="2.42" stroke-miterlimit="10"/>
+            <path d="M1639.09 118.906C1503.19 82.2572 1344.27 73.3573 1176.44 89.5159C991.563 107.316 783.307 158.575 596.684 111.25C246.584 22.462 497.326 -173.328 116.574 -251.304C-5.72149 -276.345 -202.718 -285.322 -344.744 -280.846" stroke="white" stroke-width="2.46" stroke-miterlimit="10"/>
+            <path d="M1644.26 115.952C1508.36 79.3031 1349.44 70.4032 1181.61 86.5618C996.735 104.362 788.479 155.621 601.856 108.296C251.756 19.5079 502.498 -176.282 121.746 -254.258C-0.549539 -279.3 -197.546 -288.276 -339.572 -283.8" stroke="white" stroke-width="2.49" stroke-miterlimit="10"/>
+            <path d="M1649.43 113.007C1513.53 76.3493 1354.61 67.4579 1186.78 83.6165C1001.9 101.416 793.647 152.676 607.024 105.35C256.924 16.5625 507.666 -179.227 126.914 -257.203C4.61843 -282.245 -192.378 -291.221 -334.404 -286.746" stroke="white" stroke-width="2.53" stroke-miterlimit="10"/>
+            <path d="M1654.62 110.064C1518.72 73.407 1359.8 64.5155 1191.97 80.6741C1007.09 98.474 798.81 149.733 612.214 102.408C262.113 13.6202 512.855 -182.17 132.103 -260.146C9.8078 -285.187 -187.189 -294.163 -329.215 -289.688" stroke="white" stroke-width="2.57" stroke-miterlimit="10"/>
+            <path d="M1659.8 107.119C1523.9 70.4701 1364.99 61.5702 1197.16 77.7288C1012.28 95.5287 804.022 146.788 617.399 99.4626C267.299 10.6748 518.041 -185.115 137.289 -263.091C14.9934 -288.133 -182.003 -297.109 -324.029 -292.625" stroke="white" stroke-width="2.61" stroke-miterlimit="10"/>
+            <path d="M1664.96 104.17C1529.06 67.5125 1370.15 58.621 1202.31 74.7796C1017.44 92.5794 809.156 143.839 622.559 96.5134C272.459 7.72559 523.201 -188.064 142.449 -266.04C20.1536 -291.082 -176.843 -300.058 -318.869 -295.574" stroke="white" stroke-width="2.64" stroke-miterlimit="10"/>
+            <path d="M1670.16 101.225C1534.26 64.5681 1375.34 55.6766 1207.51 71.8353C1022.64 89.6351 814.379 140.894 627.757 93.569C277.656 4.78129 528.398 -191.009 147.646 -268.985C25.3509 -294.026 -171.646 -303.002 -313.672 -298.527" stroke="white" stroke-width="2.68" stroke-miterlimit="10"/>
+            <path d="M1675.3 98.2819C1539.4 61.6247 1380.49 52.7333 1212.66 68.8919C1027.78 86.6918 819.498 137.951 632.901 90.6257C282.801 1.83793 533.543 -193.952 152.791 -271.928C30.4953 -296.97 -166.501 -305.946 -308.527 -301.47" stroke="white" stroke-width="2.72" stroke-miterlimit="10"/>
+            <path d="M1680.5 95.3396C1544.6 58.6908 1385.68 49.7909 1217.85 65.9495C1032.97 83.7494 824.691 135.009 638.094 87.6833C287.994 -1.10448 538.736 -196.894 157.984 -274.87C35.6887 -299.912 -161.308 -308.888 -303.334 -304.413" stroke="white" stroke-width="2.75" stroke-miterlimit="10"/>
+            <path d="M1685.68 92.3894C1549.78 55.7406 1390.86 46.8407 1223.03 62.9993C1038.16 80.7992 829.873 132.058 643.276 84.7331C293.176 -4.05465 543.918 -199.845 163.166 -277.82C40.8703 -302.862 -156.126 -311.838 -298.152 -307.363" stroke="white" stroke-width="2.79" stroke-miterlimit="10"/>
+            <path d="M1690.84 89.4401C1554.94 52.7914 1396.03 43.8915 1228.2 60.0501C1043.32 77.85 835.039 129.109 648.442 81.7839C298.342 -7.00387 549.084 -202.794 168.332 -280.77C46.0364 -305.811 -150.96 -314.787 -292.986 -310.312" stroke="white" stroke-width="2.83" stroke-miterlimit="10"/>
+            <path d="M1696.03 86.4909C1560.13 49.8337 1401.22 40.9423 1233.39 57.1009C1048.51 74.9007 840.228 126.16 653.632 78.8347C303.532 -9.95308 554.273 -205.743 173.521 -283.719C51.2259 -308.761 -145.771 -317.737 -287.797 -313.261" stroke="white" stroke-width="2.87" stroke-miterlimit="10"/>
+            <path d="M1701.2 83.5525C1565.3 46.9037 1406.38 38.0038 1238.55 54.1624C1053.68 71.9623 845.393 123.221 658.796 75.8962C308.696 -12.8916 559.437 -208.682 178.685 -286.657C56.3899 -311.699 -140.607 -320.675 -282.633 -316.191" stroke="white" stroke-width="2.9" stroke-miterlimit="10"/>
+            <path d="M1706.38 80.6061C1570.48 43.9489 1411.56 35.0575 1243.73 51.2161C1058.86 69.016 850.598 120.275 663.976 72.9499C313.875 -15.8379 564.617 -211.628 183.865 -289.604C61.5696 -314.645 -135.427 -323.621 -277.453 -319.138" stroke="white" stroke-width="2.94" stroke-miterlimit="10"/>
+            <path d="M1711.57 77.6618C1575.67 41.0046 1416.75 32.1132 1248.92 48.2718C1064.05 66.0716 855.763 117.331 669.167 70.0056C319.067 -18.7822 569.808 -214.572 189.056 -292.548C66.7608 -317.59 -130.236 -326.566 -272.262 -322.09" stroke="white" stroke-width="2.98" stroke-miterlimit="10"/>
+            <path d="M1716.72 74.7106C1580.82 38.0619 1421.9 29.162 1254.07 45.3206C1069.2 63.1205 860.916 114.38 674.319 67.0544C324.219 -21.7334 574.961 -217.523 194.209 -295.499C71.9134 -320.541 -125.083 -329.517 -267.109 -325.033" stroke="white" stroke-width="3.02" stroke-miterlimit="10"/>
+            <path d="M1721.92 71.7673C1586.02 35.1101 1427.1 26.2186 1259.27 42.3772C1074.39 60.1771 866.111 111.436 679.514 64.111C329.414 -24.6768 580.156 -220.467 199.404 -298.443C77.1086 -323.484 -119.888 -332.46 -261.914 -327.976" stroke="white" stroke-width="3.05" stroke-miterlimit="10"/>
+            <path d="M1727.1 68.8191C1591.2 32.1703 1432.28 23.2704 1264.45 39.429C1079.57 57.2289 871.291 108.488 684.694 61.1628C334.594 -27.625 585.336 -223.415 204.584 -301.391C82.2883 -326.432 -114.708 -335.408 -256.734 -330.933" stroke="white" stroke-width="3.09" stroke-miterlimit="10"/>
+            <path d="M1732.26 65.8796C1596.36 29.2309 1437.45 20.3309 1269.62 36.4896C1084.74 54.2894 876.485 105.549 689.862 58.2233C339.762 -30.5644 590.504 -226.354 209.751 -304.33C87.4562 -329.372 -109.54 -338.348 -251.566 -333.873" stroke="white" stroke-width="3.13" stroke-miterlimit="10"/>
+            <path d="M1737.45 62.9236C1601.55 26.2748 1442.63 17.3749 1274.8 33.5335C1089.92 51.3333 881.668 102.593 695.046 55.2673C344.945 -33.5205 595.687 -229.31 214.935 -307.286C92.6399 -332.328 -104.357 -341.304 -246.383 -336.829" stroke="white" stroke-width="3.16" stroke-miterlimit="10"/>
+            <path d="M1742.6 59.9802C1606.7 23.3314 1447.79 14.4315 1279.96 30.5901C1095.08 48.39 886.823 99.6492 700.2 52.3239C350.1 -36.4639 600.842 -232.254 220.089 -310.23C97.7942 -335.271 -99.2023 -344.247 -241.229 -339.772" stroke="white" stroke-width="3.2" stroke-miterlimit="10"/>
+            <path d="M1747.8 57.0378C1611.9 20.3891 1452.98 11.4891 1285.15 27.6478C1100.27 45.4476 891.992 96.7068 705.395 49.3815C355.295 -39.4062 606.037 -235.196 225.285 -313.172C102.989 -338.214 -94.007 -347.19 -236.033 -342.714" stroke="white" stroke-width="3.24" stroke-miterlimit="10"/>
+            <path d="M1752.98 54.0945C1617.08 17.4373 1458.17 8.54581 1290.34 24.7044C1105.46 42.5043 897.204 93.7634 710.581 46.4382C360.481 -42.3496 611.223 -238.14 230.47 -316.115C108.175 -341.157 -88.8214 -350.133 -230.848 -345.658" stroke="white" stroke-width="3.28" stroke-miterlimit="10"/>
+            <path d="M1758.14 51.1364C1622.24 14.4792 1463.33 5.58773 1295.5 21.7463C1110.62 39.5462 902.362 90.8054 715.739 43.4801C365.639 -45.3076 616.381 -241.098 235.629 -319.073C113.333 -344.115 -83.6632 -353.091 -225.689 -348.607" stroke="white" stroke-width="3.31" stroke-miterlimit="10"/>
+            <path d="M1763.34 48.195C1627.43 11.5463 1468.52 2.64637 1300.69 18.805C1115.81 36.6049 907.555 87.864 720.932 40.5388C370.832 -48.249 621.574 -244.039 240.822 -322.015C118.527 -347.056 -78.4699 -356.032 -220.496 -351.557" stroke="white" stroke-width="3.35" stroke-miterlimit="10"/>
+            <path d="M1768.51 45.2517C1632.61 8.59446 1473.7 -0.296989 1305.87 15.8616C1120.99 33.6615 912.735 84.9207 726.112 37.5954C376.012 -51.1923 626.754 -246.982 246.001 -324.958C123.706 -350 -73.2902 -358.976 -215.316 -354.5" stroke="white" stroke-width="3.39" stroke-miterlimit="10"/>
+            <path d="M1773.69 42.3074C1637.79 5.65016 1478.87 -3.24135 1311.04 12.9173C1126.16 30.7171 917.907 81.9763 731.284 34.6511C381.184 -54.1367 631.926 -249.927 251.173 -327.903C128.878 -352.944 -68.1183 -361.92 -210.145 -357.436" stroke="white" stroke-width="3.42" stroke-miterlimit="10"/>
+            <path d="M1778.86 39.364C1642.96 2.71521 1484.05 -6.18471 1316.22 9.97391C1131.34 27.7738 923.084 79.033 736.462 31.7077C386.362 -57.0801 637.103 -252.87 256.351 -330.846C134.056 -355.888 -62.9406 -364.864 -204.967 -360.38" stroke="white" stroke-width="3.46" stroke-miterlimit="10"/>
+            <path d="M1784.05 36.4128C1648.15 -0.235942 1489.23 -9.13586 1321.4 7.02276C1136.53 24.8226 928.272 76.0818 741.649 28.7565C391.549 -60.0312 642.291 -255.821 261.539 -333.797C139.243 -358.839 -57.7531 -367.815 -199.779 -363.339" stroke="white" stroke-width="3.5" stroke-miterlimit="10"/>
+            <path d="M1789.22 33.4704C1653.31 -3.17833 1494.4 -12.0782 1326.57 4.08038C1141.69 21.8802 933.436 73.1394 746.813 25.8142C396.713 -62.9736 647.455 -258.764 266.703 -336.739C144.407 -361.781 -52.5891 -370.757 -194.615 -366.282" stroke="white" stroke-width="3.54" stroke-miterlimit="10"/>
+            <path d="M1794.4 30.5241C1658.5 -6.12464 1499.58 -15.0246 1331.75 1.13407C1146.88 18.9339 938.595 70.1931 751.999 22.8678C401.899 -65.9199 652.64 -261.71 271.888 -339.686C149.593 -364.727 -47.4035 -373.703 -189.43 -369.228" stroke="white" stroke-width="3.57" stroke-miterlimit="10"/>
+            <path d="M1799.56 27.5778C1663.66 -9.0709 1504.75 -17.9708 1336.92 -1.8122C1152.04 15.9877 943.758 67.2469 757.161 19.9216C407.061 -68.8662 657.803 -264.656 277.05 -342.632C154.755 -367.674 -42.2414 -376.65 -184.268 -372.174" stroke="white" stroke-width="3.61" stroke-miterlimit="10"/>
+            <path d="M1804.75 24.6247C1668.85 -12.0325 1509.93 -20.9239 1342.1 -4.76532C1157.22 13.0345 948.966 64.2937 762.343 16.9685C412.243 -71.8193 662.984 -267.609 282.232 -345.585C159.937 -370.627 -37.0597 -379.603 -179.086 -375.127" stroke="white" stroke-width="3.65" stroke-miterlimit="10"/>
+            <path d="M1809.94 21.6814C1674.03 -14.9758 1515.12 -23.8673 1347.29 -7.70871C1162.41 10.0912 954.129 61.3503 767.532 14.0251C417.432 -74.7627 668.174 -270.553 287.422 -348.528C165.126 -373.57 -31.8703 -382.546 -173.896 -378.071" stroke="white" stroke-width="3.69" stroke-miterlimit="10"/>
+            <path d="M1815.1 18.7389C1679.2 -17.9098 1520.28 -26.8097 1352.45 -10.6511C1167.57 7.14877 959.291 58.408 772.694 11.0827C422.594 -77.7051 673.336 -273.495 292.584 -351.471C170.288 -376.512 -26.7082 -385.489 -168.734 -381.013" stroke="white" stroke-width="3.72" stroke-miterlimit="10"/>
+            <path d="M1820.28 15.7907C1684.38 -20.8581 1525.46 -29.758 1357.63 -13.5994C1172.75 4.20051 964.472 55.4597 777.876 8.13443C427.776 -80.6533 678.517 -276.443 297.765 -354.419C175.47 -379.461 -21.5266 -388.437 -163.553 -383.953" stroke="white" stroke-width="3.76" stroke-miterlimit="10"/>
+            <path d="M1825.47 12.8533C1689.57 -23.8039 1530.66 -32.6954 1362.83 -16.5368C1177.95 1.26308 969.694 52.5222 783.071 5.19695C432.971 -83.5908 683.713 -279.381 302.96 -357.357C180.665 -382.398 -16.3312 -391.374 -158.357 -386.899" stroke="white" stroke-width="3.8" stroke-miterlimit="10"/>
+            <path d="M1830.63 9.8972C1694.73 -26.7515 1535.81 -35.6515 1367.98 -19.4929C1183.1 -1.69303 974.848 49.5662 788.225 2.24089C438.125 -86.5469 688.867 -282.337 308.115 -360.313C185.82 -385.354 -11.1769 -394.33 -153.203 -389.855" stroke="white" stroke-width="3.83" stroke-miterlimit="10"/>
+            <path d="M1835.82 6.95382C1699.92 -29.6949 1541 -38.5948 1373.17 -22.4362C1188.3 -4.63636 980.04 46.6228 793.417 -0.702442C443.317 -89.4902 694.058 -285.28 313.306 -363.256C191.011 -388.298 -5.98554 -397.274 -148.012 -392.798" stroke="white" stroke-width="3.87" stroke-miterlimit="10"/>
+            <path d="M1840.98 4.01143C1705.08 -32.6373 1546.17 -41.5372 1378.34 -25.3786C1193.46 -7.57874 985.178 43.6804 798.581 -3.64482C448.481 -92.4326 699.222 -288.223 318.47 -366.198C196.175 -391.24 -0.821473 -400.216 -142.848 -395.741" stroke="white" stroke-width="3.91" stroke-miterlimit="10"/>
+            <path d="M1846.16 1.06419C1710.26 -35.5845 1551.34 -44.4845 1383.51 -28.3259C1198.63 -10.526 990.378 40.7332 803.755 -6.59212C453.655 -95.3799 704.396 -291.17 323.644 -369.146C201.349 -394.187 4.35239 -403.163 -137.674 -398.688" stroke="white" stroke-width="3.95" stroke-miterlimit="10"/>
+            <path d="M1851.36 -1.88898C1715.46 -38.5462 1556.54 -47.4376 1388.71 -31.279C1203.84 -13.4792 995.579 37.78 808.956 -9.54524C458.856 -98.333 709.598 -294.123 328.845 -372.099C206.55 -397.14 9.55357 -406.116 -132.473 -401.641" stroke="white" stroke-width="3.98" stroke-miterlimit="10"/>
+            <path d="M1856.51 -4.83134C1720.61 -41.4885 1561.7 -50.38 1393.87 -34.2214C1208.99 -16.4215 1000.73 34.8377 814.112 -12.4876C464.012 -101.275 714.754 -297.065 334.001 -375.041C211.706 -400.083 14.7098 -409.059 -127.316 -404.584" stroke="white" stroke-width="4.02" stroke-miterlimit="10"/>
+            <path d="M1861.7 -7.77079C1725.8 -44.4195 1566.88 -53.3194 1399.05 -37.1608C1214.17 -19.361 1005.89 31.8982 819.294 -15.4271C469.194 -104.215 719.935 -300.005 339.183 -377.981C216.888 -403.022 19.8914 -411.998 -122.135 -407.523" stroke="white" stroke-width="4.06" stroke-miterlimit="10"/>
+            <path d="M1866.88 -10.721C1730.98 -47.3698 1572.06 -56.2697 1404.23 -40.1111C1219.35 -22.3112 1011.07 28.948 824.475 -18.3773C474.375 -107.165 725.117 -302.955 344.365 -380.931C222.07 -405.972 25.0731 -414.948 -116.953 -410.473" stroke="white" stroke-width="4.1" stroke-miterlimit="10"/>
+            <path d="M1872.04 -13.6722C1736.14 -50.3209 1577.23 -59.2208 1409.4 -43.0622C1224.52 -25.2624 1016.26 25.9968 829.641 -21.3284C479.541 -110.116 730.283 -305.906 349.531 -383.882C227.236 -408.924 30.2391 -417.9 -111.787 -413.416" stroke="white" stroke-width="4.13" stroke-miterlimit="10"/>
+            <path d="M1877.24 -16.6155C1741.34 -53.2643 1582.42 -62.1642 1414.59 -46.0056C1229.72 -28.2057 1021.46 23.0535 834.837 -24.2718C484.737 -113.06 735.478 -308.849 354.726 -386.825C232.431 -411.867 35.4344 -420.843 -106.592 -416.368" stroke="white" stroke-width="4.17" stroke-miterlimit="10"/>
+        </g>
+    </g>
+    <defs>
+        <clipPath id="clip0_3389_4604">
+            <rect width="360" height="320" fill="white"/>
+        </clipPath>
+    </defs>
+</svg>
+        </div>
+    </div>
+    <div class="container --medium">
+        <div class="columns">
+            <div class="item">
+                                <div class="wysiwyg text --xlarge --bold"><p>Invertimos en estrategias líderes de Buyout y Growth a través de una cartera selectiva de fondos, respaldando a gestores de constante rendimiento y generando valor a largo plazo mediante una diversificación disciplinada.</p>
+</div>            </div>
+            <div class="item">
+                <div class="title display --2xlarge --bold --fill"  data-desktop>Resumen<br />
+de Fondos
+</div>            </div>
+        </div>
+        <div class="table">
+            <div class="head">
+                <div class="row">
+                    <div class="cell">
+                        <div class="label " >Fondos</div>                    </div>
+                    <div class="cell">
+                        <div class="label " >Comercialización</div>                    </div>
+                    <div class="cell">
+                        <div class="label " >Tesis</div>                    </div>
+                </div>
+            </div>
+            <div class="body">
+                                    <div class="row">
+                        <div class="cell">
+                            <div class="title display --small --bold" >Gestores Europeos de Mid-Market Tresmares</div>                        </div>
+                        <div class="cell">
+                            <div data-mobile>
+                                <div class="label " >Comercialización</div>                            </div>
+                            <div class="wysiwyg text --medium --bold">Septiembre 2025</div>                        </div>
+                        <div class="cell">
+                            <div data-mobile>
+                                <div class="label " >Tesis</div>                            </div>
+                            <div class="wysiwyg text --medium">Fondo de €200m, diseñado para invertir en alrededor de 20 gestores líderes de Private Equity en Europa, con fondos de hasta €3bn de tamaño.</div>                        </div>
+                    </div>
+                                    <div class="row">
+                        <div class="cell">
+                            <div class="title display --small --bold" >Tresmares Secundarios</div>                        </div>
+                        <div class="cell">
+                            <div data-mobile>
+                                <div class="label " >Comercialización</div>                            </div>
+                            <div class="wysiwyg text --medium --bold">Enero 2024</div>                        </div>
+                        <div class="cell">
+                            <div data-mobile>
+                                <div class="label " >Tesis</div>                            </div>
+                            <div class="wysiwyg text --medium">Estrategia de €190m, que invierte en fondos y compañías en el mercado secundario de Private Equity con un enfoque global.</div>                        </div>
+                    </div>
+                            </div>
+        </div>
+    </div>
+</section>
+
+            
+                                
+                
+<section class="component component--dropdowns"  data-component="dropdowns">
+    
+    <div class="container --xxsmall">
+        <div class="text-block-center --medium">
+            <div class="label "  data-desktop>Tesis</div>            <div class="title display --large --fill"  data-desktop>Diseñada para generar<br />
+acceso a gestoras líderes de Private Equity
+</div>        </div>
+        <div class="dropdowns">
+                            <div class="dropdown">
+                    <div class="head">
+                        <div class="title text --xlarge --bold" >Producto</div>                        <div class="icon --medium --arrow-down"><span></span></div>                    </div>
+                    <div class="body">
+                        <div class="columns">
+                            <div class="item">
+                                <div class="image --color" style="aspect-ratio: 0.72507552870091;"><img width="200" height="276" src="https://www.tresmarescapital.com/wp-content/uploads/2025/11/fund_of_funds_accordeon_03-200x276.jpg" data-src="https://www.tresmarescapital.com/wp-content/uploads/2025/11/fund_of_funds_accordeon_03.jpg" alt=""></div>                            </div>
+                            <div class="item">
+                                <div class="group">
+                                    <div class="title text --large --bold" >Invertimos en estrategias referentes de Buyout y Growth mediante una cartera selectiva de fondos.
+</div>                                    <div class="wysiwyg text --medium --na"><p>La estrategia evoluciona para incorporar transacciones secundarias, co-inversiones y programas personalizados por geografía y segmento de mercado, ampliando el acceso a fuentes diferenciadas de rentabilidad en Private Equity.</p>
+</div>                                                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="dropdown">
+                    <div class="head">
+                        <div class="title text --xlarge --bold" >Tecnología</div>                        <div class="icon --medium --arrow-down"><span></span></div>                    </div>
+                    <div class="body">
+                        <div class="columns">
+                            <div class="item">
+                                <div class="image --color" style="aspect-ratio: 0.72507552870091;"><img width="200" height="276" src="https://www.tresmarescapital.com/wp-content/uploads/2025/11/fund_of_funds_accordeon_02-200x276.jpg" data-src="https://www.tresmarescapital.com/wp-content/uploads/2025/11/fund_of_funds_accordeon_02.jpg" alt=""></div>                            </div>
+                            <div class="item">
+                                <div class="group">
+                                    <div class="title text --large --bold" >Impulsados por nuestra plataforma digital, mejoramos la experiencia del inversor y la eficiencia operativa interna.
+</div>                                    <div class="wysiwyg text --medium --na"><p>Este enfoque tecnológico permite estructuras de fondos más eficientes, reduce costes y respalda una selección de gestores basada en datos, gracias a nuestro análisis e inteligencia propios.</p>
+</div>                                                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+    </div>
+</section>
+
+            
+                                
+                
+<section class="component component--dropdownssticky"  data-component="dropdownssticky">
+    
+    <div class="container --medium">
+        <div class="columns --0">
+            <div class="item">
+                <div class="label " >Otras Soluciones</div>            </div>
+            <div class="item" data-desktop>
+                <div class="label " >Estrategia</div>            </div>
+        </div>
+        <div class="dropdowns">
+                            <div class="dropdown" data-rel="private-equity-svg">
+                    <div id="private-equity-svg" class="dropdownssticky-svgApp"></div>
+                    <div class="head">
+                        <div class="columns top">
+                            <div class="item">
+                                <div class="wysiwyg display --large --na"><p>Private<sup>®</sup><br />
+Equity</p>
+</div>                            </div>
+                            <div class="item last" data-desktop>
+                                <div class="group">
+                                    <div class="wysiwyg text --medium"><p>Lideramos el apoyo a PYMEs de alto crecimiento con soluciones de capital minoritario, tanto mediante inversión directa y activa como a través de co-inversiones pasivas con otras gestoras de fondos. Permitimos a los fundadores y equipos directivos mantener el control del día a día, beneficiándose de nuestra experiencia financiera y visión estratégica.</p>
+</div>                                                                            <div class="actions">
+                                                                                                                                        <a href="/soluciones-financieras/private-equity/" class="link --small --grey"><div class="text">Saber más</div></a>                                                                                    </div>
+                                                                    </div>
+                            </div>
+                        </div>
+                        <div class="icon --medium --arrow-down"><span></span></div>                    </div>
+                    <div class="body">
+                        <div class="columns bottom">
+                            <div class="item" data-mobile>
+                                <div class="group">
+                                    <div class="wysiwyg text --medium --na"><p>Lideramos el apoyo a PYMEs de alto crecimiento con soluciones de capital minoritario, tanto mediante inversión directa y activa como a través de co-inversiones pasivas con otras gestoras de fondos. Permitimos a los fundadores y equipos directivos mantener el control del día a día, beneficiándose de nuestra experiencia financiera y visión estratégica.</p>
+</div>                                                                            <div class="actions">
+                                                                                                                                        <a href="/soluciones-financieras/private-equity/" class="link --small"><div class="text">Saber más</div></a>                                                                                    </div>
+                                                                    </div>
+                            </div>
+                            <div class="flex">
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --xsmall --uppercase --na">Aums</div>                                        <div class="wysiwyg text --xsmall --na">€550m+</div>                                    </div>
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --xsmall --uppercase --na">EBITDA</div>                                        <div class="wysiwyg text --xsmall --na">€1m ⟷ €25m</div>                                    </div>
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --xsmall --uppercase --na">Ticket</div>                                        <div class="wysiwyg text --xsmall --na">€5m ⟷ €35m</div>                                    </div>
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --xsmall --uppercase --na">Empleados</div>                                        <div class="wysiwyg text --xsmall --na">10</div>                                    </div>
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="dropdown" data-rel="direct-lending-svg">
+                    <div id="direct-lending-svg" class="dropdownssticky-svgApp"></div>
+                    <div class="head">
+                        <div class="columns top">
+                            <div class="item">
+                                <div class="wysiwyg display --large --na"><p>Direct<sup>®</sup><br />
+Lending</p>
+</div>                            </div>
+                            <div class="item last" data-desktop>
+                                <div class="group">
+                                    <div class="wysiwyg text --medium"><p>Ofrecemos oportunidades de financiación en toda la estructura de capital, ya sea mediante deuda senior o instrumentos de deuda junior subordinada. Nos enfocamos en diseñar estructuras financieras que se adapten a cada etapa del crecimiento de la empresa y a las particularidades de sus accionistas.</p>
+</div>                                                                            <div class="actions">
+                                                                                                                                        <a href="/soluciones-financieras/direct-lending/" class="link --small --grey"><div class="text">Saber más</div></a>                                                                                    </div>
+                                                                    </div>
+                            </div>
+                        </div>
+                        <div class="icon --medium --arrow-down"><span></span></div>                    </div>
+                    <div class="body">
+                        <div class="columns bottom">
+                            <div class="item" data-mobile>
+                                <div class="group">
+                                    <div class="wysiwyg text --medium --na"><p>Ofrecemos oportunidades de financiación en toda la estructura de capital, ya sea mediante deuda senior o instrumentos de deuda junior subordinada. Nos enfocamos en diseñar estructuras financieras que se adapten a cada etapa del crecimiento de la empresa y a las particularidades de sus accionistas.</p>
+</div>                                                                            <div class="actions">
+                                                                                                                                        <a href="/soluciones-financieras/direct-lending/" class="link --small"><div class="text">Saber más</div></a>                                                                                    </div>
+                                                                    </div>
+                            </div>
+                            <div class="flex">
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --xsmall --uppercase --na">AuMs</div>                                        <div class="wysiwyg text --xsmall --na">€2.3bn+</div>                                    </div>
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --xsmall --uppercase --na">EBITDA</div>                                        <div class="wysiwyg text --xsmall --na">€2m ⟷ €25m</div>                                    </div>
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --xsmall --uppercase --na">Ticket</div>                                        <div class="wysiwyg text --xsmall --na">€5m ⟷ €75m</div>                                    </div>
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --xsmall --uppercase --na">Empleados</div>                                        <div class="wysiwyg text --xsmall --na">25</div>                                    </div>
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <div class="dropdown" data-rel="fund-of-funds-svg">
+                    <div id="fund-of-funds-svg" class="dropdownssticky-svgApp"></div>
+                    <div class="head">
+                        <div class="columns top">
+                            <div class="item">
+                                <div class="wysiwyg display --large --na"><p>Fund<sup>®</sup><br />
+Financing</p>
+</div>                            </div>
+                            <div class="item last" data-desktop>
+                                <div class="group">
+                                    <div class="wysiwyg text --medium"><p>Ofrecemos soluciones de capital personalizadas para patrocinadores y gestores de capital privado, mejorando la liquidez a nivel de fondo y la flexibilidad operativa. A través de una plataforma diversificada —incluyendo préstamos basados en NAV, líneas de suscripción, financiación para socios generales y soluciones puente—, Tresmares respalda las necesidades cambiantes de los inversores institucionales y las estructuras de fondos.</p>
+</div>                                                                            <div class="actions">
+                                                                                                                                        <a href="/soluciones-financieras/fund-financing/" class="link --small --grey"><div class="text">Saber más</div></a>                                                                                    </div>
+                                                                    </div>
+                            </div>
+                        </div>
+                        <div class="icon --medium --arrow-down"><span></span></div>                    </div>
+                    <div class="body">
+                        <div class="columns bottom">
+                            <div class="item" data-mobile>
+                                <div class="group">
+                                    <div class="wysiwyg text --medium --na"><p>Ofrecemos soluciones de capital personalizadas para patrocinadores y gestores de capital privado, mejorando la liquidez a nivel de fondo y la flexibilidad operativa. A través de una plataforma diversificada —incluyendo préstamos basados en NAV, líneas de suscripción, financiación para socios generales y soluciones puente—, Tresmares respalda las necesidades cambiantes de los inversores institucionales y las estructuras de fondos.</p>
+</div>                                                                            <div class="actions">
+                                                                                                                                        <a href="/soluciones-financieras/fund-financing/" class="link --small"><div class="text">Saber más</div></a>                                                                                    </div>
+                                                                    </div>
+                            </div>
+                            <div class="flex">
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --xsmall --uppercase --na">AuMs</div>                                        <div class="wysiwyg text --xsmall --na">€150m</div>                                    </div>
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --xsmall --uppercase --na">Transacciones</div>                                        <div class="wysiwyg text --xsmall --na">+15</div>                                    </div>
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --xsmall --uppercase --na">Ticket</div>                                        <div class="wysiwyg text --xsmall --na">€5m ⟷ €50m</div>                                    </div>
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --xsmall --uppercase --na">Empleados</div>                                        <div class="wysiwyg text --xsmall --na">2</div>                                    </div>
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+    </div>
+</section>
+
+            
+        
+        
+<footer id="footer" class="footer --dark" data-component="footer">
+    <div class="container --full">
+        <div class="columns --top">
+            <div class="item first">
+                <div class="text-block-center">
+                    <div class="title display --large --fill" >La oportunidad para crear, crecer y mirar hacia delante</div>                    <div class="actions">
+                        <a href="/contacto/" class="link --primary"><div class="text">Contáctanos</div></a>                    </div>
+                </div>
+                <div class="carousel">
+                    <div class="inner">
+                                                                                    <div class="item">
+                                    <div class="image --cover "><img width="200" height="298" src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/contact-image-200x298.jpg" data-src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/contact-image.jpg" alt=""></div>                                </div>
+                                                            <div class="item">
+                                    <div class="image --cover "><img width="120" height="240" src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/05footer.jpg" data-src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/05footer.jpg" alt=""></div>                                </div>
+                                                            <div class="item">
+                                    <div class="image --cover "><img width="120" height="240" src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/03footer.jpg" data-src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/03footer.jpg" alt=""></div>                                </div>
+                                                            <div class="item">
+                                    <div class="image --cover "><img width="200" height="200" src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/02footer-200x200.jpg" data-src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/02footer.jpg" alt=""></div>                                </div>
+                                                                                                                <div class="item">
+                                    <div class="image --cover "><img width="200" height="298" src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/contact-image-200x298.jpg" data-src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/contact-image.jpg" alt=""></div>                                </div>
+                                                            <div class="item">
+                                    <div class="image --cover "><img width="120" height="240" src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/05footer.jpg" data-src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/05footer.jpg" alt=""></div>                                </div>
+                                                            <div class="item">
+                                    <div class="image --cover "><img width="120" height="240" src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/03footer.jpg" data-src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/03footer.jpg" alt=""></div>                                </div>
+                                                            <div class="item">
+                                    <div class="image --cover "><img width="200" height="200" src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/02footer-200x200.jpg" data-src="https://www.tresmarescapital.com/wp-content/uploads/2025/10/02footer.jpg" alt=""></div>                                </div>
+                                                                        </div>
+                </div>
+            </div>
+            <div class="item last">
+                <ul id="menu-social" class="menu menu-social"><li id="menu-item-885" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-885"><a target="_blank" href="https://www.linkedin.com/company/tresmarescapital/"><i class="fa-brands fa-linkedin-in"></i></a></li>
+<li id="menu-item-886" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-886"><a target="_blank" href="mailto:info@tresmarescapital.com"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M22 4V20H2V4M22 4H2M22 4L12 12L2 4" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/> </svg></a></li>
+</ul>            </div>
+        </div>
+        <hr>
+        <div class="columns --bottom">
+            <div class="item">
+                <ul id="menu-legal" class="menu menu-legal"><li id="menu-item-911" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-911"><a href="https://www.tresmarescapital.com/aviso-legal/">Aviso Legal</a></li>
+<li id="menu-item-910" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-910"><a href="https://www.tresmarescapital.com/politica-de-privacidad/">Política de Privacidad</a></li>
+<li id="menu-item-909" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-909"><a href="https://www.tresmarescapital.com/politica-de-cookies/">Política de Cookies</a></li>
+<li id="menu-item-912" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-912"><a target="_blank" href="https://secure.ethicspoint.eu/domain/media/eseu/gui/105329/report.html">Canal de denuncias</a></li>
+<li id="menu-item-913" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-913"><a target="_blank" href="/wp-content/uploads/2025/10/GRUPO-TRESMARES-Politica-Canal-de-Denuncias240206.pdf">Política del canal interno</a></li>
+</ul>            </div>
+            <div class="item">
+                <div class="copyright">
+                    <div class="wysiwyg text --xsmall --na">© 2025 Tresmares Capital is registered with the CNMV.</div>                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+        </main>
+
+        <div  class="offcanvas">
+    <div class="mask"></div>
+    <div class="content" data-lenis-prevent></div>
+    <div class="icon --medium --closer closer"><span></span></div></div>
+
+    
+</div>
+
+
+
+
+    </div>
+
+    <div  id="cursor" class="cursor" data-desktop>
+    <div  class="cursor-follow">
+        <span></span>
+    </div>
+    <div  class="cursor-view">
+        <span>Ver</span>
+    </div>
+    <div  class="cursor-drag">
+        <span>Drag</span>
+    </div>
+</div>
+
+    
+    <!-- <script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.youtube.com/iframe_api"></script> -->
+    <script defer type="text/javascript" src="https://www.tresmarescapital.com/wp-content/themes/tresmares/js/vendor.min.js"></script>
+    <script defer type="text/javascript" src="https://www.tresmarescapital.com/wp-content/themes/tresmares/js/app.min.js"></script>
+
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/tresmares/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="text/rocketlazyloadscript" id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+//# sourceURL=rocket-browser-checker-js-after
+</script>
+<script id="rocket-preload-links-js-extra">
+var RocketPreloadLinksConfig = {"excludeUris":"/(?:.+/)?feed(?:/(?:.+/?)?)?$|/(?:.+/)?embed/|/(index.php/)?(.*)wp-json(/.*|$)|/refer/|/go/|/recommend/|/recommends/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https://www.tresmarescapital.com","onHoverDelay":"100","rateThrottle":"3"};
+//# sourceURL=rocket-preload-links-js-extra
+</script>
+<script type="text/rocketlazyloadscript" id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+
+//# sourceURL=rocket-preload-links-js-after
+</script>
+</body>
+</html>
+
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1787192716 -->

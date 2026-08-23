@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html id="html" lang="en-US">
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>(()=>{class RocketLazyLoadScripts{constructor(){this.v="2.0.5",this.userEvents=["keydown","keyup","mousedown","mouseup","mousemove","mouseover","mouseout","touchmove","touchstart","touchend","touchcancel","wheel","click","dblclick","input"],this.attributeEvents=["onblur","onclick","oncontextmenu","ondblclick","onfocus","onmousedown","onmouseenter","onmouseleave","onmousemove","onmouseout","onmouseover","onmouseup","onmousewheel","onscroll","onsubmit"]}async t(){this.i(),this.o(),/iP(ad|hone)/.test(navigator.userAgent)&&this.h(),this.u(),this.l(this),this.m(),this.k(this),this.p(this),this._(),await Promise.all([this.R(),this.L()]),this.lastBreath=Date.now(),this.S(this),this.P(),this.D(),this.O(),this.M(),await this.C(this.delayedScripts.normal),await this.C(this.delayedScripts.defer),await this.C(this.delayedScripts.async),await this.T(),await this.F(),await this.j(),await this.A(),window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this.everythingLoaded=!0,this.lastTouchEnd&&await new Promise(t=>setTimeout(t,500-Date.now()+this.lastTouchEnd)),this.I(),this.H(),this.U(),this.W()}i(){this.CSPIssue=sessionStorage.getItem("rocketCSPIssue"),document.addEventListener("securitypolicyviolation",t=>{this.CSPIssue||"script-src-elem"!==t.violatedDirective||"data"!==t.blockedURI||(this.CSPIssue=!0,sessionStorage.setItem("rocketCSPIssue",!0))},{isRocket:!0})}o(){window.addEventListener("pageshow",t=>{this.persisted=t.persisted,this.realWindowLoadedFired=!0},{isRocket:!0}),window.addEventListener("pagehide",()=>{this.onFirstUserAction=null},{isRocket:!0})}h(){let t;function e(e){t=e}window.addEventListener("touchstart",e,{isRocket:!0}),window.addEventListener("touchend",function i(o){o.changedTouches[0]&&t.changedTouches[0]&&Math.abs(o.changedTouches[0].pageX-t.changedTouches[0].pageX)<10&&Math.abs(o.changedTouches[0].pageY-t.changedTouches[0].pageY)<10&&o.timeStamp-t.timeStamp<200&&(window.removeEventListener("touchstart",e,{isRocket:!0}),window.removeEventListener("touchend",i,{isRocket:!0}),"INPUT"===o.target.tagName&&"text"===o.target.type||(o.target.dispatchEvent(new TouchEvent("touchend",{target:o.target,bubbles:!0})),o.target.dispatchEvent(new MouseEvent("mouseover",{target:o.target,bubbles:!0})),o.target.dispatchEvent(new PointerEvent("click",{target:o.target,bubbles:!0,cancelable:!0,detail:1,clientX:o.changedTouches[0].clientX,clientY:o.changedTouches[0].clientY})),event.preventDefault()))},{isRocket:!0})}q(t){this.userActionTriggered||("mousemove"!==t.type||this.firstMousemoveIgnored?"keyup"===t.type||"mouseover"===t.type||"mouseout"===t.type||(this.userActionTriggered=!0,this.onFirstUserAction&&this.onFirstUserAction()):this.firstMousemoveIgnored=!0),"click"===t.type&&t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),"touchstart"===this.lastEvent&&"touchend"===t.type&&(this.lastTouchEnd=Date.now()),"click"===t.type&&(this.lastTouchEnd=0),this.lastEvent=t.type,t.composedPath&&t.composedPath()[0].getRootNode()instanceof ShadowRoot&&(t.rocketTarget=t.composedPath()[0]),this.savedUserEvents.push(t)}u(){this.savedUserEvents=[],this.userEventHandler=this.q.bind(this),this.userEvents.forEach(t=>window.addEventListener(t,this.userEventHandler,{passive:!1,isRocket:!0})),document.addEventListener("visibilitychange",this.userEventHandler,{isRocket:!0})}U(){this.userEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!1,isRocket:!0})),document.removeEventListener("visibilitychange",this.userEventHandler,{isRocket:!0}),this.savedUserEvents.forEach(t=>{(t.rocketTarget||t.target).dispatchEvent(new window[t.constructor.name](t.type,t))})}m(){const t="return false",e=Array.from(this.attributeEvents,t=>"data-rocket-"+t),i="["+this.attributeEvents.join("],[")+"]",o="[data-rocket-"+this.attributeEvents.join("],[data-rocket-")+"]",s=(e,i,o)=>{o&&o!==t&&(e.setAttribute("data-rocket-"+i,o),e["rocket"+i]=new Function("event",o),e.setAttribute(i,t))};new MutationObserver(t=>{for(const n of t)"attributes"===n.type&&(n.attributeName.startsWith("data-rocket-")||this.everythingLoaded?n.attributeName.startsWith("data-rocket-")&&this.everythingLoaded&&this.N(n.target,n.attributeName.substring(12)):s(n.target,n.attributeName,n.target.getAttribute(n.attributeName))),"childList"===n.type&&n.addedNodes.forEach(t=>{if(t.nodeType===Node.ELEMENT_NODE)if(this.everythingLoaded)for(const i of[t,...t.querySelectorAll(o)])for(const t of i.getAttributeNames())e.includes(t)&&this.N(i,t.substring(12));else for(const e of[t,...t.querySelectorAll(i)])for(const t of e.getAttributeNames())this.attributeEvents.includes(t)&&s(e,t,e.getAttribute(t))})}).observe(document,{subtree:!0,childList:!0,attributeFilter:[...this.attributeEvents,...e]})}I(){this.attributeEvents.forEach(t=>{document.querySelectorAll("[data-rocket-"+t+"]").forEach(e=>{this.N(e,t)})})}N(t,e){const i=t.getAttribute("data-rocket-"+e);i&&(t.setAttribute(e,i),t.removeAttribute("data-rocket-"+e))}k(t){Object.defineProperty(HTMLElement.prototype,"onclick",{get(){return this.rocketonclick||null},set(e){this.rocketonclick=e,this.setAttribute(t.everythingLoaded?"onclick":"data-rocket-onclick","this.rocketonclick(event)")}})}S(t){function e(e,i){let o=e[i];e[i]=null,Object.defineProperty(e,i,{get:()=>o,set(s){t.everythingLoaded?o=s:e["rocket"+i]=o=s}})}e(document,"onreadystatechange"),e(window,"onload"),e(window,"onpageshow");try{Object.defineProperty(document,"readyState",{get:()=>t.rocketReadyState,set(e){t.rocketReadyState=e},configurable:!0}),document.readyState="loading"}catch(t){console.log("WPRocket DJE readyState conflict, bypassing")}}l(t){this.originalAddEventListener=EventTarget.prototype.addEventListener,this.originalRemoveEventListener=EventTarget.prototype.removeEventListener,this.savedEventListeners=[],EventTarget.prototype.addEventListener=function(e,i,o){o&&o.isRocket||!t.B(e,this)&&!t.userEvents.includes(e)||t.B(e,this)&&!t.userActionTriggered||e.startsWith("rocket-")||t.everythingLoaded?t.originalAddEventListener.call(this,e,i,o):(t.savedEventListeners.push({target:this,remove:!1,type:e,func:i,options:o}),"mouseenter"!==e&&"mouseleave"!==e||t.originalAddEventListener.call(this,e,t.savedUserEvents.push,o))},EventTarget.prototype.removeEventListener=function(e,i,o){o&&o.isRocket||!t.B(e,this)&&!t.userEvents.includes(e)||t.B(e,this)&&!t.userActionTriggered||e.startsWith("rocket-")||t.everythingLoaded?t.originalRemoveEventListener.call(this,e,i,o):t.savedEventListeners.push({target:this,remove:!0,type:e,func:i,options:o})}}J(t,e){this.savedEventListeners=this.savedEventListeners.filter(i=>{let o=i.type,s=i.target||window;return e!==o||t!==s||(this.B(o,s)&&(i.type="rocket-"+o),this.$(i),!1)})}H(){EventTarget.prototype.addEventListener=this.originalAddEventListener,EventTarget.prototype.removeEventListener=this.originalRemoveEventListener,this.savedEventListeners.forEach(t=>this.$(t))}$(t){t.remove?this.originalRemoveEventListener.call(t.target,t.type,t.func,t.options):this.originalAddEventListener.call(t.target,t.type,t.func,t.options)}p(t){let e;function i(e){return t.everythingLoaded?e:e.split(" ").map(t=>"load"===t||t.startsWith("load.")?"rocket-jquery-load":t).join(" ")}function o(o){function s(e){const s=o.fn[e];o.fn[e]=o.fn.init.prototype[e]=function(){return this[0]===window&&t.userActionTriggered&&("string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=i(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(t=>{const e=arguments[0][t];delete arguments[0][t],arguments[0][i(t)]=e})),s.apply(this,arguments),this}}if(o&&o.fn&&!t.allJQueries.includes(o)){const e={DOMContentLoaded:[],"rocket-DOMContentLoaded":[]};for(const t in e)document.addEventListener(t,()=>{e[t].forEach(t=>t())},{isRocket:!0});o.fn.ready=o.fn.init.prototype.ready=function(i){function s(){parseInt(o.fn.jquery)>2?setTimeout(()=>i.bind(document)(o)):i.bind(document)(o)}return"function"==typeof i&&(t.realDomReadyFired?!t.userActionTriggered||t.fauxDomReadyFired?s():e["rocket-DOMContentLoaded"].push(s):e.DOMContentLoaded.push(s)),this},s("on"),s("one"),s("off"),t.allJQueries.push(o)}e=o}t.allJQueries=[],o(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){o(t)}})}P(){const t=new Map;document.write=document.writeln=function(e){const i=document.currentScript,o=document.createRange(),s=i.parentElement;let n=t.get(i);void 0===n&&(n=i.nextSibling,t.set(i,n));const c=document.createDocumentFragment();o.setStart(c,0),c.appendChild(o.createContextualFragment(e)),s.insertBefore(c,n)}}async R(){return new Promise(t=>{this.userActionTriggered?t():this.onFirstUserAction=t})}async L(){return new Promise(t=>{document.addEventListener("DOMContentLoaded",()=>{this.realDomReadyFired=!0,t()},{isRocket:!0})})}async j(){return this.realWindowLoadedFired?Promise.resolve():new Promise(t=>{window.addEventListener("load",t,{isRocket:!0})})}M(){this.pendingScripts=[];this.scriptsMutationObserver=new MutationObserver(t=>{for(const e of t)e.addedNodes.forEach(t=>{"SCRIPT"!==t.tagName||!t.src||t.noModule||t.isWPRocket||this.pendingScripts.push({script:t,promise:new Promise(e=>{const i=()=>{const i=this.pendingScripts.findIndex(e=>e.script===t);i>=0&&this.pendingScripts.splice(i,1),e()};t.addEventListener("load",i,{isRocket:!0}),t.addEventListener("error",i,{isRocket:!0}),setTimeout(i,1e3)})})})}),this.scriptsMutationObserver.observe(document,{childList:!0,subtree:!0})}async F(){await this.X(),this.pendingScripts.length?(await this.pendingScripts[0].promise,await this.F()):this.scriptsMutationObserver.disconnect()}D(){this.delayedScripts={normal:[],async:[],defer:[]},document.querySelectorAll("script[type$=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _(){await this.L();let t=[];document.querySelectorAll("script[type$=rocketlazyloadscript][data-rocket-src]").forEach(e=>{let i=e.getAttribute("data-rocket-src");if(i&&!i.startsWith("data:")){i.startsWith("//")&&(i=location.protocol+i);try{const o=new URL(i).origin;o!==location.origin&&t.push({src:o,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}catch(t){}}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this.Y(t,"preconnect")}async G(t){if(await this.K(),!0!==t.noModule||!("noModule"in HTMLScriptElement.prototype))return new Promise(e=>{let i;function o(){(i||t).setAttribute("data-rocket-status","executed"),e()}try{if(navigator.userAgent.includes("Firefox/")||""===navigator.vendor||this.CSPIssue)i=document.createElement("script"),[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),i.setAttribute(e,t.nodeValue))}),t.text&&(i.text=t.text),t.nonce&&(i.nonce=t.nonce),i.hasAttribute("src")?(i.addEventListener("load",o,{isRocket:!0}),i.addEventListener("error",()=>{i.setAttribute("data-rocket-status","failed-network"),e()},{isRocket:!0}),setTimeout(()=>{i.isConnected||e()},1)):(i.text=t.text,o()),i.isWPRocket=!0,t.parentNode.replaceChild(i,t);else{const i=t.getAttribute("data-rocket-type"),s=t.getAttribute("data-rocket-src");i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",o,{isRocket:!0}),t.addEventListener("error",i=>{this.CSPIssue&&i.target.src.startsWith("data:")?(console.log("WPRocket: CSP fallback activated"),t.removeAttribute("src"),this.G(t).then(e)):(t.setAttribute("data-rocket-status","failed-network"),e())},{isRocket:!0}),s?(t.fetchPriority="high",t.removeAttribute("data-rocket-src"),t.src=s):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}}catch(i){t.setAttribute("data-rocket-status","failed-transform"),e()}});t.setAttribute("data-rocket-status","skipped")}async C(t){const e=t.shift();return e?(e.isConnected&&await this.G(e),this.C(t)):Promise.resolve()}O(){this.Y([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}Y(t,e){this.trash=this.trash||[];let i=!0;var o=document.createDocumentFragment();t.forEach(t=>{const s=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(s&&!s.startsWith("data:")){const n=document.createElement("link");n.href=s,n.rel=e,"preconnect"!==e&&(n.as="script",n.fetchPriority=i?"high":"low"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),t.nonce&&(n.nonce=t.nonce),o.appendChild(n),this.trash.push(n),i=!1}}),document.head.appendChild(o)}W(){this.trash.forEach(t=>t.remove())}async T(){try{document.readyState="interactive"}catch(t){}this.fauxDomReadyFired=!0;try{await this.K(),this.J(document,"readystatechange"),document.dispatchEvent(new Event("rocket-readystatechange")),await this.K(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.K(),this.J(document,"DOMContentLoaded"),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this.K(),this.J(window,"DOMContentLoaded"),window.dispatchEvent(new Event("rocket-DOMContentLoaded"))}catch(t){console.error(t)}}async A(){try{document.readyState="complete"}catch(t){}try{await this.K(),this.J(document,"readystatechange"),document.dispatchEvent(new Event("rocket-readystatechange")),await this.K(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.K(),this.J(window,"load"),window.dispatchEvent(new Event("rocket-load")),await this.K(),window.rocketonload&&window.rocketonload(),await this.K(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this.K(),this.J(window,"pageshow");const t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this.K(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}catch(t){console.error(t)}}async K(){Date.now()-this.lastBreath>45&&(await this.X(),this.lastBreath=Date.now())}async X(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}B(t,e=window){return e===document&&"readystatechange"===t||(e===document&&"DOMContentLoaded"===t||(e===window&&"DOMContentLoaded"===t||(e===window&&"load"===t||e===window&&"pageshow"===t)))}static run(){(new RocketLazyLoadScripts).t()}}RocketLazyLoadScripts.run()})();
+</script>
+            <!-- Google Tag Manager -->
+        <script type="text/rocketlazyloadscript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-XXXXXXXXXX');</script>
+        <!-- End Google Tag Manager -->
+    
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimal-ui, viewport-fit=cover">
+    <meta name="google" content="notranslate">
+    <base href="/">
+
+    <title> &raquo; About</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/www.tresmarescapital.com/a875060e32-favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/www.tresmarescapital.com/fb5eaa1755-favicon.svg" />
+    <link rel="shortcut icon" href="/assets/www.tresmarescapital.com/593f9b9c4d-favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/www.tresmarescapital.com/bc6b74a18c-apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Tres Mares Capital" />
+    <meta name="msapplication-TileColor" content="#ff0000">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="/wp-content/themes/tresmares/img/favicon/site.webmanifest" />
+
+    <link data-minify="1" href="/assets/www.tresmarescapital.com/04478cf3ae-style.css" rel="stylesheet">
+    <link rel="preload" href="/assets/www.tresmarescapital.com/0e0dd3353d-vendor.min.js" as="script">
+    <link rel="preload" href="/assets/www.tresmarescapital.com/df5ec60155-app.min.js" as="script">
+    <script type="text/rocketlazyloadscript">history.scrollRestoration = "manual"</script>
+
+    <meta name='robots' content='max-image-preview:large' />
+<link rel="alternate" hreflang="en" href="/en/about/" />
+<link rel="alternate" hreflang="es" href="/nosotros/" />
+<link rel="alternate" hreflang="x-default" href="/nosotros/" />
+<script type="text/rocketlazyloadscript" data-minify="1" id="cookieyes" data-rocket-type="text/javascript" data-rocket-src="/assets/www.tresmarescapital.com/9b91bd8f80-script.js" data-rocket-defer defer></script>
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/en/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.tresmarescapital.com%2Fen%2Fabout%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/en/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.tresmarescapital.com%2Fen%2Fabout%2F&#038;format=xml" />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-color]){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<script id="wpml-cookie-js-extra">
+var wpml_cookies = {"wp-wpml_current_language":{"value":"en","expires":1,"path":"/"}};
+var wpml_cookies = {"wp-wpml_current_language":{"value":"en","expires":1,"path":"/"}};
+//# sourceURL=wpml-cookie-js-extra
+</script>
+<script type="text/rocketlazyloadscript" data-minify="1" data-wp-strategy="defer" defer id="wpml-cookie-js" data-rocket-src="/assets/www.tresmarescapital.com/bbe827a14a-language-cookie.js"></script>
+<script id="wpml-browser-redirect-js-extra">
+var wpml_browser_redirect_params = {"pageLanguage":"en","languageUrls":{"en_us":"/en/about/","en":"/en/about/","us":"/en/about/","es_es":"/nosotros/","es":"/nosotros/"},"cookie":{"name":"_icl_visitor_lang_js","domain":"www.tresmarescapital.com","path":"/","expiration":24}};
+//# sourceURL=wpml-browser-redirect-js-extra
+</script>
+<script data-minify="1" id="wpml-browser-redirect-js" src="/assets/www.tresmarescapital.com/938572c4d7-app.js" data-rocket-defer defer></script>
+<link rel="https://api.w.org/" href="/en/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="/en/wp-json/wp/v2/pages/1251" /><meta name="generator" content="WordPress 7.0.4" />
+<link rel="canonical" href="/en/about/" />
+<link rel='shortlink' href='/en/?p=1251' />
+<meta name="generator" content="WPML ver:4.9.5 stt:1,2;" />
+<meta name="msapplication-TileImage" content="sdt58ZGF2aWQudmF6cXVlekB0cmVzbWFyZXNjYXBpdGFsLmNvbTouRE5ucVpFVnIqZzgzVktEL3dwLWxvZ2luLnBocA==" />
+<meta name="google" content="aHR0cHM6Ly93d3cudHJlc21hcmVzY2FwaXRhbC5jb20vZW4vd3AtbG9naW4ucGhw"  /><style type="text/css" id="simple-css-output">/* Estilo base botones */body .cky-btn.cky-btn-customize,body .cky-btn.cky-btn-reject,body .cky-btn.cky-btn-accept { color: #ffffff !important; border-color: #ffffff !important; background: transparent !important;}/* Sin subrayado por defecto */body .cky-btn.cky-btn-customize,body .cky-btn.cky-btn-reject { text-decoration: none !important;}/* Subrayado en hover */body .cky-btn.cky-btn-customize:hover,body .cky-btn.cky-btn-reject:hover { text-decoration: underline !important; text-underline-offset: 0.2em;}/* Accept subrayado siempre */body .cky-btn.cky-btn-accept { text-decoration: underline !important; text-underline-offset: 0.2em;}/* Link a la política de Cookies */body * a.cky-policy,body a.cky-policy,.cky-consent-container a.cky-policy { color: #ffffff !important; text-decoration: underline !important; border-color: transparent !important;}</style><link rel="icon" href="/assets/www.tresmarescapital.com/fd2b5fdefe-cropped-logo_icon-32x32.png" sizes="32x32" />
+<link rel="icon" href="/assets/www.tresmarescapital.com/c70d77369e-cropped-logo_icon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="/assets/www.tresmarescapital.com/d7d1220b4f-cropped-logo_icon-180x180.png" />
+<meta name="msapplication-TileImage" content="/assets/www.tresmarescapital.com/d21e65a745-cropped-logo_icon-270x270.png" />
+<style id="wp-custom-css">
+.component--holder .content .generalmeetings .body .columns .item:last-child .row:not(:first-child), .component--holder .content .docsregulations .body .columns .item:last-child .row:not(:first-child){
+	    padding-bottom: 2.500vw;
+}
+</style>
+<meta name="generator" content="WP Rocket 3.21.3" data-wpr-features="wpr_delay_js wpr_defer_js wpr_minify_js wpr_image_dimensions wpr_minify_css wpr_preload_links wpr_desktop" /></head>
+<body class="wp-singular page-template page-template-template-flexible page-template-template-flexible-php page page-id-1251 wp-theme-tresmares">
+            <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+    
+    
+    <div  id="app" data-taxi>
+
+
+
+
+<div  id="flexible" class="flexible" data-taxi-view="default" data-taxi-nocache data-taxi-slug="about">
+
+    
+        
+<header  class="header" id="header" data-component="header">
+    <div class="box" data-desktop></div>
+    <div class="container --wide">
+        <div class="columns">
+            <div class="item">
+                <a href="/en/" class="brand" aria-label="Go to Home page" data-desktop>
+                    <svg width="190" height="60" viewBox="0 0 190 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 29.4854H13.0404V31.4398H7.58222V45.1204H5.42528V31.4398H0V29.4854Z" fill="#2B2B2B"/>
+    <path d="M34.8086 34.7516C34.8992 37.0003 33.442 39.0201 31.2686 39.658V39.7643L35.3355 44.7361V45.1531H32.9316L28.8153 40.0668H24.0239V45.1449H21.8752V29.4854H28.4613C32.3965 29.4854 34.8086 31.3416 34.8086 34.7516ZM28.4119 31.4806H24.0239V38.1533H28.6177C30.9228 38.1533 32.5529 37.1148 32.5529 34.8824C32.5529 32.65 30.9228 31.4398 28.4119 31.4398V31.4806Z" fill="#2B2B2B"/>
+    <path d="M55.1598 38.3496H46.8778V43.166H56.4194V45.1204H44.7209V29.4854H56.4194V31.4398H46.8778V36.4443H55.1598V38.3496Z" fill="#2B2B2B"/>
+    <path d="M65.9962 41.972C67.3546 42.986 69.0176 43.5175 70.7217 43.4767C73.3644 43.4767 74.5005 42.4627 74.5005 41.0235C74.5005 39.6906 73.6031 39.0118 70.3842 38.1042C66.6054 37.0329 64.9013 35.8881 64.9013 33.4676C64.9013 30.7855 67.1076 29.1664 70.8041 29.1664C74.7392 29.1664 76.4681 30.6792 76.4681 30.6792L75.2908 32.4455C73.9736 31.5541 72.4012 31.1044 70.8041 31.1535C68.68 31.1535 67.1817 31.9712 67.1817 33.4268C67.1817 34.5961 68.1532 35.1931 71.298 36.0517C75.4143 37.172 76.8056 38.5539 76.8056 40.958C76.8056 43.5421 74.9698 45.521 70.7464 45.521C66.5231 45.521 64.819 43.6157 64.819 43.6157L65.9962 41.972Z" fill="#2B2B2B"/>
+    <path d="M99.6095 34.1546L94.283 39.8051H93.7067L88.4132 34.1792V45.1204H86.2645V29.4854H86.8654L94.0278 36.9922L101.256 29.4854H101.832V45.1204H99.6095V34.1546Z" fill="#2B2B2B"/>
+    <path d="M118.03 29.4854H118.483L126.32 45.1204H123.851L122.566 42.5691H113.938L112.654 45.1204H110.184L118.03 29.4854ZM118.376 33.7131H118.112L115.042 40.4021L114.885 40.6638H121.628L121.471 40.4021L118.376 33.7131Z" fill="#2B2B2B"/>
+    <path d="M147.675 34.7516C147.766 37.0003 146.309 39.0201 144.135 39.658V39.7643L148.186 44.7033V45.1204H145.807L141.69 40.0423H136.891V45.1204H134.742V29.4854H141.328C145.263 29.4854 147.675 31.3416 147.675 34.7516ZM141.27 31.4806H136.891V38.1533H141.484C143.79 38.1533 145.42 37.1148 145.42 34.8824C145.42 32.65 143.79 31.4398 141.27 31.4398V31.4806Z" fill="#2B2B2B"/>
+    <path d="M168.033 38.3496H159.718V43.166H169.268V45.1204H157.594V29.4854H169.293V31.4398H159.718V36.4443H168.033V38.3496Z" fill="#2B2B2B"/>
+    <path d="M178.858 41.972C180.216 42.986 181.879 43.5175 183.583 43.4767C186.226 43.4767 187.354 42.4627 187.354 41.0235C187.354 39.6906 186.465 39.0118 183.238 38.1042C179.459 37.0329 177.755 35.8881 177.755 33.4676C177.755 30.7855 179.961 29.1664 183.657 29.1664C187.593 29.1664 189.321 30.6792 189.321 30.6792L188.144 32.4455C186.819 31.5623 185.255 31.1126 183.657 31.1698C181.533 31.1698 180.035 31.9875 180.035 33.4431C180.035 34.6125 181.007 35.2094 184.151 36.068C188.268 37.1883 189.659 38.5703 189.659 40.9744C189.659 43.5584 187.823 45.5373 183.6 45.5373C179.376 45.5373 177.672 43.632 177.672 43.632L178.858 41.972Z" fill="#2B2B2B"/>
+    <path d="M78.0409 59.1146C77.4646 59.7115 76.6578 60.0304 75.8263 59.9977C73.8917 59.9078 72.4016 58.2723 72.4921 56.3506C72.5827 54.5598 74.0234 53.1288 75.8263 53.0388C76.6578 53.0061 77.4646 53.325 78.0409 53.922L77.7775 54.2818C77.2588 53.7748 76.559 53.4886 75.8263 53.5049C74.1469 53.5949 72.8626 55.0095 72.9532 56.6777C73.0355 58.2232 74.2786 59.4498 75.8263 59.5316C76.559 59.5316 77.2671 59.2454 77.7775 58.7139L78.0409 59.1146Z" fill="#2B2B2B"/>
+    <path d="M82.6707 53.1505H82.8024L85.9226 59.8068H85.3875L84.7206 58.433H80.7443L80.0857 59.8068H79.5588L82.6707 53.1505ZM82.7695 54.1481H82.6954L81.0489 57.8197L80.9748 57.9669H84.5066L84.4407 57.8197L82.7695 54.1481Z" fill="#2B2B2B"/>
+    <path d="M88.0874 53.1505H90.6066C92.2037 53.1505 93.1422 53.8946 93.1422 55.3338C93.1422 56.773 92.2037 57.6234 90.5572 57.6234H88.5402V59.8395H88.0874V53.1505ZM90.5572 53.6084H88.532V57.1328H90.5572C91.8003 57.1328 92.64 56.6013 92.64 55.3502C92.64 54.099 91.8415 53.6411 90.5984 53.6411L90.5572 53.6084Z" fill="#2B2B2B"/>
+    <path d="M96.0917 59.8395H95.6136V53.1505H96.0917V59.8395Z" fill="#2B2B2B"/>
+    <path d="M98.3677 53.1505H103.554V53.6084H101.2V59.8068H100.722V53.6411H98.3677V53.1505Z" fill="#2B2B2B"/>
+    <path d="M107.345 53.1505H107.469L110.597 59.8068H110.054L109.395 58.433H105.419L104.76 59.8068H104.233L107.345 53.1505ZM107.444 54.1481H107.362L105.715 57.8197L105.633 57.9669H109.173L109.107 57.8197L107.444 54.1481Z" fill="#2B2B2B"/>
+    <path d="M112.789 59.8395V53.1505H113.258V59.357H117.218V59.8068L112.789 59.8395Z" fill="#2B2B2B"/>
+    <path d="M94.5644 0H94.0375L83.0223 22.553H85.4427L87.5996 18.2681L88.851 15.8231L94.1528 4.3585H94.4491L99.7839 15.8231L101.035 18.2681L103.192 22.553H105.654L94.5644 0Z" fill="#2B2B2B"/>
+    <path d="M109.789 22.5522H112.259L102.38 2.54232H102.084C102.084 2.54232 100.182 6.63097 100.067 6.84358L101.343 9.42761L102.084 7.43235H102.388L109.789 22.5522Z" fill="#2B2B2B"/>
+    <path d="M78.7993 22.5522H76.3296L86.2087 2.54232H86.5051C86.5051 2.54232 88.3738 6.63097 88.4891 6.86811C88.0692 7.68584 87.6658 8.58535 87.2295 9.42761L86.5051 7.43235H86.2004L78.7993 22.5522Z" fill="#2B2B2B"/>
+    <path d="M0 29.4854H13.0404V31.4398H7.58222V45.1204H5.42528V31.4398H0V29.4854Z" fill="#2B2B2B"/>
+    <path d="M34.8086 34.7516C34.8992 37.0003 33.442 39.0201 31.2686 39.658V39.7643L35.3355 44.7361V45.1531H32.9316L28.8153 40.0668H24.0239V45.1449H21.8752V29.4854H28.4613C32.3965 29.4854 34.8086 31.3416 34.8086 34.7516ZM28.4119 31.4806H24.0239V38.1533H28.6177C30.9228 38.1533 32.5529 37.1148 32.5529 34.8824C32.5529 32.65 30.9228 31.4398 28.4119 31.4398V31.4806Z" fill="#2B2B2B"/>
+    <path d="M55.1598 38.3496H46.8778V43.166H56.4194V45.1204H44.7209V29.4854H56.4194V31.4398H46.8778V36.4443H55.1598V38.3496Z" fill="#2B2B2B"/>
+    <path d="M65.9962 41.972C67.3546 42.986 69.0176 43.5175 70.7217 43.4767C73.3644 43.4767 74.5005 42.4627 74.5005 41.0235C74.5005 39.6906 73.6031 39.0118 70.3842 38.1042C66.6054 37.0329 64.9013 35.8881 64.9013 33.4676C64.9013 30.7855 67.1076 29.1664 70.8041 29.1664C74.7392 29.1664 76.4681 30.6792 76.4681 30.6792L75.2908 32.4455C73.9736 31.5541 72.4012 31.1044 70.8041 31.1535C68.68 31.1535 67.1817 31.9712 67.1817 33.4268C67.1817 34.5961 68.1532 35.1931 71.298 36.0517C75.4143 37.172 76.8056 38.5539 76.8056 40.958C76.8056 43.5421 74.9698 45.521 70.7464 45.521C66.5231 45.521 64.819 43.6157 64.819 43.6157L65.9962 41.972Z" fill="#2B2B2B"/>
+    <path d="M99.6095 34.1546L94.283 39.8051H93.7067L88.4132 34.1792V45.1204H86.2645V29.4854H86.8654L94.0278 36.9922L101.256 29.4854H101.832V45.1204H99.6095V34.1546Z" fill="#2B2B2B"/>
+    <path d="M118.03 29.4854H118.483L126.32 45.1204H123.851L122.566 42.5691H113.938L112.654 45.1204H110.184L118.03 29.4854ZM118.376 33.7131H118.112L115.042 40.4021L114.885 40.6638H121.628L121.471 40.4021L118.376 33.7131Z" fill="#2B2B2B"/>
+    <path d="M147.675 34.7516C147.766 37.0003 146.309 39.0201 144.135 39.658V39.7643L148.186 44.7033V45.1204H145.807L141.69 40.0423H136.891V45.1204H134.742V29.4854H141.328C145.263 29.4854 147.675 31.3416 147.675 34.7516ZM141.27 31.4806H136.891V38.1533H141.484C143.79 38.1533 145.42 37.1148 145.42 34.8824C145.42 32.65 143.79 31.4398 141.27 31.4398V31.4806Z" fill="#2B2B2B"/>
+    <path d="M168.033 38.3496H159.718V43.166H169.268V45.1204H157.594V29.4854H169.293V31.4398H159.718V36.4443H168.033V38.3496Z" fill="#2B2B2B"/>
+    <path d="M178.858 41.972C180.216 42.986 181.879 43.5175 183.583 43.4767C186.226 43.4767 187.354 42.4627 187.354 41.0235C187.354 39.6906 186.465 39.0118 183.238 38.1042C179.459 37.0329 177.755 35.8881 177.755 33.4676C177.755 30.7855 179.961 29.1664 183.657 29.1664C187.593 29.1664 189.321 30.6792 189.321 30.6792L188.144 32.4455C186.819 31.5623 185.255 31.1126 183.657 31.1698C181.533 31.1698 180.035 31.9875 180.035 33.4431C180.035 34.6125 181.007 35.2094 184.151 36.068C188.268 37.1883 189.659 38.5703 189.659 40.9744C189.659 43.5584 187.823 45.5373 183.6 45.5373C179.376 45.5373 177.672 43.632 177.672 43.632L178.858 41.972Z" fill="#2B2B2B"/>
+    <path d="M78.0409 59.1146C77.4646 59.7115 76.6578 60.0304 75.8263 59.9977C73.8917 59.9078 72.4016 58.2723 72.4921 56.3506C72.5827 54.5598 74.0234 53.1288 75.8263 53.0388C76.6578 53.0061 77.4646 53.325 78.0409 53.922L77.7775 54.2818C77.2588 53.7748 76.559 53.4886 75.8263 53.5049C74.1469 53.5949 72.8626 55.0095 72.9532 56.6777C73.0355 58.2232 74.2786 59.4498 75.8263 59.5316C76.559 59.5316 77.2671 59.2454 77.7775 58.7139L78.0409 59.1146Z" fill="#2B2B2B"/>
+    <path d="M82.6707 53.1505H82.8024L85.9226 59.8068H85.3875L84.7206 58.433H80.7443L80.0857 59.8068H79.5588L82.6707 53.1505ZM82.7695 54.1481H82.6954L81.0489 57.8197L80.9748 57.9669H84.5066L84.4407 57.8197L82.7695 54.1481Z" fill="#2B2B2B"/>
+    <path d="M88.0874 53.1505H90.6066C92.2037 53.1505 93.1422 53.8946 93.1422 55.3338C93.1422 56.773 92.2037 57.6234 90.5572 57.6234H88.5402V59.8395H88.0874V53.1505ZM90.5572 53.6084H88.532V57.1328H90.5572C91.8003 57.1328 92.64 56.6013 92.64 55.3502C92.64 54.099 91.8415 53.6411 90.5984 53.6411L90.5572 53.6084Z" fill="#2B2B2B"/>
+    <path d="M96.0917 59.8395H95.6136V53.1505H96.0917V59.8395Z" fill="#2B2B2B"/>
+    <path d="M98.3677 53.1505H103.554V53.6084H101.2V59.8068H100.722V53.6411H98.3677V53.1505Z" fill="#2B2B2B"/>
+    <path d="M107.345 53.1505H107.469L110.597 59.8068H110.054L109.395 58.433H105.419L104.76 59.8068H104.233L107.345 53.1505ZM107.444 54.1481H107.362L105.715 57.8197L105.633 57.9669H109.173L109.107 57.8197L107.444 54.1481Z" fill="#2B2B2B"/>
+    <path d="M112.789 59.8395V53.1505H113.258V59.357H117.218V59.8068L112.789 59.8395Z" fill="#2B2B2B"/>
+    <path class="red" d="M94.5644 0H94.0375L83.0223 22.553H85.4427L87.5996 18.2681L88.851 15.8231L94.1528 4.3585H94.4491L99.7839 15.8231L101.035 18.2681L103.192 22.553H105.654L94.5644 0Z" fill="#2B2B2B"/>
+    <path d="M109.789 22.5522H112.259L102.38 2.54232H102.084C102.084 2.54232 100.182 6.63097 100.067 6.84358L101.343 9.42761L102.084 7.43235H102.388L109.789 22.5522Z" fill="#2B2B2B"/>
+    <path d="M78.7993 22.5522H76.3296L86.2087 2.54232H86.5051C86.5051 2.54232 88.3738 6.63097 88.4891 6.86811C88.0692 7.68584 87.6658 8.58535 87.2295 9.42761L86.5051 7.43235H86.2004L78.7993 22.5522Z" fill="#2B2B2B"/>
+</svg>
+                </a>
+                <a href="/en/" class="brand" aria-label="Go to Home page" data-mobile>
+                    <svg width="48" height="36" viewBox="0 0 48 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M24.2512 3H23.5504L8.89844 32.9999H12.1179L14.987 27.3001L16.6515 24.0478L23.7037 8.79766H24.0979L31.1939 24.0478L32.8584 27.3001L35.7275 32.9999H39.0018L24.2512 3Z" fill="#E41613"/>
+    <path d="M44.503 33H47.7882L34.6474 6.38293H34.2532C34.2532 6.38293 31.7236 11.8216 31.5703 12.1045L33.2677 15.5417L34.2532 12.8876H34.6584L44.503 33Z" fill="#2B2B2B"/>
+    <path d="M3.28519 33H0L13.1408 6.38293H13.535C13.535 6.38293 16.0208 11.8216 16.1741 12.1371C15.6156 13.2248 15.079 14.4213 14.4986 15.5417L13.535 12.8876H13.1298L3.28519 33Z" fill="#2B2B2B"/>
+</svg>
+                </a>
+            </div>
+            <div class="item" data-desktop>
+                <ul id="menu-header-ingles" class="menu menu-header"><li id="menu-item-1704" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1251 current_page_item menu-item-1704 is-active "><a href="/en/about/" aria-current="page">About</a></li>
+<li id="menu-item-1705" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1705"><a href="/en/financial-solutions/">Financial Solutions</a>
+<ul class="sub-menu">
+	<li id="menu-item-1706" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1706"><a href="/en/financial-solutions/private-equity/" class="submenu-item"><div class="image --color"><img width="588" height="460" src="/assets/www.tresmarescapital.com/377411344b-img-4.jpg" alt="Private Equity"></div><div class="flex floating --center"><div class="menu-icon --private-equity"><span></span></div><div class="title">Private Equity</div></div></a></li>
+	<li id="menu-item-1707" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1707"><a href="/en/financial-solutions/direct-lending/" class="submenu-item"><div class="image --color"><img width="588" height="460" src="/assets/www.tresmarescapital.com/47158450fd-img-1-1.jpg" alt="Direct Lending"></div><div class="flex floating --center"><div class="menu-icon --direct-lending"><span></span></div><div class="title">Direct Lending</div></div></a></li>
+	<li id="menu-item-1708" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1708"><a href="/en/financial-solutions/fund-of-funds/" class="submenu-item"><div class="image --color"><img width="588" height="460" src="/assets/www.tresmarescapital.com/b8490085a6-img-2-1.jpg" alt="Fund of Funds"></div><div class="flex floating --center"><div class="menu-icon --fund-of-funds"><span></span></div><div class="title">Fund of Funds</div></div></a></li>
+	<li id="menu-item-1709" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1709"><a href="/en/financial-solutions/fund-financing/" class="submenu-item"><div class="image --color"><img width="588" height="460" src="/assets/www.tresmarescapital.com/4e5013a552-img-3-1.jpg" alt="Fund Financing"></div><div class="flex floating --center"><div class="menu-icon --fund-financing"><span></span></div><div class="title">Fund Financing</div></div></a></li>
+</ul>
+</li>
+<li id="menu-item-1710" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1710"><a href="/en/portfolio/">Portfolio</a></li>
+<li id="menu-item-1711" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1711"><a href="/en/team/">Team</a></li>
+<li id="menu-item-1713" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1713"><a href="/en/investors/">Investors</a></li>
+<li id="menu-item-1714" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1714"><a href="/en/contact/">Contact</a></li>
+</ul>            </div>
+            <div class="item" data-desktop>
+                <div class="lang">
+                                            <a href="/en/about/" class="lang-item is-current">EN</a>
+                        <a href="/nosotros/" class="lang-item">ES</a>
+                                    </div>
+                <a href="https://investorsfront.tresmarescapital.mscope.tech/" target="_blank" class="button --primary"><div class="button-text"><span>Investors Portal</span></div></a>            </div>
+            <div class="item" data-mobile>
+                <div class="navigation">
+                    <div class="content">
+                        <ul id="menu-mobile-ingles" class="menu menu-header"><li id="menu-item-1723" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1723"><a>Financial Solutions</a>
+<ul class="sub-menu">
+	<li id="menu-item-1724" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1724"><a href="/en/financial-solutions/private-equity/">Private Equity</a></li>
+</ul>
+</li>
+<li id="menu-item-1722" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1251 current_page_item menu-item-1722 is-active "><a href="/en/about/" aria-current="page">About</a></li>
+<li id="menu-item-1725" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1725"><a href="/en/portfolio/">Portfolio</a></li>
+<li id="menu-item-1726" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1726"><a href="/en/team/">Team</a></li>
+<li id="menu-item-1728" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1728"><a href="/en/investors/">Investors</a></li>
+<li id="menu-item-1729" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1729"><a href="/en/contact/">Contact</a></li>
+</ul>                        <div class="lang">
+                                                            <a href="/en/about/" class="lang-item is-current">EN</a>
+                                <a href="/nosotros/" class="lang-item">ES</a>
+                                                    </div>
+                        <a href="https://investorsfront.tresmarescapital.mscope.tech/" target="_blank" class="button --primary"><div class="button-text"><span>Investors Portal</span></div></a>                        
+<div id="menu-sidebar" class="menu-sidebar">
+    <div class="mask"></div>
+        <div class="inner" data-lenis-prevent>
+        <ul id="menu-solutions-ingles" class="menu menu--solutions"><li id="menu-item-1730" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1730"><a href="/en/financial-solutions/direct-lending/" class="submenu-item"><div class="flex floating --center"><div class="menu-icon --direct-lending"><span></span></div><div class="title">Direct Lending</div></div></a></li>
+<li id="menu-item-1731" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1731"><a href="/en/financial-solutions/fund-financing/" class="submenu-item"><div class="flex floating --center"><div class="menu-icon --fund-financing"><span></span></div><div class="title">Fund Financing</div></div></a></li>
+<li id="menu-item-1732" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1732"><a href="/en/financial-solutions/fund-of-funds/" class="submenu-item"><div class="flex floating --center"><div class="menu-icon --fund-of-funds"><span></span></div><div class="title">Fund of Funds</div></div></a></li>
+<li id="menu-item-1733" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1733"><a href="/en/financial-solutions/private-equity/" class="submenu-item"><div class="flex floating --center"><div class="menu-icon --private-equity"><span></span></div><div class="title">Private Equity</div></div></a></li>
+<li id="menu-item-1734" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1734"><a href="/en/financial-solutions/">Financial Solutions</a></li>
+</ul>    </div>
+    <div class="closer"></div>
+</div>
+
+                    </div>
+                </div>
+                <div class="box" data-mobile></div>
+                <div id="trigger" class="trigger">
+                    <div class="bars">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+        <main  id="main" class="main">
+        <!-- WebGL in Home page -->
+        
+                    
+                                
+                
+<section class="component component--timeline"  data-component="timeline">
+    
+    <div class="container --full">
+        <div class="title display --2xlarge --fill"  data-desktop>Our journey<br />
+so far
+</div>                    <div class="snap" data-desktop>
+                <div class="video " style="aspect-ratio: 1.7777777777778;"><video preload="metadata" loop muted playsinline poster=""><source src="/assets/www.tresmarescapital.com/9e993b626f-0_Against_Live_Wallpaper_3840x2160_low_1-kfr.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>                <div class="groups">
+                                            <div class="group --0 --active">
+                                                        <div class="columns">
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --medium --bold"><p>Launch of the Tresmares project under the name Q-Capital.</p>
+</div>                                    </div>
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --medium --bold"><p>A Private Equity division of the fund manager Qualitas Equity.</p>
+</div>                                    </div>
+                                                            </div>
+                        </div>
+                                            <div class="group --1">
+                                                        <div class="columns">
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --medium --bold"><p>Full investment of the first minority capital fund.</p>
+</div>                                    </div>
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --medium --bold"><p>Official launch of the Tresmares Capital project with the support of Banco Santander.</p>
+</div>                                    </div>
+                                                            </div>
+                        </div>
+                                            <div class="group --2">
+                                                        <div class="columns">
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --medium --bold"><p>First Direct Lending investments in Spain.</p>
+</div>                                    </div>
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --medium --bold"><p>Launch of the second minority capital fund.</p>
+</div>                                    </div>
+                                                            </div>
+                        </div>
+                                            <div class="group --3">
+                                                        <div class="columns">
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --medium --bold"><p>First international transaction in Portugal.</p>
+</div>                                    </div>
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --medium --bold"><p>Launch of the Fund Financing division.</p>
+</div>                                    </div>
+                                                            </div>
+                        </div>
+                                            <div class="group --4">
+                                                        <div class="columns">
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --medium --bold"><p>Opening of the United Kingdom office in London.</p>
+</div>                                    </div>
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --medium --bold"><p>Full investment of the second minority capital fund.</p>
+</div>                                    </div>
+                                                            </div>
+                        </div>
+                                            <div class="group --5">
+                                                        <div class="columns">
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --medium --bold"><p>Launch of the Fund of Funds division.</p>
+</div>                                    </div>
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --medium --bold"><p>Launch of the third minority capital fund.</p>
+</div>                                    </div>
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --medium --bold"><p>First transactions in Germany.</p>
+</div>                                    </div>
+                                                            </div>
+                        </div>
+                                            <div class="group --6">
+                                                        <div class="columns">
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --medium --bold"><p>Banco Santander exercises its purchase option, becoming our majority shareholder.</p>
+</div>                                    </div>
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --medium --bold"><p>Opening of the Germany office in Frankfurt.</p>
+</div>                                    </div>
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --medium --bold"><p>First transactions in the Netherlands.</p>
+</div>                                    </div>
+                                                                    <div class="item">
+                                        <div class="wysiwyg text --medium --bold"><p>Launch of the International Minority Capital division.</p>
+</div>                                    </div>
+                                                            </div>
+                        </div>
+                                    </div>
+                <div class="numbers">
+                    <div class="number number-0">
+                        <div class="inset">
+                                                            <div class="title display --5xlarge --na" >0</div>                                                            <div class="title display --5xlarge --na" >1</div>                                                            <div class="title display --5xlarge --na" >2</div>                                                            <div class="title display --5xlarge --na" >3</div>                                                            <div class="title display --5xlarge --na" >4</div>                                                            <div class="title display --5xlarge --na" >5</div>                                                            <div class="title display --5xlarge --na" >6</div>                                                            <div class="title display --5xlarge --na" >7</div>                                                            <div class="title display --5xlarge --na" >8</div>                                                            <div class="title display --5xlarge --na" >9</div>                                                    </div>
+                    </div>
+                    <div class="number number-1">
+                        <div class="inset">
+                                                            <div class="title display --5xlarge --na" >0</div>                                                            <div class="title display --5xlarge --na" >1</div>                                                            <div class="title display --5xlarge --na" >2</div>                                                            <div class="title display --5xlarge --na" >3</div>                                                            <div class="title display --5xlarge --na" >4</div>                                                            <div class="title display --5xlarge --na" >5</div>                                                            <div class="title display --5xlarge --na" >6</div>                                                            <div class="title display --5xlarge --na" >7</div>                                                            <div class="title display --5xlarge --na" >8</div>                                                            <div class="title display --5xlarge --na" >9</div>                                                    </div>
+                    </div>
+                    <div class="number number-2">
+                        <div class="inset">
+                                                            <div class="title display --5xlarge --na" >0</div>                                                            <div class="title display --5xlarge --na" >1</div>                                                            <div class="title display --5xlarge --na" >2</div>                                                            <div class="title display --5xlarge --na" >3</div>                                                            <div class="title display --5xlarge --na" >4</div>                                                            <div class="title display --5xlarge --na" >5</div>                                                            <div class="title display --5xlarge --na" >6</div>                                                            <div class="title display --5xlarge --na" >7</div>                                                            <div class="title display --5xlarge --na" >8</div>                                                            <div class="title display --5xlarge --na" >9</div>                                                    </div>
+                    </div>
+                    <div class="number number-3">
+                        <div class="inset">
+                                                            <div class="title display --5xlarge --na" >0</div>                                                            <div class="title display --5xlarge --na" >1</div>                                                            <div class="title display --5xlarge --na" >2</div>                                                            <div class="title display --5xlarge --na" >3</div>                                                            <div class="title display --5xlarge --na" >4</div>                                                            <div class="title display --5xlarge --na" >5</div>                                                            <div class="title display --5xlarge --na" >6</div>                                                            <div class="title display --5xlarge --na" >7</div>                                                            <div class="title display --5xlarge --na" >8</div>                                                            <div class="title display --5xlarge --na" >9</div>                                                    </div>
+                    </div>
+                </div>
+                <div class="years">
+                                                                    <div class="wysiwyg text --large --serif --na year --active">2014</div>                                                                    <div class="wysiwyg text --large --serif --na year">2019</div>                                                                    <div class="wysiwyg text --large --serif --na year">2020</div>                                                                    <div class="wysiwyg text --large --serif --na year">2021</div>                                                                    <div class="wysiwyg text --large --serif --na year">2023</div>                                                                    <div class="wysiwyg text --large --serif --na year">2024</div>                                                                    <div class="wysiwyg text --large --serif --na year">2025</div>                                    </div>
+            </div>
+
+            <div class="draggable" data-mobile>
+                                <div class="video " style="aspect-ratio: 1.7777777777778;"><video preload="metadata" loop muted playsinline poster=""><source src="/assets/www.tresmarescapital.com/9e993b626f-0_Against_Live_Wallpaper_3840x2160_low_1-kfr.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>                <div class="inner">
+                                            <div class="item group group-0">
+                            <div class="numbers">
+                                <div class="title display --5xlarge --na number" >2014</div>                            </div>
+                            <div class="columns">
+                                                                    <div class="columns-item">
+                                        <div class="wysiwyg text --medium --bold"><p>Launch of the Tresmares project under the name Q-Capital.</p>
+</div>                                    </div>
+                                                                    <div class="columns-item">
+                                        <div class="wysiwyg text --medium --bold"><p>A Private Equity division of the fund manager Qualitas Equity.</p>
+</div>                                    </div>
+                                                            </div>
+                        </div>
+                                            <div class="item group group-1">
+                            <div class="numbers">
+                                <div class="title display --5xlarge --na number" >2019</div>                            </div>
+                            <div class="columns">
+                                                                    <div class="columns-item">
+                                        <div class="wysiwyg text --medium --bold"><p>Full investment of the first minority capital fund.</p>
+</div>                                    </div>
+                                                                    <div class="columns-item">
+                                        <div class="wysiwyg text --medium --bold"><p>Official launch of the Tresmares Capital project with the support of Banco Santander.</p>
+</div>                                    </div>
+                                                            </div>
+                        </div>
+                                            <div class="item group group-2">
+                            <div class="numbers">
+                                <div class="title display --5xlarge --na number" >2020</div>                            </div>
+                            <div class="columns">
+                                                                    <div class="columns-item">
+                                        <div class="wysiwyg text --medium --bold"><p>First Direct Lending investments in Spain.</p>
+</div>                                    </div>
+                                                                    <div class="columns-item">
+                                        <div class="wysiwyg text --medium --bold"><p>Launch of the second minority capital fund.</p>
+</div>                                    </div>
+                                                            </div>
+                        </div>
+                                            <div class="item group group-3">
+                            <div class="numbers">
+                                <div class="title display --5xlarge --na number" >2021</div>                            </div>
+                            <div class="columns">
+                                                                    <div class="columns-item">
+                                        <div class="wysiwyg text --medium --bold"><p>First international transaction in Portugal.</p>
+</div>                                    </div>
+                                                                    <div class="columns-item">
+                                        <div class="wysiwyg text --medium --bold"><p>Launch of the Fund Financing division.</p>
+</div>                                    </div>
+                                                            </div>
+                        </div>
+                                            <div class="item group group-4">
+                            <div class="numbers">
+                                <div class="title display --5xlarge --na number" >2023</div>                            </div>
+                            <div class="columns">
+                                                                    <div class="columns-item">
+                                        <div class="wysiwyg text --medium --bold"><p>Opening of the United Kingdom office in London.</p>
+</div>                                    </div>
+                                                                    <div class="columns-item">
+                                        <div class="wysiwyg text --medium --bold"><p>Full investment of the second minority capital fund.</p>
+</div>                                    </div>
+                                                            </div>
+                        </div>
+                                            <div class="item group group-5">
+                            <div class="numbers">
+                                <div class="title display --5xlarge --na number" >2024</div>                            </div>
+                            <div class="columns">
+                                                                    <div class="columns-item">
+                                        <div class="wysiwyg text --medium --bold"><p>Launch of the Fund of Funds division.</p>
+</div>                                    </div>
+                                                                    <div class="columns-item">
+                                        <div class="wysiwyg text --medium --bold"><p>Launch of the third minority capital fund.</p>
+</div>                                    </div>
+                                                                    <div class="columns-item">
+                                        <div class="wysiwyg text --medium --bold"><p>First transactions in Germany.</p>
+</div>                                    </div>
+                                                            </div>
+                        </div>
+                                            <div class="item group group-6">
+                            <div class="numbers">
+                                <div class="title display --5xlarge --na number" >2025</div>                            </div>
+                            <div class="columns">
+                                                                    <div class="columns-item">
+                                        <div class="wysiwyg text --medium --bold"><p>Banco Santander exercises its purchase option, becoming our majority shareholder.</p>
+</div>                                    </div>
+                                                                    <div class="columns-item">
+                                        <div class="wysiwyg text --medium --bold"><p>Opening of the Germany office in Frankfurt.</p>
+</div>                                    </div>
+                                                                    <div class="columns-item">
+                                        <div class="wysiwyg text --medium --bold"><p>First transactions in the Netherlands.</p>
+</div>                                    </div>
+                                                                    <div class="columns-item">
+                                        <div class="wysiwyg text --medium --bold"><p>Launch of the International Minority Capital division.</p>
+</div>                                    </div>
+                                                            </div>
+                        </div>
+                                    </div>
+                <div class="dots" data-mobile></div>
+            </div>
+            </div>
+</section>
+
+            
+                                
+                
+<section class="component component--contentscrollleft"  data-component="contentscrollleft" data-hide-header>
+    
+    <div class="container --full">
+                    <div class="sticky" style="height: 1000vh;">
+                <div class="stick">
+                    <div class="images">
+                                                    <div class="image --cover --color"><img width="200" height="132" src="/assets/www.tresmarescapital.com/f35b970d84-nosotros_valores_excelencia-1-200x132.jpg" data-src="/assets/www.tresmarescapital.com/eda3559f64-nosotros_valores_excelencia-1.jpg" alt=""><div class="overlay --20"></div></div>                                                    <div class="image --cover --color"><img width="200" height="132" src="/assets/www.tresmarescapital.com/d00074612e-nosotros_valores_colaboracion-200x132.jpg" data-src="/assets/www.tresmarescapital.com/f5c6aaa516-nosotros_valores_colaboracion.jpg" alt=""><div class="overlay --20"></div></div>                                                    <div class="image --cover --color"><img width="200" height="132" src="/assets/www.tresmarescapital.com/027f193cbb-nosotros_valores_etica-1-200x132.jpg" data-src="/assets/www.tresmarescapital.com/7747ab8db8-nosotros_valores_etica-1.jpg" alt=""><div class="overlay --20"></div></div>                                                    <div class="image --cover --color"><img width="200" height="132" src="/assets/www.tresmarescapital.com/f6a7776706-nosotros_valores_fiabilidad-1-200x132.jpg" data-src="/assets/www.tresmarescapital.com/3d0d0fe8bb-nosotros_valores_fiabilidad-1.jpg" alt=""><div class="overlay --20"></div></div>                                                    <div class="image --cover --color"><img width="200" height="132" src="/assets/www.tresmarescapital.com/153675a075-nosotros_valores_largo-plazo-200x132.jpg" data-src="/assets/www.tresmarescapital.com/2209873be8-nosotros_valores_largo-plazo.jpg" alt=""><div class="overlay --20"></div></div>                                            </div>
+                                            <div class="content content-0">
+                            <div class="text-block-left --xsmall">
+                                <div class="wysiwyg text --xlarge --bold --na"><p>Each client and every transaction are at the heart of our activity. We adapt to each situation to achieve excellence.</p>
+</div>                            </div>
+                                                        <div class="wysiwyg text --medium note --na"><p>*The maple changes color as chlorophyll decreases and other pigments emerge; it’s a natural response to the cycle, analogous to the periodic rebalancing of a portfolio in response to market changes.</p>
+</div>                        </div>
+                                            <div class="content content-1">
+                            <div class="text-block-left --xsmall">
+                                <div class="wysiwyg text --xlarge --bold --na"><p>We believe that effort and the drive to improve are key to progress, both within our teams and alongside the clients we work with.</p>
+</div>                            </div>
+                                                        <div class="wysiwyg text --medium note --na"><p>*The river gathers tributaries from different sources, bringing energy and direction, creating a channel that flows with synergy, depth, and purpose.</p>
+</div>                        </div>
+                                            <div class="content content-2">
+                            <div class="text-block-left --xsmall">
+                                <div class="wysiwyg text --xlarge --bold --na"><p>We understand that long-term relationships must be based on ethical behavior and aligned incentives to generate value collaboratively.</p>
+</div>                            </div>
+                                                        <div class="wysiwyg text --medium note --na"><p>*Hail falls firmly and steadily, acting with clarity, integrity, and transparency, while supporting everything around it.</p>
+</div>                        </div>
+                                            <div class="content content-3">
+                            <div class="text-block-left --xsmall">
+                                <div class="wysiwyg text --xlarge --bold --na"><p>We seek solutions where all parties benefit, taking the time to explain the instruments, contingencies, and potential scenarios.</p>
+</div>                            </div>
+                                                        <div class="wysiwyg text --medium note --na"><p>*Moss grows slowly over the rock, supporting and protecting the ground without altering its shape. It adapts to each surface, reinforcing the rock in all types of environments.</p>
+</div>                        </div>
+                                            <div class="content content-4">
+                            <div class="text-block-left --xsmall">
+                                <div class="wysiwyg text --xlarge --bold --na"><p>We apply critical thinking to distinguish between tactical and strategic decisions, helping to establish a strong corporate governance framework focused on value creation.</p>
+</div>                            </div>
+                                                        <div class="wysiwyg text --medium note --na"><p>*Each dandelion seed travels miles propelled only by the wind, yet all originate from the same center: a flower that grows and spreads, looking toward the future with consistency and purpose.</p>
+</div>                        </div>
+                                        <div class="anchors">
+                        <div class="label " >Our values</div>                        <ul>
+                                                                                            <li><div class="title anchor display --small --active"  data-desktop>Excellence
+</div></li>
+                                                                                            <li><div class="title anchor display --small"  data-desktop>Collaboration
+</div></li>
+                                                                                            <li><div class="title anchor display --small"  data-desktop>Ethics
+</div></li>
+                                                                                            <li><div class="title anchor display --small"  data-desktop>Reliability
+</div></li>
+                                                                                            <li><div class="title anchor display --small"  data-desktop>Long-Term
+</div></li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+            </div>
+</section>
+
+            
+                                
+                
+<section class="component component--herorightmedia"  data-component="herorightmedia">
+    
+    <div class="container --full">
+        <div class="waves">
+            <svg width="2400" height="1298" viewBox="0 0 2400 1298" fill="none" xmlns="http://www.w3.org/2000/svg" data-desktop>
+    <g clip-path="url(#clip0_3596_51128)">
+        <mask id="mask0_3596_51128" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-432" y="0" width="2833" height="1299">
+            <path d="M-430.666 1297.5L-430.666 0.500492L2399.5 0.500244L2399.5 1297.5L-430.666 1297.5Z" fill="white" stroke="white"/>
+        </mask>
+        <g mask="url(#mask0_3596_51128)">
+            <path d="M1060.1 -264.506C1182.77 -151.689 1212.53 -19.8119 1158.45 119.485C1098.88 272.93 927.344 445.781 1085.72 600.675C1382.85 891.254 2038.07 683.141 2299.02 999.161C2382.82 1100.66 2412.86 1264.17 2397.88 1382.05" stroke="#F2F2F2" stroke-width="0.04" stroke-miterlimit="10"/>
+            <path d="M1069.95 -268.807C1192.62 -156.011 1222.38 -24.1127 1168.3 115.184C1108.74 268.629 937.196 441.48 1095.57 596.374C1392.7 886.953 2047.92 678.841 2308.87 994.86C2392.67 1096.36 2422.71 1259.87 2407.73 1377.75" stroke="#F2F2F2" stroke-width="0.07" stroke-miterlimit="10"/>
+            <path d="M1079.79 -273.112C1202.47 -160.316 1232.22 -28.4173 1178.15 110.88C1118.58 264.325 947.039 437.175 1105.41 592.07C1402.55 882.649 2057.76 674.536 2318.71 990.555C2402.51 1092.06 2432.55 1255.56 2417.58 1373.44" stroke="#F2F2F2" stroke-width="0.11" stroke-miterlimit="10"/>
+            <path d="M1089.68 -277.397C1212.36 -164.601 1242.11 -32.7025 1188.04 106.594C1128.47 260.04 956.931 432.89 1115.31 587.784C1412.44 878.363 2067.65 670.251 2328.6 986.27C2412.41 1087.77 2442.44 1251.28 2427.44 1369.16" stroke="#F2F2F2" stroke-width="0.15" stroke-miterlimit="10"/>
+            <path d="M1099.54 -281.698C1222.18 -168.902 1251.97 -37.0033 1197.89 102.294C1138.32 255.739 966.783 428.589 1125.16 583.484C1422.29 874.063 2077.51 665.95 2338.45 981.969C2422.26 1083.47 2452.3 1246.98 2437.29 1364.86" stroke="#F2F2F2" stroke-width="0.19" stroke-miterlimit="10"/>
+            <path d="M1109.39 -286.016C1232.06 -173.22 1261.82 -41.3218 1207.74 97.9752C1148.17 251.42 976.634 424.292 1135.01 579.165C1432.14 869.744 2087.36 661.631 2348.31 977.651C2432.11 1079.13 2462.15 1242.66 2447.14 1360.54" stroke="#F2F2F2" stroke-width="0.22" stroke-miterlimit="10"/>
+            <path d="M1119.24 -290.288C1241.91 -177.492 1271.67 -45.5931 1217.59 93.7038C1158.03 247.149 986.485 420.021 1144.86 574.894C1441.99 865.473 2097.21 657.36 2358.16 973.38C2441.96 1074.88 2472 1238.39 2457.02 1356.27" stroke="#F2F2F2" stroke-width="0.26" stroke-miterlimit="10"/>
+            <path d="M1129.12 -294.594C1251.8 -181.777 1281.55 -49.8998 1227.48 89.3972C1167.91 242.842 996.368 415.714 1154.74 570.587C1451.87 861.166 2107.09 653.053 2368.04 969.073C2451.84 1070.58 2481.88 1234.08 2466.9 1351.96" stroke="#F2F2F2" stroke-width="0.3" stroke-miterlimit="10"/>
+            <path d="M1138.97 -298.889C1261.65 -186.093 1291.4 -54.1947 1237.33 85.1023C1177.76 238.547 1006.22 411.398 1164.59 566.292C1461.73 856.871 2116.94 648.758 2377.89 964.778C2461.69 1066.28 2491.73 1229.79 2476.76 1347.67" stroke="#F2F2F2" stroke-width="0.34" stroke-miterlimit="10"/>
+            <path d="M1148.82 -303.188C1271.5 -190.392 1301.25 -58.4935 1247.18 80.8035C1187.61 234.249 1016.07 407.099 1174.45 561.993C1471.58 852.572 2126.79 644.46 2387.74 960.479C2471.55 1061.98 2501.58 1225.49 2486.61 1343.37" stroke="#F2F2F2" stroke-width="0.37" stroke-miterlimit="10"/>
+            <path d="M1158.68 -307.489C1281.35 -194.693 1311.11 -62.7943 1257.03 76.5027C1197.46 229.948 1025.92 402.798 1184.3 557.693C1481.43 848.272 2136.65 640.159 2397.59 956.178C2481.4 1057.68 2511.44 1221.19 2496.46 1339.07" stroke="#F2F2F2" stroke-width="0.41" stroke-miterlimit="10"/>
+            <path d="M1168.52 -311.766C1291.19 -198.97 1320.95 -67.0716 1266.87 72.2253C1207.31 225.671 1035.77 398.521 1194.14 553.415C1491.27 843.994 2146.49 635.881 2407.44 951.901C2491.24 1053.4 2521.28 1216.91 2506.3 1334.79" stroke="#F2F2F2" stroke-width="0.45" stroke-miterlimit="10"/>
+            <path d="M1178.41 -316.075C1301.08 -203.279 1330.84 -71.3802 1276.76 67.9167C1217.2 221.362 1045.66 394.212 1204.03 549.107C1501.16 839.686 2156.38 631.573 2417.33 947.592C2501.13 1049.1 2531.17 1212.6 2516.19 1330.48" stroke="#F2F2F2" stroke-width="0.48" stroke-miterlimit="10"/>
+            <path d="M1188.27 -320.362C1310.94 -207.566 1340.7 -75.6673 1286.62 63.6296C1227.06 217.075 1055.52 389.925 1213.89 544.82C1511.02 835.398 2166.24 627.286 2427.19 943.305C2510.99 1044.81 2541.03 1208.31 2526.05 1326.19" stroke="#F2F2F2" stroke-width="0.52" stroke-miterlimit="10"/>
+            <path d="M1198.11 -324.661C1320.79 -211.865 1350.54 -79.9663 1296.47 59.3307C1236.9 212.776 1065.36 385.626 1223.74 540.521C1520.87 831.1 2176.08 622.987 2437.03 939.007C2520.84 1040.51 2550.87 1204.01 2535.87 1321.89" stroke="#F2F2F2" stroke-width="0.56" stroke-miterlimit="10"/>
+            <path d="M1207.97 -328.975C1330.65 -216.179 1360.4 -84.2808 1306.33 55.0162C1246.76 208.461 1075.22 381.312 1233.59 536.206C1530.73 826.785 2185.94 618.672 2446.89 934.692C2530.69 1036.2 2560.73 1199.7 2545.76 1317.58" stroke="#F2F2F2" stroke-width="0.6" stroke-miterlimit="10"/>
+            <path d="M1217.85 -333.256C1340.49 -220.46 1370.28 -88.5619 1316.2 50.7351C1256.64 204.18 1085.1 377.052 1243.47 531.925C1540.6 822.504 2195.82 614.391 2456.77 930.411C2540.57 1031.91 2570.61 1195.42 2555.6 1313.3" stroke="#F2F2F2" stroke-width="0.63" stroke-miterlimit="10"/>
+            <path d="M1227.72 -337.557C1350.39 -224.761 1380.15 -92.8627 1326.07 46.4343C1266.5 199.879 1094.96 372.73 1253.34 527.624C1550.47 818.203 2205.69 610.09 2466.63 926.11C2550.44 1027.61 2580.48 1191.12 2565.47 1309" stroke="#F2F2F2" stroke-width="0.67" stroke-miterlimit="10"/>
+            <path d="M1237.55 -341.862C1360.23 -229.066 1389.98 -97.1673 1335.91 42.1296C1276.34 195.575 1104.8 368.447 1263.17 523.32C1560.3 813.898 2215.52 605.786 2476.47 921.805C2560.27 1023.31 2590.31 1186.81 2575.33 1304.69" stroke="#F2F2F2" stroke-width="0.71" stroke-miterlimit="10"/>
+            <path d="M1247.4 -346.143C1370.08 -233.325 1399.83 -101.449 1345.76 37.8484C1286.19 191.294 1114.65 364.144 1273.03 519.038C1570.16 809.617 2225.37 601.505 2486.32 917.524C2570.12 1019.03 2600.16 1182.53 2585.16 1300.41" stroke="#F2F2F2" stroke-width="0.74" stroke-miterlimit="10"/>
+            <path d="M1257.25 -350.461C1379.92 -237.665 1409.68 -105.767 1355.6 33.53C1296.03 186.975 1124.49 359.826 1282.87 514.72C1580 805.299 2235.22 597.186 2496.17 913.206C2579.97 1014.71 2610.01 1178.21 2595 1296.09" stroke="#F2F2F2" stroke-width="0.78" stroke-miterlimit="10"/>
+            <path d="M1267.15 -354.758C1389.82 -241.962 1419.58 -110.064 1365.5 29.2331C1305.93 182.678 1134.39 355.55 1292.77 510.423C1589.9 801.002 2245.12 592.889 2506.06 908.909C2589.87 1010.41 2619.91 1173.92 2604.9 1291.8" stroke="#F2F2F2" stroke-width="0.82" stroke-miterlimit="10"/>
+            <path d="M1276.99 -359.043C1399.66 -246.247 1429.42 -114.349 1375.34 24.948C1315.78 178.393 1144.23 351.243 1302.61 506.138C1599.74 796.717 2254.96 588.604 2515.91 904.624C2599.71 1006.13 2629.75 1169.63 2614.77 1287.51" stroke="#F2F2F2" stroke-width="0.86" stroke-miterlimit="10"/>
+            <path d="M1286.84 -363.349C1409.49 -250.552 1439.27 -118.654 1385.19 20.6432C1325.63 174.088 1154.09 346.939 1312.46 501.833C1609.59 792.412 2264.81 584.299 2525.76 900.319C2609.56 1001.82 2639.6 1165.33 2624.62 1283.21" stroke="#F2F2F2" stroke-width="0.89" stroke-miterlimit="10"/>
+            <path d="M1296.68 -367.629C1419.36 -254.833 1449.11 -122.935 1395.04 16.3621C1335.47 169.807 1163.93 342.658 1322.31 497.552C1619.44 788.131 2274.65 580.018 2535.6 896.038C2619.4 997.541 2649.44 1161.05 2634.47 1278.93" stroke="#F2F2F2" stroke-width="0.93" stroke-miterlimit="10"/>
+            <path d="M1306.58 -371.934C1429.23 -259.138 1459.01 -127.24 1404.94 12.0574C1345.37 165.503 1173.83 338.353 1332.2 493.247C1629.34 783.826 2284.55 575.714 2545.5 891.733C2629.3 993.237 2659.34 1156.74 2644.36 1274.62" stroke="#F2F2F2" stroke-width="0.97" stroke-miterlimit="10"/>
+            <path d="M1316.43 -376.235C1439.11 -263.439 1468.86 -131.54 1414.79 7.75658C1355.22 161.223 1183.68 334.074 1342.06 488.947C1639.19 779.525 2294.4 571.413 2555.35 887.432C2639.15 988.936 2669.19 1152.44 2654.22 1270.32" stroke="#F2F2F2" stroke-width="1.01" stroke-miterlimit="10"/>
+            <path d="M1326.28 -380.52C1448.95 -267.724 1478.71 -135.826 1424.63 3.47143C1365.07 156.917 1193.52 329.767 1351.9 484.661C1649.03 775.24 2304.25 567.128 2565.2 883.147C2649 984.651 2679.04 1148.16 2664.03 1266.04" stroke="#F2F2F2" stroke-width="1.04" stroke-miterlimit="10"/>
+            <path d="M1336.13 -384.825C1458.8 -272.029 1488.56 -140.13 1434.48 -0.83326C1374.92 152.612 1203.38 325.484 1361.75 480.357C1658.88 770.936 2314.1 562.823 2575.05 878.843C2658.85 980.346 2688.89 1143.85 2673.88 1261.73" stroke="#F2F2F2" stroke-width="1.08" stroke-miterlimit="10"/>
+            <path d="M1346 -389.102C1468.67 -276.306 1498.43 -144.408 1444.35 -5.1106C1384.78 148.335 1213.24 321.185 1371.62 476.079C1668.75 766.658 2323.97 558.546 2584.91 874.565C2668.72 976.069 2698.76 1139.57 2683.78 1257.45" stroke="#F2F2F2" stroke-width="1.12" stroke-miterlimit="10"/>
+            <path d="M1355.87 -393.417C1478.55 -280.62 1508.3 -148.722 1454.23 -9.42506C1394.66 144.02 1223.12 316.87 1381.49 471.765C1678.62 762.344 2333.84 554.231 2594.79 870.251C2678.59 971.754 2708.63 1135.26 2693.65 1253.14" stroke="#F2F2F2" stroke-width="1.15" stroke-miterlimit="10"/>
+            <path d="M1365.73 -397.717C1488.4 -284.921 1518.16 -153.023 1464.09 -13.7258C1404.52 139.719 1232.98 312.57 1391.35 467.464C1688.48 758.043 2343.7 549.93 2604.65 865.95C2688.45 967.453 2718.49 1130.96 2703.51 1248.84" stroke="#F2F2F2" stroke-width="1.19" stroke-miterlimit="10"/>
+            <path d="M1375.58 -402.007C1498.25 -289.211 1528.01 -157.312 1473.93 -18.015C1414.36 135.43 1242.82 308.28 1401.2 463.175C1698.33 753.754 2353.54 545.641 2614.49 861.661C2698.3 963.164 2728.33 1126.67 2713.33 1244.55" stroke="#F2F2F2" stroke-width="1.23" stroke-miterlimit="10"/>
+            <path d="M1385.42 -406.313C1508.09 -293.517 1537.85 -161.619 1483.77 -22.3217C1424.2 131.124 1252.66 303.974 1411.04 458.868C1708.17 749.447 2363.39 541.335 2624.34 857.354C2708.14 958.858 2738.18 1122.36 2723.2 1240.24" stroke="#F2F2F2" stroke-width="1.27" stroke-miterlimit="10"/>
+            <path d="M1395.3 -410.612C1517.95 -297.816 1547.73 -165.917 1493.66 -26.6204C1434.09 126.825 1262.55 299.697 1420.92 454.57C1718.05 745.149 2373.27 537.036 2634.22 853.055C2718.02 954.559 2748.06 1118.06 2733.08 1235.94" stroke="#F2F2F2" stroke-width="1.3" stroke-miterlimit="10"/>
+            <path d="M1405.16 -414.899C1527.81 -302.103 1557.59 -170.204 1503.51 -30.9075C1443.95 122.538 1272.41 295.388 1430.78 450.282C1727.91 740.861 2383.13 532.749 2644.08 848.768C2727.88 950.272 2757.92 1113.78 2742.94 1231.66" stroke="#F2F2F2" stroke-width="1.34" stroke-miterlimit="10"/>
+            <path d="M1415.01 -419.204C1537.66 -306.408 1567.44 -174.509 1513.37 -35.2122C1453.8 118.233 1282.26 291.083 1440.63 445.978C1737.76 736.557 2392.98 528.444 2653.93 844.464C2737.73 945.967 2767.77 1109.47 2752.79 1227.35" stroke="#F2F2F2" stroke-width="1.38" stroke-miterlimit="10"/>
+            <path d="M1424.86 -423.479C1547.54 -310.683 1577.29 -178.785 1523.22 -39.4876C1463.65 113.958 1292.11 286.808 1450.49 441.702C1747.62 732.281 2402.83 524.169 2663.78 840.188C2747.58 941.692 2777.62 1105.2 2762.65 1223.08" stroke="#F2F2F2" stroke-width="1.41" stroke-miterlimit="10"/>
+            <path d="M1434.71 -427.799C1557.38 -315.003 1587.14 -183.105 1533.06 -43.8079C1473.49 109.637 1301.95 282.488 1460.33 437.382C1757.46 727.961 2412.68 519.848 2673.63 835.868C2757.43 937.372 2787.47 1100.88 2772.49 1218.76" stroke="#F2F2F2" stroke-width="1.45" stroke-miterlimit="10"/>
+            <path d="M1444.6 -432.094C1567.27 -319.298 1597.03 -187.4 1542.95 -48.1028C1483.38 105.342 1311.84 278.193 1470.22 433.087C1767.35 723.666 2422.57 515.553 2683.52 831.573C2767.32 933.076 2797.36 1096.58 2782.38 1214.46" stroke="#F2F2F2" stroke-width="1.49" stroke-miterlimit="10"/>
+            <path d="M1454.45 -436.375C1577.12 -323.579 1606.88 -191.681 1552.8 -52.384C1493.24 101.061 1321.7 273.911 1480.07 428.806C1777.2 719.385 2432.42 511.272 2693.37 827.292C2777.17 928.795 2807.21 1092.3 2792.23 1210.18" stroke="#F2F2F2" stroke-width="1.53" stroke-miterlimit="10"/>
+            <path d="M1464.3 -440.69C1586.98 -327.894 1616.73 -195.996 1562.66 -56.6986C1503.09 96.7466 1331.55 269.597 1489.92 424.491C1787.05 715.07 2442.27 506.958 2703.22 822.977C2787.02 924.481 2817.06 1087.99 2802.08 1205.87" stroke="#F2F2F2" stroke-width="1.56" stroke-miterlimit="10"/>
+            <path d="M1474.15 -444.991C1596.83 -332.195 1626.58 -200.296 1572.51 -60.9994C1512.94 92.4458 1341.4 265.296 1499.78 420.191C1796.91 710.77 2452.12 502.657 2713.07 818.676C2796.87 920.18 2826.91 1083.68 2811.91 1201.56" stroke="#F2F2F2" stroke-width="1.6" stroke-miterlimit="10"/>
+            <path d="M1484.03 -449.272C1606.7 -336.476 1636.46 -204.578 1582.38 -65.2805C1522.82 88.1647 1351.27 261.015 1509.65 415.91C1806.78 706.488 2462 498.376 2722.95 814.395C2806.75 915.899 2836.79 1079.4 2821.78 1197.28" stroke="#F2F2F2" stroke-width="1.64" stroke-miterlimit="10"/>
+            <path d="M1493.89 -453.577C1616.53 -340.781 1646.32 -208.882 1592.24 -69.5852C1532.67 83.86 1361.13 256.732 1519.51 411.605C1816.64 702.184 2471.86 494.071 2732.81 810.091C2816.61 911.594 2846.65 1075.1 2831.64 1192.98" stroke="#F2F2F2" stroke-width="1.68" stroke-miterlimit="10"/>
+            <path d="M1503.73 -457.885C1626.38 -345.089 1656.16 -213.191 1602.09 -73.8938C1542.52 79.5514 1370.98 252.423 1529.35 407.296C1826.48 697.875 2481.7 489.762 2742.65 805.782C2826.45 907.286 2856.49 1070.79 2841.51 1188.67" stroke="#F2F2F2" stroke-width="1.71" stroke-miterlimit="10"/>
+            <path d="M1513.59 -462.172C1636.26 -349.376 1666.02 -217.478 1611.94 -78.1809C1552.38 75.2643 1380.84 248.115 1539.21 403.009C1836.34 693.588 2491.56 485.475 2752.51 801.495C2836.31 902.998 2866.35 1066.5 2851.37 1184.38" stroke="#F2F2F2" stroke-width="1.75" stroke-miterlimit="10"/>
+            <path d="M1523.45 -466.477C1646.12 -353.681 1675.88 -221.783 1621.8 -82.4856C1562.24 70.9596 1390.7 243.831 1549.07 398.704C1846.2 689.283 2501.42 481.171 2762.37 797.19C2846.17 898.694 2876.21 1062.2 2861.2 1180.08" stroke="#F2F2F2" stroke-width="1.79" stroke-miterlimit="10"/>
+            <path d="M1533.33 -470.752C1656.01 -357.956 1685.76 -226.058 1631.69 -86.761C1572.12 66.6842 1400.58 239.556 1558.95 394.429C1856.08 685.008 2511.3 476.895 2772.25 792.915C2856.05 894.418 2886.09 1057.92 2871.11 1175.8" stroke="#F2F2F2" stroke-width="1.82" stroke-miterlimit="10"/>
+            <path d="M1543.17 -475.059C1665.84 -362.263 1695.6 -230.365 1641.52 -91.0676C1581.96 62.3775 1410.42 235.228 1568.79 390.122C1865.92 680.701 2521.14 472.589 2782.09 788.608C2865.89 890.112 2895.93 1053.62 2880.92 1171.5" stroke="#F2F2F2" stroke-width="1.86" stroke-miterlimit="10"/>
+            <path d="M1553.04 -479.368C1675.69 -366.571 1705.47 -234.673 1651.4 -95.3762C1591.83 58.0689 1420.29 230.919 1578.67 385.814C1875.8 676.393 2531.01 468.28 2791.96 784.3C2875.76 885.803 2905.8 1049.31 2890.83 1167.19" stroke="#F2F2F2" stroke-width="1.9" stroke-miterlimit="10"/>
+            <path d="M1562.89 -483.649C1685.56 -370.853 1715.32 -238.955 1661.24 -99.6576C1601.67 53.7876 1430.13 226.638 1588.51 381.532C1885.64 672.111 2540.86 463.999 2801.81 780.018C2885.61 881.522 2915.65 1045.03 2900.64 1162.91" stroke="#F2F2F2" stroke-width="1.94" stroke-miterlimit="10"/>
+            <path d="M1572.76 -487.96C1695.44 -375.163 1725.19 -243.265 1671.12 -103.968C1611.55 49.4772 1440.01 222.327 1598.38 377.222C1895.51 667.801 2550.73 459.688 2811.68 775.708C2895.48 877.211 2925.52 1040.72 2910.54 1158.6" stroke="#F2F2F2" stroke-width="1.97" stroke-miterlimit="10"/>
+            <path d="M1582.62 -492.235C1705.3 -379.439 1735.05 -247.54 1680.98 -108.243C1621.41 45.2018 1449.87 218.052 1608.24 372.947C1905.37 663.525 2560.59 455.413 2821.54 771.432C2905.34 872.936 2935.38 1036.44 2920.4 1154.32" stroke="#F2F2F2" stroke-width="2.01" stroke-miterlimit="10"/>
+            <path d="M1592.47 -496.54C1715.12 -383.743 1744.9 -251.845 1690.83 -112.548C1631.26 40.8971 1459.72 213.769 1618.09 368.642C1915.23 659.221 2570.44 451.108 2831.39 767.128C2915.19 868.631 2945.23 1032.14 2930.26 1150.02" stroke="#F2F2F2" stroke-width="2.05" stroke-miterlimit="10"/>
+            <path d="M1602.32 -500.844C1724.97 -388.048 1754.75 -256.15 1700.68 -116.853C1641.11 36.5924 1469.57 209.443 1627.95 364.337C1925.08 654.916 2580.29 446.803 2841.24 762.823C2925.05 864.327 2955.08 1027.83 2940.11 1145.71" stroke="#F2F2F2" stroke-width="2.08" stroke-miterlimit="10"/>
+            <path d="M1612.21 -505.135C1734.85 -392.339 1764.64 -260.441 1710.56 -121.144C1650.99 32.3014 1479.45 205.152 1637.83 360.046C1934.96 650.625 2590.18 442.512 2851.13 758.532C2934.93 860.036 2964.97 1023.54 2949.99 1141.42" stroke="#F2F2F2" stroke-width="2.12" stroke-miterlimit="10"/>
+            <path d="M1622.05 -509.43C1744.73 -396.634 1774.48 -264.736 1720.41 -125.439C1660.84 28.0064 1489.3 200.857 1647.67 355.751C1944.8 646.33 2600.02 438.217 2860.97 754.237C2944.77 855.741 2974.81 1019.25 2959.81 1137.13" stroke="#F2F2F2" stroke-width="2.16" stroke-miterlimit="10"/>
+            <path d="M1631.9 -513.745C1754.58 -400.949 1784.33 -269.05 1730.26 -129.753C1670.69 23.692 1499.15 196.542 1657.53 351.437C1954.66 642.016 2609.87 433.903 2870.82 749.923C2954.62 851.426 2984.66 1014.93 2969.66 1132.81" stroke="#F2F2F2" stroke-width="2.2" stroke-miterlimit="10"/>
+            <path d="M1641.75 -518.026C1764.43 -405.23 1794.18 -273.332 1740.11 -134.035C1680.54 19.4105 1509 192.283 1667.38 347.156C1964.51 637.734 2619.72 429.622 2880.67 745.641C2964.48 847.145 2994.51 1010.65 2979.51 1128.53" stroke="#F2F2F2" stroke-width="2.23" stroke-miterlimit="10"/>
+            <path d="M1651.61 -522.327C1774.28 -409.531 1804.04 -277.632 1749.96 -138.335C1690.39 15.1097 1518.85 187.96 1677.23 342.855C1974.36 633.434 2629.58 425.321 2890.52 741.341C2974.33 842.844 3004.37 1006.35 2989.39 1124.23" stroke="#F2F2F2" stroke-width="2.27" stroke-miterlimit="10"/>
+            <path d="M1661.49 -526.618C1784.16 -413.822 1813.92 -281.923 1759.84 -142.626C1700.28 10.8189 1528.74 183.669 1687.11 338.564C1984.24 629.143 2639.46 421.03 2900.41 737.049C2984.21 838.553 3014.25 1002.06 2999.24 1119.94" stroke="#F2F2F2" stroke-width="2.31" stroke-miterlimit="10"/>
+            <path d="M1671.35 -530.913C1794.02 -418.117 1823.78 -286.218 1769.7 -146.921C1710.14 6.52403 1538.6 179.374 1696.97 334.269C1994.1 624.848 2649.32 416.735 2910.27 732.755C2994.07 834.258 3024.11 997.763 3009.1 1115.64" stroke="#F2F2F2" stroke-width="2.35" stroke-miterlimit="10"/>
+            <path d="M1681.19 -535.227C1803.84 -422.431 1833.62 -290.533 1779.55 -151.236C1719.98 2.20957 1548.44 175.06 1706.81 329.954C2003.94 620.533 2659.16 412.421 2920.11 728.44C3003.91 829.944 3033.95 993.448 3018.97 1111.33" stroke="#F2F2F2" stroke-width="2.38" stroke-miterlimit="10"/>
+            <path d="M1691.05 -539.508C1813.7 -426.712 1843.48 -294.814 1789.41 -155.517C1729.84 -2.07168 1558.3 170.779 1716.67 325.673C2013.8 616.252 2669.02 408.139 2929.97 724.159C3013.77 825.662 3043.81 989.167 3028.83 1107.05" stroke="#F2F2F2" stroke-width="2.42" stroke-miterlimit="10"/>
+            <path d="M1700.9 -543.809C1823.55 -431.013 1853.33 -299.115 1799.26 -159.818C1739.69 -6.37246 1568.15 166.478 1726.52 321.372C2023.66 611.951 2678.87 403.839 2939.82 719.858C3023.62 821.362 3053.66 984.866 3038.69 1102.75" stroke="#F2F2F2" stroke-width="2.46" stroke-miterlimit="10"/>
+            <path d="M1710.79 -548.108C1833.43 -435.312 1863.21 -303.413 1809.14 -164.116C1749.57 -10.6713 1578.03 162.179 1736.41 317.074C2033.54 607.652 2688.75 399.54 2949.7 715.559C3033.51 817.063 3063.54 980.568 3048.57 1098.45" stroke="#F2F2F2" stroke-width="2.49" stroke-miterlimit="10"/>
+            <path d="M1720.64 -552.389C1843.31 -439.593 1873.07 -307.695 1818.99 -168.398C1759.42 -14.9525 1587.88 157.898 1746.26 312.792C2043.39 603.371 2698.61 395.258 2959.56 711.278C3043.36 812.782 3073.4 976.286 3058.42 1094.17" stroke="#F2F2F2" stroke-width="2.53" stroke-miterlimit="10"/>
+            <path d="M1730.49 -556.704C1853.16 -443.907 1882.92 -312.009 1828.84 -172.712C1769.28 -19.2669 1597.73 153.605 1756.11 308.478C2053.24 599.057 2708.46 390.944 2969.41 706.964C3053.21 808.467 3083.25 971.972 3068.27 1089.85" stroke="#F2F2F2" stroke-width="2.57" stroke-miterlimit="10"/>
+            <path d="M1740.33 -561.005C1862.98 -448.209 1892.76 -316.31 1838.69 -177.013C1779.12 -23.568 1607.58 149.282 1765.96 304.177C2063.09 594.756 2718.3 386.643 2979.25 702.663C3063.05 804.166 3093.09 967.671 3078.09 1085.55" stroke="#F2F2F2" stroke-width="2.61" stroke-miterlimit="10"/>
+            <path d="M1750.22 -565.286C1872.89 -452.49 1902.65 -320.591 1848.57 -181.294C1789 -27.849 1617.46 145.023 1775.84 299.896C2072.97 590.475 2728.19 382.362 2989.13 698.382C3072.94 799.885 3102.98 963.39 3087.97 1081.27" stroke="#F2F2F2" stroke-width="2.64" stroke-miterlimit="10"/>
+            <path d="M1760.08 -569.6C1882.76 -456.804 1912.51 -324.906 1858.44 -185.609C1798.87 -32.1635 1627.33 140.687 1785.7 295.581C2082.83 586.16 2738.05 378.047 2999 694.067C3082.8 795.571 3112.84 959.075 3097.86 1076.96" stroke="#F2F2F2" stroke-width="2.68" stroke-miterlimit="10"/>
+            <path d="M1769.93 -573.876C1892.61 -461.079 1922.36 -329.181 1868.29 -189.884C1808.72 -36.4389 1637.18 136.433 1795.56 291.306C2092.69 581.885 2747.9 373.772 3008.85 689.792C3092.65 791.295 3122.69 954.8 3107.72 1072.68" stroke="#F2F2F2" stroke-width="2.72" stroke-miterlimit="10"/>
+            <path d="M1779.77 -578.186C1902.42 -465.39 1932.2 -333.492 1878.12 -194.195C1818.56 -40.7494 1647.02 132.122 1805.39 286.995C2102.52 577.574 2757.74 369.462 3018.69 685.481C3102.49 786.985 3132.53 950.489 3117.55 1068.37" stroke="#F2F2F2" stroke-width="2.75" stroke-miterlimit="10"/>
+            <path d="M1789.64 -582.491C1912.28 -469.695 1942.07 -337.796 1887.99 -198.499C1828.42 -45.0541 1656.88 127.818 1815.26 282.691C2112.39 573.27 2767.61 365.157 3028.56 681.177C3112.36 782.68 3142.4 946.185 3127.42 1064.06" stroke="#F2F2F2" stroke-width="2.79" stroke-miterlimit="10"/>
+            <path d="M1799.54 -586.772C1922.18 -473.976 1951.97 -342.078 1897.89 -202.781C1838.32 -49.3353 1666.78 123.537 1825.16 278.41C2122.29 568.988 2777.5 360.876 3038.45 676.895C3122.26 778.399 3152.29 941.903 3137.32 1059.78" stroke="#F2F2F2" stroke-width="2.83" stroke-miterlimit="10"/>
+            <path d="M1809.37 -591.086C1932.05 -478.29 1961.8 -346.392 1907.73 -207.095C1848.16 -53.6498 1676.62 119.222 1834.99 274.095C2132.12 564.674 2787.34 356.561 3048.29 672.581C3132.09 774.084 3162.13 937.589 3147.15 1055.47" stroke="#F2F2F2" stroke-width="2.87" stroke-miterlimit="10"/>
+            <path d="M1819.23 -595.368C1941.88 -482.572 1971.66 -350.673 1917.59 -211.376C1858.02 -57.9313 1686.48 114.941 1844.85 269.814C2141.98 560.393 2797.2 352.28 3058.15 668.3C3141.95 769.803 3171.99 933.308 3156.99 1051.19" stroke="#F2F2F2" stroke-width="2.9" stroke-miterlimit="10"/>
+            <path d="M1829.08 -599.663C1951.75 -486.867 1981.51 -354.968 1927.43 -215.671C1867.86 -62.2262 1696.32 110.624 1854.7 265.519C2151.83 556.098 2807.04 347.985 3067.99 664.005C3151.8 765.508 3181.83 929.013 3166.83 1046.89" stroke="#F2F2F2" stroke-width="2.94" stroke-miterlimit="10"/>
+            <path d="M1838.93 -603.977C1961.6 -491.181 1991.36 -359.283 1937.28 -219.986C1877.71 -66.5404 1706.17 106.332 1864.55 261.204C2161.68 551.783 2816.9 343.671 3077.84 659.69C3161.65 761.194 3191.69 924.698 3176.71 1042.58" stroke="#F2F2F2" stroke-width="2.98" stroke-miterlimit="10"/>
+            <path d="M1848.81 -608.254C1971.46 -495.458 2001.24 -363.56 1947.16 -224.263C1887.6 -70.8178 1716.06 102.054 1874.43 256.927C2171.56 547.506 2826.78 339.393 3087.73 655.413C3171.53 756.916 3201.57 920.421 3186.56 1038.3" stroke="#F2F2F2" stroke-width="3.02" stroke-miterlimit="10"/>
+            <path d="M1858.66 -612.559C1981.34 -499.763 2011.09 -367.865 1957.02 -228.568C1897.45 -75.1225 1725.91 97.7494 1884.28 252.622C2181.41 543.201 2836.63 335.089 3097.58 651.108C3181.38 752.612 3211.42 916.116 3196.42 1034" stroke="#F2F2F2" stroke-width="3.05" stroke-miterlimit="10"/>
+            <path d="M1868.52 -616.86C1991.17 -504.064 2020.95 -372.165 1966.87 -232.868C1907.31 -79.4232 1735.77 93.4487 1894.14 248.322C2191.27 538.9 2846.49 330.788 3107.44 646.807C3191.24 748.311 3221.28 911.816 3206.3 1029.7" stroke="#F2F2F2" stroke-width="3.09" stroke-miterlimit="10"/>
+            <path d="M1878.36 -621.151C2001.01 -508.355 2030.79 -376.456 1976.72 -237.159C1917.15 -83.7143 1745.61 89.136 1903.99 244.031C2201.12 534.609 2856.33 326.497 3117.28 642.516C3201.08 744.02 3231.12 907.525 3216.15 1025.4" stroke="#F2F2F2" stroke-width="3.13" stroke-miterlimit="10"/>
+            <path d="M1888.25 -625.45C2010.9 -512.654 2040.68 -380.755 1986.61 -241.458C1927.04 -88.0131 1755.5 84.8372 1913.88 239.732C2211.01 530.311 2866.22 322.198 3127.17 638.217C3210.97 739.721 3241.01 903.226 3226.04 1021.11" stroke="#F2F2F2" stroke-width="3.16" stroke-miterlimit="10"/>
+            <path d="M1898.1 -629.741C2020.74 -516.945 2050.53 -385.046 1996.45 -245.749C1936.88 -92.3041 1765.34 80.5461 1923.72 235.441C2220.85 526.019 2876.07 317.907 3137.02 633.926C3220.82 735.43 3250.86 898.935 3235.88 1016.81" stroke="#F2F2F2" stroke-width="3.2" stroke-miterlimit="10"/>
+            <path d="M1907.95 -634.045C2030.6 -521.249 2060.38 -389.351 2006.3 -250.054C1946.74 -96.6087 1775.2 76.2631 1933.57 231.136C2230.7 521.715 2885.92 313.602 3146.87 629.622C3230.67 731.125 3260.71 894.63 3245.73 1012.51" stroke="#F2F2F2" stroke-width="3.24" stroke-miterlimit="10"/>
+            <path d="M1917.8 -638.343C2040.48 -525.546 2070.23 -393.648 2016.16 -254.351C1956.59 -100.906 1785.05 71.9445 1943.42 226.839C2240.55 517.418 2895.77 309.305 3156.72 625.325C3240.52 726.828 3270.56 890.333 3255.58 1008.21" stroke="#F2F2F2" stroke-width="3.28" stroke-miterlimit="10"/>
+            <path d="M1927.69 -642.628C2050.37 -529.832 2080.12 -397.933 2026.05 -258.636C1966.48 -105.191 1794.94 67.6593 1953.31 222.554C2250.45 513.133 2905.66 305.02 3166.61 621.04C3250.41 722.543 3280.45 886.048 3265.45 1003.93" stroke="#F2F2F2" stroke-width="3.31" stroke-miterlimit="10"/>
+            <path d="M1937.55 -646.936C2060.2 -534.14 2089.98 -402.242 2035.91 -262.945C1976.34 -109.499 1804.8 63.351 1963.17 218.246C2260.3 508.824 2915.52 300.712 3176.47 616.731C3260.27 718.235 3290.31 881.739 3275.33 999.619" stroke="#F2F2F2" stroke-width="3.35" stroke-miterlimit="10"/>
+            <path d="M1947.39 -651.237C2070.07 -538.441 2099.82 -406.542 2045.75 -267.245C1986.18 -113.8 1814.64 59.0501 1973.02 213.945C2270.15 504.523 2925.36 296.411 3186.31 612.43C3270.12 713.934 3300.15 877.439 3285.18 995.319" stroke="#F2F2F2" stroke-width="3.39" stroke-miterlimit="10"/>
+            <path d="M1957.25 -655.528C2079.92 -542.732 2109.68 -410.833 2055.6 -271.536C1996.03 -118.091 1824.49 54.7591 1982.87 209.654C2280 500.232 2935.22 292.12 3196.17 608.139C3279.97 709.643 3310.01 873.148 3295 991.028" stroke="#F2F2F2" stroke-width="3.42" stroke-miterlimit="10"/>
+            <path d="M1967.09 -659.829C2089.74 -547.033 2119.52 -415.134 2065.45 -275.837C2005.88 -122.392 1834.34 50.4583 1992.71 205.353C2289.84 495.932 2945.06 287.819 3206.01 603.839C3289.81 705.342 3319.85 868.847 3304.85 986.727" stroke="#F2F2F2" stroke-width="3.46" stroke-miterlimit="10"/>
+            <path d="M1976.97 -664.133C2099.62 -551.337 2129.4 -419.439 2075.33 -280.142C2015.76 -126.697 1844.22 46.1536 2002.59 201.048C2299.73 491.627 2954.94 283.514 3215.89 599.534C3299.69 701.037 3329.73 864.542 3314.76 982.422" stroke="#F2F2F2" stroke-width="3.5" stroke-miterlimit="10"/>
+            <path d="M1986.82 -668.424C2109.47 -555.628 2139.25 -423.73 2085.18 -284.433C2025.61 -130.988 1854.07 41.8626 2012.45 196.757C2309.58 487.336 2964.79 279.223 3225.74 595.243C3309.55 696.746 3339.58 860.251 3324.61 978.131" stroke="#F2F2F2" stroke-width="3.54" stroke-miterlimit="10"/>
+            <path d="M1996.68 -672.723C2119.32 -559.927 2149.11 -428.029 2095.03 -288.732C2035.46 -135.286 1863.92 37.5854 2022.3 192.458C2319.43 483.037 2974.65 274.925 3235.59 590.944C3319.4 692.448 3349.44 855.952 3334.46 973.832" stroke="#F2F2F2" stroke-width="3.57" stroke-miterlimit="10"/>
+            <path d="M2006.54 -677.001C2129.19 -564.205 2158.97 -432.306 2104.9 -293.009C2045.33 -139.564 1873.79 33.3079 2032.17 188.181C2329.3 478.76 2984.51 270.647 3245.46 586.667C3329.26 688.17 3359.3 851.675 3344.33 969.555" stroke="#F2F2F2" stroke-width="3.61" stroke-miterlimit="10"/>
+            <path d="M2016.43 -681.309C2139.1 -568.513 2168.86 -436.615 2114.78 -297.318C2055.21 -143.873 1883.67 28.9777 2042.05 183.872C2339.18 474.451 2994.4 266.338 3255.34 582.358C3339.15 683.862 3369.19 847.366 3354.21 965.246" stroke="#F2F2F2" stroke-width="3.65" stroke-miterlimit="10"/>
+            <path d="M2026.26 -685.616C2148.94 -572.82 2178.69 -440.922 2124.62 -301.625C2065.05 -148.179 1893.51 24.6927 2051.88 179.566C2349.01 470.145 3004.23 262.032 3265.18 578.051C3348.98 679.555 3379.02 843.06 3364.04 960.94" stroke="#F2F2F2" stroke-width="3.69" stroke-miterlimit="10"/>
+            <path d="M2036.11 -689.905C2158.76 -577.109 2188.54 -445.21 2134.47 -305.913C2074.9 -152.468 1903.36 20.4037 2061.74 175.277C2358.87 465.855 3014.08 257.743 3275.03 573.762C3358.83 675.266 3388.87 838.771 3373.9 956.651" stroke="#F2F2F2" stroke-width="3.72" stroke-miterlimit="10"/>
+            <path d="M2045.97 -694.206C2168.61 -581.409 2198.4 -449.511 2144.32 -310.214C2084.75 -156.769 1913.21 16.103 2071.59 170.976C2368.72 461.555 3023.94 253.442 3284.88 569.462C3368.69 670.965 3398.73 834.47 3383.72 952.35" stroke="#F2F2F2" stroke-width="3.76" stroke-miterlimit="10"/>
+            <path d="M2055.82 -698.516C2178.5 -585.72 2208.25 -453.822 2154.18 -314.525C2094.61 -161.079 1923.07 11.7708 2081.45 166.665C2378.58 457.244 3033.79 249.132 3294.74 565.151C3378.55 666.655 3408.58 830.159 3393.61 948.039" stroke="#F2F2F2" stroke-width="3.8" stroke-miterlimit="10"/>
+            <path d="M2065.69 -702.795C2188.34 -589.999 2218.12 -458.101 2164.05 -318.804C2104.48 -165.359 1932.94 7.49148 2091.31 162.386C2388.44 452.965 3043.66 244.852 3304.61 560.872C3388.41 662.375 3418.45 825.88 3403.47 943.76" stroke="#F2F2F2" stroke-width="3.83" stroke-miterlimit="10"/>
+            <path d="M2075.56 -707.102C2198.2 -594.306 2227.99 -462.407 2173.91 -323.11C2114.35 -169.665 1942.81 3.18484 2101.18 158.079C2398.31 448.658 3053.53 240.546 3314.48 556.565C3398.28 658.069 3428.32 821.573 3413.34 939.453" stroke="#F2F2F2" stroke-width="3.87" stroke-miterlimit="10"/>
+            <path d="M2085.41 -711.381C2208.06 -598.585 2237.84 -466.687 2183.76 -327.39C2124.2 -173.945 1952.66 -1.07282 2111.03 153.8C2408.16 444.379 3063.38 236.266 3324.33 552.286C3408.13 653.789 3438.17 817.294 3423.19 935.174" stroke="#F2F2F2" stroke-width="3.91" stroke-miterlimit="10"/>
+            <path d="M2095.25 -715.688C2217.9 -602.892 2247.68 -470.994 2193.61 -331.697C2134.04 -178.252 1962.5 -5.4012 2120.88 149.493C2418.01 440.072 3073.22 231.96 3334.17 547.979C3417.97 649.483 3448.01 812.987 3433.04 930.867" stroke="#F2F2F2" stroke-width="3.95" stroke-miterlimit="10"/>
+            <path d="M2105.14 -719.993C2227.81 -607.197 2257.57 -475.298 2203.49 -336.001C2143.92 -182.556 1972.38 -9.70589 2130.76 145.189C2427.89 435.768 3083.11 227.655 3344.06 543.675C3427.86 645.178 3457.9 808.683 3442.92 926.563" stroke="#F2F2F2" stroke-width="3.98" stroke-miterlimit="10"/>
+            <path d="M2114.99 -724.274C2237.66 -611.478 2267.42 -479.579 2213.34 -340.282C2153.78 -186.837 1982.23 -13.9869 2140.61 140.908C2437.74 431.486 3092.96 223.374 3353.91 539.393C3437.71 640.897 3467.75 804.402 3452.77 922.281" stroke="#F2F2F2" stroke-width="4.02" stroke-miterlimit="10"/>
+            <path d="M2124.86 -728.583C2247.5 -615.786 2277.29 -483.888 2223.21 -344.591C2163.64 -191.146 1992.1 -18.274 2150.48 136.599C2447.61 427.178 3102.83 219.065 3363.77 535.085C3447.58 636.588 3477.62 800.093 3462.64 917.973" stroke="#F2F2F2" stroke-width="4.06" stroke-miterlimit="10"/>
+            <path d="M2134.71 -732.883C2257.35 -620.087 2287.14 -488.189 2233.06 -348.892C2173.49 -195.447 2001.95 -22.5748 2160.33 132.298C2457.46 422.877 3112.68 214.764 3373.63 530.784C3457.43 632.287 3487.47 795.792 3472.49 913.672" stroke="#F2F2F2" stroke-width="4.1" stroke-miterlimit="10"/>
+            <path d="M2144.58 -737.165C2267.22 -624.368 2297.01 -492.47 2242.93 -353.173C2183.36 -199.728 2011.82 -26.8777 2170.2 128.017C2467.33 418.596 3122.54 210.483 3383.49 526.503C3467.3 628.006 3497.33 791.511 3482.33 909.391" stroke="#F2F2F2" stroke-width="4.13" stroke-miterlimit="10"/>
+            <path d="M2154.44 -741.479C2277.09 -628.683 2306.87 -496.785 2252.8 -357.488C2193.23 -204.042 2021.69 -31.1921 2180.06 123.702C2477.19 414.281 3132.41 206.169 3393.36 522.188C3477.16 623.692 3507.2 787.196 3492.22 905.076" stroke="#F2F2F2" stroke-width="4.17" stroke-miterlimit="10"/>
+            <path d="M2164.29 -745.76C2286.96 -632.964 2316.72 -501.066 2262.64 -361.769C2203.07 -208.323 2031.53 -35.4734 2189.91 119.421C2487.04 410 3142.25 201.887 3403.2 517.907C3487.01 619.411 3517.04 782.915 3502.07 900.795" stroke="#F2F2F2" stroke-width="4.21" stroke-miterlimit="10"/>
+            <path d="M2174.14 -750.069C2296.78 -637.273 2326.57 -505.374 2272.49 -366.077C2212.92 -212.632 2041.38 -39.782 2199.76 115.113C2496.89 405.691 3152.11 197.579 3413.06 513.598C3496.86 615.102 3526.9 778.607 3511.92 896.487" stroke="#F2F2F2" stroke-width="4.24" stroke-miterlimit="10"/>
+            <path d="M2183.99 -754.376C2306.63 -641.58 2336.42 -509.681 2282.34 -370.384C2222.78 -216.939 2051.23 -44.0887 2209.61 110.806C2506.74 401.385 3161.96 193.272 3422.91 509.292C3506.71 610.795 3536.75 774.3 3521.77 892.18" stroke="#F2F2F2" stroke-width="4.28" stroke-miterlimit="10"/>
+            <path d="M2193.87 -758.651C2316.52 -645.855 2346.3 -513.957 2292.23 -374.66C2232.66 -221.215 2061.12 -48.3641 2219.49 106.531C2516.62 397.109 3171.84 188.997 3432.79 505.016C3516.59 606.52 3546.63 770.025 3531.65 887.905" stroke="#F2F2F2" stroke-width="4.32" stroke-miterlimit="10"/>
+            <path d="M2203.74 -762.956C2326.41 -650.16 2356.17 -518.261 2302.09 -378.964C2242.53 -225.519 2070.98 -52.6471 2229.36 102.226C2526.49 392.805 3181.71 184.692 3442.66 500.711C3526.46 602.215 3556.5 765.72 3541.52 883.6" stroke="#F2F2F2" stroke-width="4.36" stroke-miterlimit="10"/>
+            <path d="M2213.57 -767.247C2336.25 -654.45 2366 -522.552 2311.93 -383.255C2252.36 -229.81 2080.82 -56.9597 2239.2 97.9349C2536.33 388.514 3191.54 180.401 3452.49 496.421C3536.3 597.924 3566.33 761.429 3551.36 879.309" stroke="#F2F2F2" stroke-width="4.39" stroke-miterlimit="10"/>
+            <path d="M2223.43 -771.542C2346.08 -658.745 2375.86 -526.847 2321.79 -387.55C2262.22 -234.105 2090.68 -61.2546 2249.06 93.64C2546.19 384.219 3201.4 176.106 3462.35 492.126C3546.15 593.629 3576.19 757.134 3561.22 875.014" stroke="#F2F2F2" stroke-width="4.43" stroke-miterlimit="10"/>
+            <path d="M2233.28 -775.856C2355.92 -663.06 2385.71 -531.161 2331.63 -391.865C2272.06 -238.419 2100.52 -65.5691 2258.9 89.3255C2556.03 379.904 3211.25 171.792 3472.2 487.811C3556 589.315 3586.04 752.819 3571.06 870.699" stroke="#F2F2F2" stroke-width="4.47" stroke-miterlimit="10"/>
+            <path d="M2243.17 -780.124C2365.84 -667.327 2395.6 -535.429 2341.52 -396.132C2281.95 -242.687 2110.41 -69.8366 2268.79 85.0579C2565.92 375.637 3221.14 167.524 3482.09 483.544C3565.89 585.047 3595.93 748.552 3580.95 866.432" stroke="#F2F2F2" stroke-width="4.5" stroke-miterlimit="10"/>
+            <path d="M2253.02 -784.438C2375.67 -671.642 2405.45 -539.743 2351.37 -400.446C2291.81 -247.001 2120.27 -74.1511 2278.64 80.7435C2575.77 371.322 3230.99 163.21 3491.94 479.229C3575.74 580.733 3605.78 744.237 3590.8 862.117" stroke="#F2F2F2" stroke-width="4.54" stroke-miterlimit="10"/>
+            <path d="M2262.87 -788.739C2385.52 -675.943 2415.3 -544.044 2361.23 -404.747C2301.66 -251.302 2130.12 -78.4302 2288.49 76.4427C2585.62 367.022 3240.84 158.909 3501.79 474.928C3585.59 576.432 3615.63 739.937 3600.65 857.817" stroke="#F2F2F2" stroke-width="4.58" stroke-miterlimit="10"/>
+            <path d="M2272.72 -793.024C2395.37 -680.228 2425.15 -548.33 2371.08 -409.033C2311.51 -255.588 2139.97 -82.7155 2298.34 72.1575C2595.48 362.736 3250.69 154.624 3511.64 470.643C3595.44 572.147 3625.48 735.651 3610.51 853.531" stroke="#F2F2F2" stroke-width="4.62" stroke-miterlimit="10"/>
+            <path d="M2282.6 -797.335C2405.24 -684.539 2435.03 -552.64 2380.95 -413.343C2321.38 -259.898 2149.84 -87.0477 2308.22 67.8469C2605.35 358.426 3260.57 150.313 3521.52 466.333C3605.32 567.836 3635.36 731.341 3620.38 849.221" stroke="#F2F2F2" stroke-width="4.65" stroke-miterlimit="10"/>
+            <path d="M2292.45 -801.634C2415.1 -688.838 2444.88 -556.939 2390.8 -417.642C2331.24 -264.197 2159.7 -91.3465 2318.07 63.5481C2615.2 354.127 3270.42 146.014 3531.37 462.034C3615.17 563.537 3645.21 727.042 3630.23 844.922" stroke="#F2F2F2" stroke-width="4.69" stroke-miterlimit="10"/>
+            <path d="M2302.29 -805.92C2424.94 -693.124 2454.72 -561.226 2400.65 -421.929C2341.08 -268.484 2169.54 -95.6335 2327.92 59.2611C2625.05 349.84 3280.26 141.727 3541.21 457.747C3625.01 559.25 3655.05 722.755 3640.05 840.635" stroke="#F2F2F2" stroke-width="4.73" stroke-miterlimit="10"/>
+            <path d="M2312.15 -810.225C2434.8 -697.429 2464.58 -565.531 2410.51 -426.234C2350.94 -272.788 2179.4 -99.9166 2337.77 54.9564C2634.91 345.535 3290.12 137.423 3551.07 453.442C3634.87 554.946 3664.91 718.45 3649.94 836.33" stroke="#F2F2F2" stroke-width="4.77" stroke-miterlimit="10"/>
+            <path d="M2322 -814.501C2444.64 -701.704 2474.43 -569.806 2420.35 -430.509C2360.78 -277.064 2189.24 -104.214 2347.62 50.681C2644.75 341.26 3299.97 133.147 3560.91 449.167C3644.72 550.67 3674.76 714.175 3659.78 832.055" stroke="#F2F2F2" stroke-width="4.8" stroke-miterlimit="10"/>
+            <path d="M2331.89 -818.815C2454.54 -706.019 2484.32 -574.12 2430.25 -434.823C2370.68 -281.378 2199.14 -108.528 2357.52 46.3665C2654.65 336.945 3309.86 128.833 3570.81 444.852C3654.62 546.356 3684.65 709.86 3669.68 827.74" stroke="#F2F2F2" stroke-width="4.84" stroke-miterlimit="10"/>
+            <path d="M2341.75 -823.116C2464.39 -710.32 2494.18 -578.421 2440.1 -439.124C2380.53 -285.679 2208.99 -112.829 2367.37 42.0658C2664.5 332.645 3319.72 124.532 3580.67 440.551C3664.47 542.055 3694.51 705.56 3679.5 823.44" stroke="#F2F2F2" stroke-width="4.88" stroke-miterlimit="10"/>
+            <path d="M2351.6 -827.397C2474.27 -714.601 2504.03 -582.702 2449.95 -443.405C2390.38 -289.96 2218.84 -117.11 2377.22 37.7845C2674.35 328.363 3329.57 120.251 3590.52 436.27C3674.32 537.774 3704.36 701.278 3689.38 819.158" stroke="#F2F2F2" stroke-width="4.91" stroke-miterlimit="10"/>
+            <path d="M2361.45 -831.712C2484.1 -718.916 2513.88 -587.017 2459.8 -447.72C2400.24 -294.275 2228.7 -121.425 2387.07 33.47C2684.2 324.049 3339.42 115.936 3600.37 431.956C3684.17 533.459 3714.21 696.964 3699.23 814.844" stroke="#F2F2F2" stroke-width="4.95" stroke-miterlimit="10"/>
+            <path d="M2371.33 -836.007C2493.98 -723.211 2523.76 -591.312 2469.69 -452.015C2410.12 -298.57 2238.58 -125.72 2396.95 29.175C2694.08 319.754 3349.3 111.641 3610.25 427.661C3694.05 529.164 3724.09 692.669 3709.11 810.549" stroke="#F2F2F2" stroke-width="4.99" stroke-miterlimit="10"/>
+            <path d="M2381.18 -840.302C2503.86 -727.505 2533.61 -595.607 2479.54 -456.31C2419.97 -302.865 2248.43 -130.014 2406.81 24.8801C2703.94 315.459 3359.15 107.346 3620.1 423.366C3703.9 524.869 3733.94 688.374 3718.97 806.254" stroke="#F2F2F2" stroke-width="5.03" stroke-miterlimit="10"/>
+            <path d="M2391.03 -844.598C2513.67 -731.802 2543.46 -599.904 2489.38 -460.607C2429.81 -307.162 2258.27 -134.311 2416.65 20.5833C2713.78 311.162 3369 103.05 3629.95 419.069C3713.75 520.573 3743.79 684.077 3728.81 801.957" stroke="#F2F2F2" stroke-width="5.06" stroke-miterlimit="10"/>
+            <path d="M2400.89 -848.879C2523.53 -736.083 2553.32 -604.185 2499.24 -464.888C2439.67 -311.443 2268.13 -138.571 2426.51 16.3021C2723.64 306.881 3378.86 98.7683 3639.81 414.788C3723.61 516.291 3753.65 679.796 3738.64 797.676" stroke="#F2F2F2" stroke-width="5.1" stroke-miterlimit="10"/>
+            <path d="M2410.74 -853.194C2533.41 -740.398 2563.17 -608.499 2509.09 -469.202C2449.53 -315.757 2277.99 -142.907 2436.36 11.9876C2733.49 302.566 3388.71 94.4538 3649.66 410.473C3733.46 511.977 3763.5 675.482 3748.49 793.362" stroke="#F2F2F2" stroke-width="5.14" stroke-miterlimit="10"/>
+            <path d="M2420.61 -857.493C2543.26 -744.697 2573.04 -612.798 2518.97 -473.501C2459.4 -320.056 2287.86 -147.206 2446.24 7.6888C2743.37 298.268 3398.58 90.155 3659.53 406.175C3743.33 507.678 3773.37 671.183 3758.4 789.063" stroke="#F2F2F2" stroke-width="5.17" stroke-miterlimit="10"/>
+            <path d="M2430.48 -861.774C2553.13 -748.978 2582.91 -617.079 2528.84 -477.782C2469.27 -324.337 2297.73 -151.487 2456.1 3.40755C2753.23 293.986 3408.45 85.8737 3669.4 401.893C3753.2 503.397 3783.24 666.902 3768.26 784.781" stroke="#F2F2F2" stroke-width="5.21" stroke-miterlimit="10"/>
+            <path d="M2440.32 -866.075C2562.97 -753.278 2592.75 -621.38 2538.68 -482.083C2479.11 -328.638 2307.57 -155.788 2465.95 -0.893229C2763.08 289.686 3418.29 81.5729 3679.24 397.593C3763.05 499.096 3793.08 662.601 3778.11 780.481" stroke="#F2F2F2" stroke-width="5.25" stroke-miterlimit="10"/>
+        </g>
+    </g>
+    <defs>
+        <clipPath id="clip0_3596_51128">
+            <rect width="2400" height="1298" fill="white" transform="translate(2400 1298) rotate(180)"/>
+        </clipPath>
+    </defs>
+</svg>
+        </div>
+        <div class="columns columns-0 --2">
+            <div class="item">
+                <div class="text-block-left">
+                    <div class="title display --2xlarge --fill"  data-desktop>Your best partner
+</div>                    <div class="wysiwyg text --xlarge --bold"><p>Tresmares seeks SMEs that are leaders in their markets and provides them with flexible financial solutions to support their growth.</p>
+</div>                </div>
+                                    <div class="image-group" data-desktop>
+                                                    <div class="image --cover --color"><img width="640" height="440" src="/assets/www.tresmarescapital.com/c3b0717c1e-6005508_Person_Human_3840x2160.jpg" alt=""></div>                                            </div>
+                            </div>
+            <div class="item">
+                <div class="clip">
+                    <div class="video media --color" style="aspect-ratio: 1.7777777777778;"><video preload="metadata" autoplay-onscroll loop playsinline muted poster="/assets/www.tresmarescapital.com/f1e082beb7-businesswoman-talking-mobile-phone-while-standing-by-helicopter-sunny-day.jpg"><source src="/assets/www.tresmarescapital.com/2afa539f0d-about-hero.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>                    <div class="text-block-left">
+                        <div class="title display --2xlarge --fill"  data-desktop>Your best partner
+</div>                        <div class="wysiwyg text --xlarge --bold"><p>Tresmares seeks SMEs that are leaders in their markets and provides them with flexible financial solutions to support their growth.</p>
+</div>                    </div>
+                </div>
+                <div class="wysiwyg text --large"><p>At Tresmares, we view financing as a tool tailored to the needs of each SME or fund manager, with flexible terms specifically designed for every situation. That’s why we seek the best customized financing solutions for each client—to accelerate growth, improve operational efficiency, or optimize capital structure.</p>
+<p>Our support goes beyond mere financing. We take a long-term view of our clients’ needs, objectives, and the trends in their sector, making us a stable and strategic partner.</p>
+</div>            </div>
+        </div>
+        <div class="columns columns-1">
+            <div class="text-block-left">
+                <div class="title display --large --fill" >We operate with a service-oriented mindset, supported by a team guided by well-defined corporate values.
+</div>            </div>
+        </div>
+    </div>
+</section>
+
+            
+                                
+                
+<section class="component component--contentscrollbg"  data-component="contentscrollbg">
+    
+    <div class="container --full" autoplay-onscroll-parent>
+        <div class="video-group">
+            <div class="video --cover --color" ><video preload="metadata" autoplay-onscroll loop playsinline muted poster=""><source src="/assets/www.tresmarescapital.com/fffcf72f3b-nosotros_innovarion_01_1.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="overlay --40"></div></div><div class="video --cover --color" ><video preload="metadata" autoplay-onscroll loop playsinline muted poster=""><source src="/assets/www.tresmarescapital.com/e3a5cb96a2-nosotros_innovation_02.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="overlay --40"></div></div><div class="video --cover --color" ><video preload="metadata" autoplay-onscroll loop playsinline muted poster=""><source src="/assets/www.tresmarescapital.com/32a8f43c93-nosotros_innovation_01.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="overlay --50"></div></div>        </div>
+        <div class="content">
+                            <div class="group">
+                    <div class="title display --large --na" >Tresmares is founded as a digital-native merchant bank
+</div>                                    </div>
+                            <div class="group">
+                    <div class="title display --large --na" >We originate with artificial intelligence, operate with automated processes, and scale with data
+</div>                                    </div>
+                            <div class="group">
+                    <div class="title display --large --na" >Our business model blends private equity tradition — relationships, commitment, long-term vision — with technology, enabling us to:
+</div>                                            <div class="columns">
+                                                            <div class="item">
+                                    <div class="image " style="aspect-ratio: 1;"><img width="60" height="60" src="/assets/www.tresmarescapital.com/2dd34d3537-Frame-1410105566.svg" alt=""></div>                                    <div class="wysiwyg text --large"><p>Originate thoroughly and in a targeted manner using AI, identifying opportunities and market niches ahead of our competitors.</p>
+</div>                                </div>
+                                                            <div class="item">
+                                    <div class="image " style="aspect-ratio: 1;"><img width="60" height="60" src="/assets/www.tresmarescapital.com/872d5f3f19-Frame-1410105567.svg" alt=""></div>                                    <div class="wysiwyg text --large"><p>Operate with best-in-class standards through automation, ensuring efficiency, transparency, and consistency across the client–manager–investor process.</p>
+</div>                                </div>
+                                                            <div class="item">
+                                    <div class="image " style="aspect-ratio: 1;"><img width="60" height="60" src="/assets/www.tresmarescapital.com/3939872504-Frame-1410105566-1.svg" alt=""></div>                                    <div class="wysiwyg text --large"><p>Scale the business model through data and technology, expanding reach without sacrificing personalization.</p>
+</div>                                </div>
+                                                    </div>
+                                    </div>
+                    </div>
+    </div>
+</section>
+
+            
+        
+        
+<footer id="footer" class="footer" data-component="footer">
+    <div class="container --full">
+        <div class="columns --top">
+            <div class="item first">
+                <div class="text-block-center">
+                    <div class="title display --large --fill" >The opportunity to create, grow, and look ahead</div>                    <div class="actions">
+                        <a href="/en/contact/" class="link --primary"><div class="text">Contact us</div></a>                    </div>
+                </div>
+                <div class="carousel">
+                    <div class="inner">
+                                                                                    <div class="item">
+                                    <div class="image --cover "><img width="200" height="298" src="/assets/www.tresmarescapital.com/7d311be483-contact-image-200x298.jpg" data-src="/assets/www.tresmarescapital.com/bf653306c1-contact-image.jpg" alt=""></div>                                </div>
+                                                            <div class="item">
+                                    <div class="image --cover "><img width="120" height="240" src="/assets/www.tresmarescapital.com/3a8e3ad8ab-05footer.jpg" data-src="/assets/www.tresmarescapital.com/3a8e3ad8ab-05footer.jpg" alt=""></div>                                </div>
+                                                            <div class="item">
+                                    <div class="image --cover "><img width="120" height="240" src="/assets/www.tresmarescapital.com/8e5f4601c9-03footer.jpg" data-src="/assets/www.tresmarescapital.com/8e5f4601c9-03footer.jpg" alt=""></div>                                </div>
+                                                            <div class="item">
+                                    <div class="image --cover "><img width="200" height="200" src="/assets/www.tresmarescapital.com/8a97cfc8b7-02footer-200x200.jpg" data-src="/assets/www.tresmarescapital.com/567a502922-02footer.jpg" alt=""></div>                                </div>
+                                                                                                                <div class="item">
+                                    <div class="image --cover "><img width="200" height="298" src="/assets/www.tresmarescapital.com/7d311be483-contact-image-200x298.jpg" data-src="/assets/www.tresmarescapital.com/bf653306c1-contact-image.jpg" alt=""></div>                                </div>
+                                                            <div class="item">
+                                    <div class="image --cover "><img width="120" height="240" src="/assets/www.tresmarescapital.com/3a8e3ad8ab-05footer.jpg" data-src="/assets/www.tresmarescapital.com/3a8e3ad8ab-05footer.jpg" alt=""></div>                                </div>
+                                                            <div class="item">
+                                    <div class="image --cover "><img width="120" height="240" src="/assets/www.tresmarescapital.com/8e5f4601c9-03footer.jpg" data-src="/assets/www.tresmarescapital.com/8e5f4601c9-03footer.jpg" alt=""></div>                                </div>
+                                                            <div class="item">
+                                    <div class="image --cover "><img width="200" height="200" src="/assets/www.tresmarescapital.com/8a97cfc8b7-02footer-200x200.jpg" data-src="/assets/www.tresmarescapital.com/567a502922-02footer.jpg" alt=""></div>                                </div>
+                                                                        </div>
+                </div>
+            </div>
+            <div class="item last">
+                <ul id="menu-social-ingles" class="menu menu-social"><li id="menu-item-1715" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1715"><a target="_blank" href="https://www.linkedin.com/company/tresmarescapital/"><i class="fa-brands fa-linkedin-in"></i></a></li>
+<li id="menu-item-1716" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1716"><a target="_blank" href="mailto:info@tresmarescapital.com"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M22 4V20H2V4M22 4H2M22 4L12 12L2 4" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/> </svg></a></li>
+</ul>            </div>
+        </div>
+        <hr>
+        <div class="columns --bottom">
+            <div class="item">
+                <ul id="menu-legal-ingles" class="menu menu-legal"><li id="menu-item-1717" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1717"><a href="/en/legal-notice/">Legal Notice</a></li>
+<li id="menu-item-1718" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1718"><a href="/en/privacy-policy/">Privacy Policy</a></li>
+<li id="menu-item-1719" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1719"><a href="/en/cookies-policy/">Cookies Policy</a></li>
+<li id="menu-item-1720" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1720"><a target="_blank" href="https://secure.ethicspoint.eu/domain/media/en/gui/105329/report.html">Whistleblowing channel</a></li>
+<li id="menu-item-1721" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1721"><a target="_blank" href="/wp-content/uploads/2025/10/GRUPO-TRESMARES-Politica-Canal-de-Denuncias240206.pdf">Internal channel policy</a></li>
+</ul>            </div>
+            <div class="item">
+                <div class="copyright">
+                    <div class="wysiwyg text --xsmall --na">© 2025 Tresmares Capital is registered with the CNMV.</div>                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+        </main>
+
+        <div  class="offcanvas">
+    <div class="mask"></div>
+    <div class="content" data-lenis-prevent></div>
+    <div class="icon --medium --closer closer"><span></span></div></div>
+
+    
+</div>
+
+
+
+
+    </div>
+
+    <div  id="cursor" class="cursor" data-desktop>
+    <div  class="cursor-follow">
+        <span></span>
+    </div>
+    <div  class="cursor-view">
+        <span>View</span>
+    </div>
+    <div  class="cursor-drag">
+        <span>Drag</span>
+    </div>
+</div>
+
+    
+    <!-- <script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.youtube.com/iframe_api"></script> -->
+    <script defer type="text/javascript" src="/assets/www.tresmarescapital.com/0e0dd3353d-vendor.min.js"></script>
+    <script defer type="text/javascript" src="/assets/www.tresmarescapital.com/df5ec60155-app.min.js"></script>
+
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/en/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/tresmares/*","/en/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="text/rocketlazyloadscript" id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+//# sourceURL=rocket-browser-checker-js-after
+</script>
+<script id="rocket-preload-links-js-extra">
+var RocketPreloadLinksConfig = {"excludeUris":"/(?:.+/)?feed(?:/(?:.+/?)?)?$|/(?:.+/)?embed/|/(index.php/)?(.*)wp-json(/.*|$)|/refer/|/go/|/recommend/|/recommends/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"/en/","onHoverDelay":"100","rateThrottle":"3"};
+//# sourceURL=rocket-preload-links-js-extra
+</script>
+<script type="text/rocketlazyloadscript" id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+
+//# sourceURL=rocket-preload-links-js-after
+</script>
+  <link rel="stylesheet" href="/editable/overrides.css">
+  <script src="/editable/content.js"></script>
+  <script src="/editable/custom.js"></script>
+</body>
+</html>
+
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1787186113 -->
