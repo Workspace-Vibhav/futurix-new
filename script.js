@@ -1,20 +1,18 @@
 const transition = document.querySelector(".hero-transition");
 const main = document.querySelector("main");
 const statement = document.querySelector(".statement-section");
-const statementTitle = statement.querySelector("h2");
+const statementTitle = statement.querySelector("#statement-title");
 const heroMountain = document.querySelector(".hero-mountain");
 const heroHeading = document.querySelector("#hero-title");
 const sandCanvas = document.querySelector(".sand-transition-canvas");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 const timing = {
-  blackPanel: { start: .68, end: .9 },
-  statementReveal: { start: .88, end: 1 },
+  blackPanel: { start: .04, end: .94 },
 };
 
 const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 const rangeProgress = (progress, range) => clamp((progress - range.start) / (range.end - range.start));
-const easeOutCubic = (value) => 1 - Math.pow(1 - value, 3);
 const easeInOutSine = (value) => -(Math.cos(Math.PI * value) - 1) / 2;
 const easeInOutCubic = (value) => value < .5
   ? 4 * value * value * value
@@ -30,8 +28,6 @@ statementTitle.innerHTML = statementLines
     .map((word) => `<span class="statement-word" style="--word-index:${statementWordIndex++}"><span>${word}</span></span>`)
     .join(" ")}</span>`)
   .join(" ");
-
-const words = [...statement.querySelectorAll(".statement-word > span")];
 
 const platformPillars = document.querySelector(".platform-pillars");
 
@@ -85,7 +81,14 @@ const sectors = document.querySelector(".sectors-section");
 if (sectors) {
   const sectorPanels = [...sectors.querySelectorAll(".sectors-panel")];
   const sectorHeadings = [...sectors.querySelectorAll(".sectors-product-heading")];
-  let activeSectorHeading = 0;
+  const productsCta = sectors.querySelector(".products-cta");
+  const productsCtaLabel = sectors.querySelector(".products-cta__label");
+  const productCtaStates = [
+    { label: "Discover zerodesk", accent: "#3b75d9", ink: "#fff" },
+    { label: "Discover Tender lens", accent: "#6eb376", ink: "#102115" },
+    { label: "Discover custom AI systems", accent: "#c7c7c7", ink: "#111" },
+  ];
+  let activeSectorHeading = -1;
 
   const setActiveSectorHeading = (nextIndex) => {
     if (nextIndex === activeSectorHeading) return;
@@ -95,7 +98,27 @@ if (sectors) {
       heading.classList.toggle("is-active", isActive);
       heading.setAttribute("aria-hidden", isActive ? "false" : "true");
     });
+
+    const ctaState = productCtaStates[nextIndex] || productCtaStates[0];
+    if (productsCta && productsCtaLabel) {
+      productsCtaLabel.textContent = ctaState.label;
+      productsCta.setAttribute("aria-label", ctaState.label);
+      productsCta.style.setProperty("--product-accent", ctaState.accent);
+      productsCta.style.setProperty("--product-accent-ink", ctaState.ink);
+
+      if (!reducedMotion.matches) {
+        productsCtaLabel.animate(
+          [
+            { opacity: 0.3, transform: "translateY(4px)" },
+            { opacity: 1, transform: "translateY(0)" },
+          ],
+          { duration: 320, easing: "cubic-bezier(.2,.75,.2,1)" },
+        );
+      }
+    }
   };
+
+  setActiveSectorHeading(0);
 
   if (reducedMotion.matches) {
     sectors.classList.add("is-visible");
@@ -966,25 +989,16 @@ if (!reducedMotion.matches) {
 
     sceneProgress = clamp((window.scrollY - transitionTop) / transitionDistance);
     const blackPanel = easeInOutCubic(rangeProgress(sceneProgress, timing.blackPanel));
-    const statementReveal = easeOutCubic(rangeProgress(sceneProgress, timing.statementReveal));
 
     main.style.setProperty("--scene-progress", sceneProgress.toFixed(4));
     main.style.setProperty("--hero-copy-y", "0vh");
     main.style.setProperty("--hero-opacity", "1");
     main.style.setProperty("--black-panel-y", `${((1 - blackPanel) * 100).toFixed(3)}%`);
     main.style.setProperty("--mountain-scene-opacity", "1");
-    main.style.setProperty("--statement-opacity", statementReveal.toFixed(4));
     main.style.setProperty("--mountain-scale", "1.015");
     main.style.setProperty("--mountain-scroll-x", "0vw");
     main.style.setProperty("--mountain-scroll-y", "0vh");
     hoverNoise.setEnabled(sceneProgress < timing.blackPanel.start);
-
-    words.forEach((word, index) => {
-      const stagger = index * .025;
-      const reveal = easeOutCubic(clamp((statementReveal - stagger) / Math.max(.001, 1 - stagger)));
-      word.style.opacity = (.08 + reveal * .92).toFixed(3);
-      word.style.transform = `translateY(${((1 - reveal) * 105).toFixed(2)}%)`;
-    });
 
   };
 
