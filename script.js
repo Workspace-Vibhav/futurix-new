@@ -1,11 +1,303 @@
 const transition = document.querySelector(".hero-transition");
 const main = document.querySelector("main");
-const statement = document.querySelector(".statement-section");
-const statementTitle = statement.querySelector("#statement-title");
 const heroMountain = document.querySelector(".hero-mountain");
 const heroHeading = document.querySelector("#hero-title");
-const sandCanvas = document.querySelector(".sand-transition-canvas");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+document.querySelectorAll("[data-current-year]").forEach((year) => {
+  year.textContent = new Date().getFullYear();
+});
+
+const heroPixelCanvas = document.querySelector(".hero-pixel-canvas");
+const figmaHero = heroPixelCanvas?.closest(".figma-hero");
+
+if (
+  heroPixelCanvas
+  && figmaHero
+  && heroMountain
+  && !reducedMotion.matches
+  && window.matchMedia("(hover: hover) and (pointer: fine)").matches
+) {
+  const pixelContext = heroPixelCanvas.getContext("2d");
+  const tileSize = 8;
+  const influenceRadius = 124;
+  const relaxation = .915;
+  let columns = 0;
+  let rows = 0;
+  let displacementX = new Float32Array(0);
+  let displacementY = new Float32Array(0);
+  let previousPointer = null;
+  let pixelFrame = 0;
+  let canvasWidth = 0;
+  let canvasHeight = 0;
+
+  const resizePixelCanvas = () => {
+    const bounds = figmaHero.getBoundingClientRect();
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    canvasWidth = Math.max(1, Math.round(bounds.width));
+    canvasHeight = Math.max(1, Math.round(bounds.height));
+    heroPixelCanvas.width = Math.round(canvasWidth * ratio);
+    heroPixelCanvas.height = Math.round(canvasHeight * ratio);
+    pixelContext.setTransform(ratio, 0, 0, ratio, 0, 0);
+    pixelContext.imageSmoothingEnabled = false;
+
+    const mountainBounds = heroMountain.getBoundingClientRect();
+    columns = Math.max(1, Math.ceil(mountainBounds.width / tileSize));
+    rows = Math.max(1, Math.ceil(mountainBounds.height / tileSize));
+    displacementX = new Float32Array(columns * rows);
+    displacementY = new Float32Array(columns * rows);
+  };
+
+  const renderPixelDistortion = () => {
+    pixelFrame = 0;
+    if (!heroMountain.naturalWidth || !heroMountain.naturalHeight) return;
+
+    const heroBounds = figmaHero.getBoundingClientRect();
+    const mountainBounds = heroMountain.getBoundingClientRect();
+    const renderedTileWidth = mountainBounds.width / columns;
+    const renderedTileHeight = mountainBounds.height / rows;
+    const sourceTileWidth = heroMountain.naturalWidth / columns;
+    const sourceTileHeight = heroMountain.naturalHeight / rows;
+    const mountainX = mountainBounds.left - heroBounds.left;
+    const mountainY = mountainBounds.top - heroBounds.top;
+    let isActive = false;
+
+    pixelContext.clearRect(0, 0, canvasWidth, canvasHeight);
+
+    for (let row = 0; row < rows; row += 1) {
+      for (let column = 0; column < columns; column += 1) {
+        const index = row * columns + column;
+        displacementX[index] *= relaxation;
+        displacementY[index] *= relaxation;
+        const offsetX = displacementX[index];
+        const offsetY = displacementY[index];
+
+        if (Math.abs(offsetX) + Math.abs(offsetY) < .12) {
+          displacementX[index] = 0;
+          displacementY[index] = 0;
+          continue;
+        }
+
+        isActive = true;
+        pixelContext.drawImage(
+          heroMountain,
+          column * sourceTileWidth,
+          row * sourceTileHeight,
+          sourceTileWidth + .5,
+          sourceTileHeight + .5,
+          mountainX + column * renderedTileWidth + offsetX,
+          mountainY + row * renderedTileHeight + offsetY,
+          renderedTileWidth + .5,
+          renderedTileHeight + .5,
+        );
+      }
+    }
+
+    if (isActive) pixelFrame = requestAnimationFrame(renderPixelDistortion);
+  };
+
+  const requestPixelFrame = () => {
+    if (!pixelFrame) pixelFrame = requestAnimationFrame(renderPixelDistortion);
+  };
+
+  const disturbPixels = (event) => {
+    const mountainBounds = heroMountain.getBoundingClientRect();
+    const pointerX = event.clientX - mountainBounds.left;
+    const pointerY = event.clientY - mountainBounds.top;
+
+    if (
+      pointerX < 0
+      || pointerX > mountainBounds.width
+      || pointerY < 0
+      || pointerY > mountainBounds.height
+    ) {
+      previousPointer = null;
+      return;
+    }
+
+    if (!previousPointer) {
+      previousPointer = { x: event.clientX, y: event.clientY };
+      return;
+    }
+
+    const velocityX = event.clientX - previousPointer.x;
+    const velocityY = event.clientY - previousPointer.y;
+    const pointerSpeed = Math.min(1, Math.hypot(velocityX, velocityY) / 18);
+    previousPointer = { x: event.clientX, y: event.clientY };
+    const renderedTileWidth = mountainBounds.width / columns;
+    const renderedTileHeight = mountainBounds.height / rows;
+    const startColumn = Math.max(0, Math.floor((pointerX - influenceRadius) / renderedTileWidth));
+    const endColumn = Math.min(columns - 1, Math.ceil((pointerX + influenceRadius) / renderedTileWidth));
+    const startRow = Math.max(0, Math.floor((pointerY - influenceRadius) / renderedTileHeight));
+    const endRow = Math.min(rows - 1, Math.ceil((pointerY + influenceRadius) / renderedTileHeight));
+
+    for (let row = startRow; row <= endRow; row += 1) {
+      for (let column = startColumn; column <= endColumn; column += 1) {
+        const tileX = (column + .5) * renderedTileWidth;
+        const tileY = (row + .5) * renderedTileHeight;
+        const distance = Math.hypot(tileX - pointerX, tileY - pointerY);
+        if (distance >= influenceRadius) continue;
+
+        const influence = Math.pow(1 - distance / influenceRadius, 1.7);
+        const index = row * columns + column;
+        const randomValueX = Math.sin(column * 12.9898 + row * 78.233) * 43758.5453;
+        const randomValueY = Math.sin(column * 39.3467 + row * 11.135) * 24634.6345;
+        const randomX = (randomValueX - Math.floor(randomValueX)) * 2 - 1;
+        const randomY = (randomValueY - Math.floor(randomValueY)) * 2 - 1;
+        const maxDisplacement = tileSize * 4.2;
+        displacementX[index] = Math.max(
+          -maxDisplacement,
+          Math.min(
+            maxDisplacement,
+            displacementX[index]
+              + (velocityX * .7 + randomX * tileSize * 3 * pointerSpeed) * influence,
+          ),
+        );
+        displacementY[index] = Math.max(
+          -maxDisplacement,
+          Math.min(
+            maxDisplacement,
+            displacementY[index]
+              + (velocityY * .7 + randomY * tileSize * 3 * pointerSpeed) * influence,
+          ),
+        );
+      }
+    }
+
+    requestPixelFrame();
+  };
+
+  figmaHero.addEventListener("pointermove", disturbPixels, { passive: true });
+  figmaHero.addEventListener("pointerleave", () => {
+    previousPointer = null;
+    requestPixelFrame();
+  });
+  window.addEventListener("resize", resizePixelCanvas, { passive: true });
+
+  const initializeHeroPixels = () => resizePixelCanvas();
+  if (heroMountain.complete) initializeHeroPixels();
+  else heroMountain.addEventListener("load", initializeHeroPixels, { once: true });
+}
+
+const footerParticleCanvas = document.querySelector(".site-footer__particle-canvas");
+
+if (footerParticleCanvas) {
+  const footer = footerParticleCanvas.closest(".site-footer");
+  const context = footerParticleCanvas.getContext("2d");
+  const particles = [];
+  let canvasWidth = 0;
+  let canvasHeight = 0;
+  let lastFrameTime = 0;
+  let animationFrame = 0;
+  let isFooterVisible = false;
+  let lastScrollY = window.scrollY;
+  let smoothScrollVelocity = 0;
+  let particleTime = 0;
+
+  const buildFooterParticles = () => {
+    particles.length = 0;
+    const lineCount = 3;
+    const dotsPerLine = canvasWidth < 768 ? 18 : 35;
+
+    for (let line = 0; line < lineCount; line += 1) {
+      const lineIndex = line - (lineCount - 1) / 2;
+      const depth = (Math.random() - .5) * 6;
+      const depthScale = 20 / (20 - depth);
+
+      for (let dot = 0; dot < dotsPerLine; dot += 1) {
+        particles.push({
+          lineIndex,
+          depthScale,
+          progress: dot / dotsPerLine,
+          speedMultiplier: .5 + Math.random(),
+          offset: Math.random(),
+        });
+      }
+    }
+  };
+
+  const drawFooterParticles = (timestamp, advance = false) => {
+    if (!context || !canvasWidth || !canvasHeight) return;
+    const delta = advance && lastFrameTime ? Math.min((timestamp - lastFrameTime) / 1000, .05) : 0;
+    const currentScrollY = window.scrollY;
+    const scrollVelocity = Math.abs(currentScrollY - lastScrollY);
+    lastScrollY = currentScrollY;
+    smoothScrollVelocity += (scrollVelocity - smoothScrollVelocity) * .1;
+
+    if (advance) {
+      const visibleHeight = 2 * Math.tan((50 * Math.PI / 180) / 2) * 20;
+      const visibleWidth = visibleHeight * (canvasWidth / canvasHeight);
+      const speedMultiplier = visibleWidth / 35;
+      particleTime += (delta * .15) / speedMultiplier + smoothScrollVelocity * .0015;
+    }
+
+    context.clearRect(0, 0, canvasWidth, canvasHeight);
+    context.fillStyle = "#524f4b";
+
+    particles.forEach((particle) => {
+      const linearProgress = (((particle.progress + particle.offset
+        - particleTime * .1 * particle.speedMultiplier) % 1) + 1) % 1;
+      const x = canvasWidth / 2
+        + (linearProgress - .5) * canvasWidth * particle.depthScale;
+      const fieldCenter = canvasWidth < 768 ? .57 : .60;
+      const y = canvasHeight * fieldCenter
+        - particle.lineIndex * 25 * particle.depthScale;
+      const radius = (canvasWidth < 768 ? 1.1 : 1.35) * particle.depthScale;
+      context.beginPath();
+      context.arc(x, y, radius, 0, Math.PI * 2);
+      context.fill();
+    });
+
+    lastFrameTime = timestamp;
+  };
+
+  const animateFooterParticles = (timestamp) => {
+    animationFrame = 0;
+    drawFooterParticles(timestamp, true);
+    if (isFooterVisible && !document.hidden) {
+      animationFrame = requestAnimationFrame(animateFooterParticles);
+    }
+  };
+
+  const startFooterParticles = () => {
+    if (reducedMotion.matches || animationFrame || !isFooterVisible || document.hidden) return;
+    lastFrameTime = 0;
+    lastScrollY = window.scrollY;
+    animationFrame = requestAnimationFrame(animateFooterParticles);
+  };
+
+  const stopFooterParticles = () => {
+    if (animationFrame) cancelAnimationFrame(animationFrame);
+    animationFrame = 0;
+  };
+
+  const resizeFooterParticles = () => {
+    const bounds = footer.getBoundingClientRect();
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+    canvasWidth = Math.max(1, Math.round(bounds.width));
+    canvasHeight = Math.max(1, Math.round(bounds.height));
+    footerParticleCanvas.width = Math.round(canvasWidth * pixelRatio);
+    footerParticleCanvas.height = Math.round(canvasHeight * pixelRatio);
+    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    buildFooterParticles();
+    drawFooterParticles(performance.now());
+  };
+
+  const footerVisibilityObserver = new IntersectionObserver(([entry]) => {
+    isFooterVisible = entry.isIntersecting;
+    if (isFooterVisible) startFooterParticles();
+    else stopFooterParticles();
+  }, { rootMargin: "120px 0px" });
+
+  resizeFooterParticles();
+  footerVisibilityObserver.observe(footer);
+  new ResizeObserver(resizeFooterParticles).observe(footer);
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stopFooterParticles();
+    else startFooterParticles();
+  });
+}
 
 const timing = {
   blackPanel: { start: .04, end: .94 },
@@ -18,48 +310,34 @@ const easeInOutCubic = (value) => value < .5
   ? 4 * value * value * value
   : 1 - Math.pow(-2 * value + 2, 3) / 2;
 
-const statementLines = [...statementTitle.querySelectorAll("[data-statement-line]")]
-  .map((line) => line.textContent.trim());
-let statementWordIndex = 0;
-
-statementTitle.innerHTML = statementLines
-  .map((line) => `<span class="statement-line">${line
-    .split(/\s+/)
-    .map((word) => `<span class="statement-word" style="--word-index:${statementWordIndex++}"><span>${word}</span></span>`)
-    .join(" ")}</span>`)
-  .join(" ");
-
-const platformPillars = document.querySelector(".platform-pillars");
-
-if (platformPillars) {
-  if (reducedMotion.matches) {
-    platformPillars.classList.add("is-visible");
-  } else {
-    const platformPillarsObserver = new IntersectionObserver(([entry]) => {
-      platformPillars.classList.toggle("is-visible", entry.isIntersecting);
-    }, { threshold: .22 });
-    platformPillarsObserver.observe(platformPillars);
-  }
-}
-
 const roadmap = document.querySelector(".roadmap-section");
 const roadmapVideo = roadmap?.querySelector(".roadmap-video");
 
 if (roadmapVideo) {
+  const playbackRate = .25;
   roadmapVideo.muted = true;
   roadmapVideo.defaultMuted = true;
   roadmapVideo.playsInline = true;
+  roadmapVideo.defaultPlaybackRate = playbackRate;
+  roadmapVideo.playbackRate = playbackRate;
+  roadmapVideo.addEventListener("loadedmetadata", () => {
+    roadmapVideo.defaultPlaybackRate = playbackRate;
+    roadmapVideo.playbackRate = playbackRate;
+    roadmapVideo.pause();
+  });
 
-  const ensureRoadmapVideoPlayback = () => {
-    if (!roadmapVideo.paused) return;
+  const playRoadmapVideo = () => {
+    roadmapVideo.playbackRate = playbackRate;
     roadmapVideo.play().catch(() => {});
   };
 
-  if (roadmapVideo.readyState >= 2) ensureRoadmapVideoPlayback();
-  else roadmapVideo.addEventListener("canplay", ensureRoadmapVideoPlayback, { once: true });
+  const pauseRoadmapVideo = () => roadmapVideo.pause();
 
+  roadmapVideo.pause();
+  roadmap.addEventListener("pointerenter", playRoadmapVideo);
+  roadmap.addEventListener("pointerleave", pauseRoadmapVideo);
   document.addEventListener("visibilitychange", () => {
-    if (!document.hidden) ensureRoadmapVideoPlayback();
+    if (document.hidden) pauseRoadmapVideo();
   });
 }
 
@@ -969,7 +1247,6 @@ const createHoverNoiseRenderer = () => {
 };
 
 if (!reducedMotion.matches) {
-  const hoverNoise = createHoverNoiseRenderer();
   let sceneProgress = 0;
   let frame = null;
   let needsMeasure = true;
@@ -998,8 +1275,6 @@ if (!reducedMotion.matches) {
     main.style.setProperty("--mountain-scale", "1.015");
     main.style.setProperty("--mountain-scroll-x", "0vw");
     main.style.setProperty("--mountain-scroll-y", "0vh");
-    hoverNoise.setEnabled(sceneProgress < timing.blackPanel.start);
-
   };
 
   const requestFrame = () => {
@@ -1010,7 +1285,6 @@ if (!reducedMotion.matches) {
 
   window.addEventListener("resize", () => {
     needsMeasure = true;
-    hoverNoise.resize();
     requestFrame();
   }, { passive: true });
 
