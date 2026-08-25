@@ -13,21 +13,26 @@
 </head>
 <body>
   <header class="site-header" aria-label="Site header">
-    <span class="brand" aria-label="FuturixAI">
+    <a class="brand" href="/" aria-label="FuturixAI home">
       <img class="brand__mark" src="assets/figma-futurix-mark.svg" alt="">
       <span class="brand__wordmark">FuturixAI</span>
-    </span>
+    </a>
 
-    <nav class="site-nav" aria-label="Primary navigation">
-      <span>Home</span>
-      <span>About Us</span>
-      <span>Publications</span>
-      <span>Blogs</span>
-      <span>Shivaay</span>
-      <button type="button" disabled>Try ZeroDesk</button>
+    <nav id="primary-navigation" class="site-nav" aria-label="Primary navigation">
+      <div class="site-nav__links">
+        <a href="/">Home</a>
+        <a href="about-us/">About Us</a>
+        <a href="media-resources/">Publications</a>
+        <a href="company-news/">Blogs</a>
+        <a href="solutions/">Shivaay</a>
+      </div>
+      <div class="site-nav__actions">
+        <a class="site-nav__contact" href="contact/">Contact Us</a>
+        <a class="site-nav__primary" href="#products">Try ZeroDesk <span aria-hidden="true">→</span></a>
+      </div>
     </nav>
 
-    <button class="menu-trigger" type="button" aria-label="Menu unavailable in this preview" disabled>
+    <button class="menu-trigger" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false">
       <span></span><span></span>
     </button>
   </header>
@@ -41,16 +46,21 @@
             <p>Most enterprises do not have one clean system for AI to operate on. Knowledge is fragmented, workflows differ by department, and permissions are buried inside people and processes.</p>
           </div>
 
-          <img class="hero-mountain" src="assets/figma-futurix-hero-mountain.png" alt="" aria-hidden="true">
-          <canvas class="hero-cursor-trail" aria-hidden="true"></canvas>
+          <img class="hero-mountain" src="assets/figma-futurix-hero-mountain-2x.png" alt="" aria-hidden="true" decoding="async" fetchpriority="high">
         </section>
 
         <div class="black-panel" aria-hidden="true"></div>
       </div>
     </section>
 
-    <section id="principles" class="principles-transition is-dark" aria-labelledby="principles-title-a">
+    <section id="principles" class="principles-transition is-dark" data-principle-state="0" aria-labelledby="principles-title-a">
       <div class="principles-stage">
+        <div class="principles-backgrounds" aria-hidden="true">
+          <div class="principles-background"></div>
+          <div class="principles-background"></div>
+          <div class="principles-background"></div>
+        </div>
+
         <h2 id="principles-title-a" class="principles-fixed-heading">
           The Three Pillars
           <span>of FuturixAI.</span>
@@ -104,32 +114,32 @@
 
       <div class="destination-features" aria-label="How FuturixAI builds enterprise AI">
         <article class="destination-feature">
-          <span class="destination-feature-icon" data-symbol="⌘" aria-hidden="true"></span>
-          <div><span class="destination-feature-number">01</span><h3>Connect</h3><p><strong>Bring the enterprise together.</strong> Connect documents, data, applications, inboxes, CRMs, ERPs and operational systems.</p></div>
+          <span class="destination-feature-number" aria-hidden="true">01</span>
+          <div><h3>Connect</h3><p><strong>Bring the enterprise together.</strong> Connect documents, data, applications, inboxes, CRMs, ERPs and operational systems.</p></div>
         </article>
         <article class="destination-feature">
-          <span class="destination-feature-icon" data-symbol="◎" aria-hidden="true"></span>
-          <div><span class="destination-feature-number">02</span><h3>Understand</h3><p><strong>Build the enterprise context.</strong> Map people, roles, processes, relationships, approvals, dependencies and business rules.</p></div>
+          <span class="destination-feature-number" aria-hidden="true">02</span>
+          <div><h3>Understand</h3><p><strong>Build the enterprise context.</strong> Map people, roles, processes, relationships, approvals, dependencies and business rules.</p></div>
         </article>
         <article class="destination-feature">
-          <span class="destination-feature-icon" data-symbol="✦" aria-hidden="true"></span>
-          <div><span class="destination-feature-number">03</span><h3>Reason</h3><p><strong>Give AI the right context.</strong> Equip AI with the information and organizational logic required to make relevant decisions.</p></div>
+          <span class="destination-feature-number" aria-hidden="true">03</span>
+          <div><h3>Reason</h3><p><strong>Give AI the right context.</strong> Equip AI with the information and organizational logic required to make relevant decisions.</p></div>
         </article>
         <article class="destination-feature">
-          <span class="destination-feature-icon" data-symbol="↗" aria-hidden="true"></span>
-          <div><span class="destination-feature-number">04</span><h3>Execute</h3><p><strong>Turn intelligence into action.</strong> Let AI execute multi-step workflows across systems, teams and processes—not just generate answers.</p></div>
+          <span class="destination-feature-number" aria-hidden="true">04</span>
+          <div><h3>Execute</h3><p><strong>Turn intelligence into action.</strong> Let AI execute multi-step workflows across systems, teams and processes—not just generate answers.</p></div>
         </article>
         <article class="destination-feature">
-          <span class="destination-feature-icon" data-symbol="⬡" aria-hidden="true"></span>
-          <div><span class="destination-feature-number">05</span><h3>Govern</h3><p><strong>Keep enterprise AI accountable.</strong> Control permissions, enforce policies, maintain auditability and keep humans in control where required.</p></div>
+          <span class="destination-feature-number" aria-hidden="true">05</span>
+          <div><h3>Govern</h3><p><strong>Keep enterprise AI accountable.</strong> Control permissions, enforce policies, maintain auditability and keep humans in control where required.</p></div>
         </article>
       </div>
     </section>
 
     <div class="roadmap-pin">
     <section id="platform" class="roadmap-section" aria-labelledby="roadmap-title">
-      <video class="roadmap-video" muted loop playsinline preload="metadata" aria-hidden="true">
-        <source src="assets/turn-enterprise-context-v2.mp4" type="video/mp4">
+      <video class="roadmap-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+        <source src="assets/futurix-desaturated-motion-loop.mp4" type="video/mp4">
       </video>
       <div class="roadmap-shade" aria-hidden="true"></div>
 
@@ -211,15 +221,32 @@
     </section>
 
     <div class="india-presence-pin">
-      <section class="india-presence" aria-labelledby="india-presence-title">
-        <div class="india-presence__copy">
-          <p>Contact us</p>
-          <h2 id="india-presence-title">Building Enterprises<br>for Tomorrow</h2>
+      <section class="india-presence testimonial-map-section" aria-labelledby="testimonial-map-title">
+        <div class="testimonial-map__copy">
+          <p class="testimonial-map__eyebrow">Trusted by enterprise teams</p>
+          <h2 id="testimonial-map-title">Enterprise transformation, told by the people leading it.</h2>
+          <p class="testimonial-map__summary">Explore how teams are using FuturixAI to connect knowledge, automate work and execute with confidence.</p>
+          <a class="testimonial-map__cta" href="https://www.futurixai.com/contact">
+            <span>Start a conversation</span>
+            <span aria-hidden="true">→</span>
+          </a>
         </div>
 
-        <div class="india-presence__map" role="img" aria-label="Dotted world map">
-          <div class="india-presence__world" aria-hidden="true"></div>
-          <div class="india-presence__world india-presence__world--trail" aria-hidden="true"></div>
+        <div class="testimonial-map-shell" data-testimonial-map>
+          <div class="testimonial-map__canvas" data-testimonial-canvas role="group" aria-label="Global customer testimonial profiles">
+            <div class="india-presence__world" aria-hidden="true"></div>
+            <div class="testimonial-map__markers" data-testimonial-markers></div>
+          </div>
+
+          <aside class="testimonial-popover" id="testimonial-popover" data-testimonial-popover aria-live="polite" hidden>
+            <span class="testimonial-popover__quote-mark" aria-hidden="true">“</span>
+            <blockquote data-testimonial-quote></blockquote>
+            <p class="testimonial-popover__result" data-testimonial-result hidden></p>
+            <div class="testimonial-popover__person">
+              <strong data-testimonial-name></strong>
+              <span data-testimonial-meta></span>
+            </div>
+          </aside>
         </div>
       </section>
     </div>
@@ -273,7 +300,6 @@
     </div>
   </footer>
 
-  <script src="hero-trail.js?v=llama-trail-3"></script>
   <script src="script.js?v=llama-trail-3"></script>
 </body>
 </html>

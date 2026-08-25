@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  min-width: 320px;
+  min-width: 0;
   margin: 0;
   overflow-x: hidden;
   background: var(--paper);
@@ -30,18 +30,19 @@ main {
   --black-panel-y: 100%;
   --mountain-scroll-x: 0vw;
   --mountain-scroll-y: 0vh;
-  --mountain-scale: 1.015;
+  --mountain-scale: 1;
+  --mountain-y-scale: 1;
 }
 
 .site-header {
   position: absolute;
   z-index: 10;
-  top: 34px;
-  left: 53px;
+  top: 24px;
+  left: clamp(20px, 3.3vw, 54px);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: calc(100% - 76px);
+  width: calc(100% - (clamp(20px, 3.3vw, 54px) * 2));
   color: var(--ink);
   background: transparent;
 }
@@ -50,7 +51,9 @@ main {
   display: flex;
   align-items: center;
   gap: 11px;
+  color: inherit;
   line-height: 1;
+  text-decoration: none;
 }
 
 .brand__mark {
@@ -68,27 +71,75 @@ main {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 10px;
-  font-size: 14px;
+  gap: 10px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: -.04em;
+  letter-spacing: -.025em;
   line-height: 1;
 }
 
-.site-nav span { cursor: default; }
+.site-nav__links,
+.site-nav__actions {
+  display: flex;
+  align-items: center;
+}
 
-.site-nav button {
-  padding: 8px 12px;
-  border: 0;
-  border-radius: 8px;
+.site-nav__links {
+  gap: 4px;
+}
+
+.site-nav__actions { gap: 10px; }
+
+.site-nav a {
+  display: inline-flex;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 13px;
+  border-radius: 999px;
+  color: inherit;
+  text-decoration: none;
+  transition: color 260ms ease, background-color 260ms ease, transform 260ms cubic-bezier(.2,.75,.2,1), box-shadow 260ms ease;
+}
+
+.site-nav__links a:hover,
+.site-nav__links a:focus-visible { background: rgba(29, 32, 35, .055); }
+
+.site-nav .site-nav__contact {
+  padding-inline: 13px;
+}
+
+.site-nav .site-nav__primary {
+  height: 46px;
+  gap: 18px;
+  padding: 5px 5px 5px 20px;
   color: #fff;
   background: var(--ink);
-  font-size: inherit;
-  font-weight: inherit;
-  letter-spacing: inherit;
-  opacity: 1;
+  box-shadow: 0 10px 26px rgba(17, 21, 24, .16);
 }
+
+.site-nav__contact:hover,
+.site-nav__contact:focus-visible,
+.site-nav__primary:hover,
+.site-nav__primary:focus-visible { transform: translateY(-2px); }
+
+.site-nav__contact:hover,
+.site-nav__contact:focus-visible { background: rgba(29, 32, 35, .055); }
+
+.site-nav__primary span {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  border-radius: 50%;
+  color: var(--ink);
+  background: #fff;
+  place-items: center;
+  font-size: 19px;
+  transition: transform 260ms ease;
+}
+.site-nav__primary:hover span,
+.site-nav__primary:focus-visible span { transform: translateX(3px); }
 
 .menu-trigger { display: none; }
 
@@ -157,31 +208,33 @@ main {
 .hero-mountain {
   position: absolute;
   z-index: 1;
-  top: 22.17%;
-  left: 0;
+  top: auto;
+  bottom: -12svh;
+  left: 50%;
   width: 100%;
+  max-width: none;
   height: auto;
+  object-fit: contain;
   pointer-events: none;
   transform: translate3d(
-    var(--mountain-scroll-x),
+    calc(-50% + var(--mountain-scroll-x)),
     var(--mountain-scroll-y),
     0
-  ) scale(var(--mountain-scale));
+  ) scale(var(--mountain-scale)) scaleY(var(--mountain-y-scale));
   transform-origin: center bottom;
   opacity: var(--mountain-scene-opacity);
+  image-rendering: auto;
   will-change: transform, opacity;
 }
 
-.hero-cursor-trail {
-  position: absolute;
-  z-index: 4;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  mix-blend-mode: difference;
-  opacity: var(--mountain-scene-opacity);
-  pointer-events: none;
+@media (min-aspect-ratio: 9/5) {
+  main { --mountain-y-scale: .86; }
+  .hero-mountain { bottom: -16svh; }
+}
+
+@media (min-aspect-ratio: 21/10) {
+  main { --mountain-y-scale: .72; }
+  .hero-mountain { bottom: -12svh; }
 }
 
 .black-panel {
@@ -538,7 +591,49 @@ main {
   overflow: hidden;
   background: inherit;
   color: inherit;
+  isolation: isolate;
   transition: background-color 1.109s cubic-bezier(.17,.84,.44,1), color 1.109s cubic-bezier(.17,.84,.44,1);
+}
+
+.principles-backgrounds {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.principles-background {
+  position: absolute;
+  inset: -7%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(12px) saturate(.48);
+  opacity: 0;
+  transform: scale(1.08);
+  transition: opacity 1.109s cubic-bezier(.17,.84,.44,1);
+  will-change: opacity;
+}
+
+.principles-background:nth-child(1) { background-image: url("assets/hero-energy-grain-01.png"); }
+.principles-background:nth-child(2) { background-image: url("assets/hero-energy-grain-02.png"); }
+.principles-background:nth-child(3) { background-image: url("assets/hero-energy-grain-03.png"); }
+
+.principles-transition[data-principle-state="0"] .principles-background:nth-child(1),
+.principles-transition[data-principle-state="1"] .principles-background:nth-child(2),
+.principles-transition[data-principle-state="2"] .principles-background:nth-child(3) { opacity: 1; }
+
+.principles-stage::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: url("assets/noise-grain.png") repeat;
+  background-size: 128px 128px;
+  mix-blend-mode: soft-light;
+  opacity: .24;
+  pointer-events: none;
 }
 
 .principles-fixed-heading {
@@ -575,6 +670,7 @@ main {
 
 .principles-radial {
   position: absolute;
+  z-index: 2;
   top: 53%;
   left: 50%;
   width: 58svh;
@@ -745,29 +841,18 @@ main {
 .destination-section.is-visible .destination-feature:nth-child(5) { transition-delay: 280ms; }
 .destination-section.is-visible .destination-feature:nth-child(6) { transition-delay: 350ms; }
 
-.destination-feature-icon {
-  position: relative;
+.destination-feature-number {
   display: grid;
   width: 48px;
   height: 48px;
   place-items: center;
   align-self: center;
-  border: 0;
-  border-radius: 0;
-  font-family: Arial, sans-serif;
-  font-size: 23px;
-  font-weight: 400;
-  line-height: 1;
-}
-
-.destination-feature-icon::before { content: attr(data-symbol); }
-
-.destination-feature-number {
-  display: block;
-  margin-bottom: 26px;
+  margin: 0;
   color: rgba(8, 10, 12, .48);
   font-size: 12px;
+  font-weight: 500;
   letter-spacing: .06em;
+  line-height: 1;
 }
 
 .destination-feature h3 {
@@ -815,34 +900,30 @@ main {
 
 .roadmap-video {
   position: absolute;
-  inset: -8%;
-  width: 116%;
-  height: 116%;
+  top: 50%;
+  left: 50%;
+  width: 100svh;
+  height: 100vw;
+  max-width: none;
+  max-height: none;
   object-fit: cover;
-  opacity: .48;
-  filter: blur(14px) saturate(.76) brightness(.7);
-  transform: rotate(90deg) scale(1.82);
-  animation: roadmap-video-drift 16s ease-in-out infinite alternate;
+  opacity: 1;
+  filter: none;
+  transform: translate(-50%, -50%) rotate(90deg) scale(1.02);
   transition: opacity 1800ms cubic-bezier(.2, 0, 0, 1), filter 1800ms cubic-bezier(.2, 0, 0, 1), transform 1800ms cubic-bezier(.2, 0, 0, 1);
 }
 
 .roadmap-section.is-visible .roadmap-video {
   opacity: 1;
-  filter: blur(7px) saturate(.82) brightness(.78);
-  transform: rotate(90deg) scale(1.68);
-}
-
-@keyframes roadmap-video-drift {
-  from { object-position: 44% 48%; }
-  to { object-position: 56% 52%; }
+  filter: none;
+  transform: translate(-50%, -50%) rotate(90deg) scale(1.02);
 }
 
 .roadmap-shade {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(0, 0, 0, .16), rgba(0, 0, 0, .72)),
-    linear-gradient(90deg, rgba(0, 0, 0, .48), transparent 70%);
+  background: rgba(0, 0, 0, .1);
+  pointer-events: none;
 }
 
 .roadmap-content {
@@ -1231,56 +1312,108 @@ main {
   background: #fafaf8;
 }
 
-.india-presence {
+.testimonial-map-section {
   position: sticky;
   z-index: 10;
   top: 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(280px, .72fr) minmax(560px, 1.45fr);
   height: 100svh;
   min-height: 0;
+  gap: clamp(32px, 5vw, 84px);
   align-items: center;
-  padding: clamp(34px, 4.5vw, 64px) 0 0;
+  padding: clamp(48px, 6vw, 88px) clamp(24px, 4vw, 64px);
   overflow: hidden;
-  flex-direction: column;
   background: #fafaf8;
   color: #171819;
 }
 
-.india-presence__copy {
+.testimonial-map__copy {
   position: relative;
   z-index: 3;
-  width: min(1080px, calc(100% - 48px));
-  text-align: center;
+  max-width: 470px;
 }
 
-.india-presence__copy p {
-  margin: 0 0 clamp(24px, 3.5svh, 42px);
-  color: rgba(23, 24, 25, .48);
+.testimonial-map__eyebrow {
+  margin: 0 0 22px;
+  color: rgba(23, 24, 25, .58);
   font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
 }
 
-.india-presence__copy h2 {
+.testimonial-map__copy h2 {
   margin: 0;
-  font-size: clamp(36px, 4.4vw, 64px);
+  font-size: clamp(40px, 4.3vw, 66px);
   font-weight: 400;
   letter-spacing: -.045em;
-  line-height: 1.06;
+  line-height: 1.02;
   text-wrap: balance;
 }
 
-.india-presence__copy h2 span {
-  color: #e71818;
+.testimonial-map__summary {
+  max-width: 440px;
+  margin: 26px 0 0;
+  color: rgba(23, 24, 25, .62);
+  font-size: 16px;
+  line-height: 1.55;
 }
 
-.india-presence__map {
+.testimonial-map__cta {
+  display: inline-flex;
+  min-height: 52px;
+  margin-top: 34px;
+  padding: 6px 7px 6px 20px;
+  align-items: center;
+  gap: 18px;
+  color: #fff;
+  background: #1d2024;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 200ms ease, transform 200ms ease;
+}
+
+.testimonial-map__cta span:last-child {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  color: #171819;
+  background: #fff;
+  border-radius: 50%;
+  font-size: 21px;
+  transition: transform 200ms ease;
+}
+
+.testimonial-map__cta:hover,
+.testimonial-map__cta:focus-visible {
+  background: #153954;
+  transform: translateY(-2px);
+}
+
+.testimonial-map__cta:hover span:last-child,
+.testimonial-map__cta:focus-visible span:last-child { transform: translateX(2px); }
+
+.testimonial-map__cta:focus-visible { outline: 3px solid rgba(45, 112, 158, .28); outline-offset: 3px; }
+
+.testimonial-map-shell {
   position: relative;
-  flex: 1 1 auto;
-  width: min(1500px, 138vw);
-  min-height: 0;
-  margin-top: clamp(12px, 1.8svh, 24px);
-  aspect-ratio: auto;
-  -webkit-mask-image: radial-gradient(ellipse 36% 48% at center, #000 38%, rgba(0, 0, 0, .82) 66%, transparent 100%);
-  mask-image: radial-gradient(ellipse 36% 48% at center, #000 38%, rgba(0, 0, 0, .82) 66%, transparent 100%);
+  width: 100%;
+  height: min(76svh, 720px);
+  min-height: 480px;
+}
+
+.testimonial-map__canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  -webkit-mask-image: radial-gradient(ellipse 56% 52% at center, #000 43%, rgba(0, 0, 0, .82) 72%, transparent 100%);
+  mask-image: radial-gradient(ellipse 56% 52% at center, #000 43%, rgba(0, 0, 0, .82) 72%, transparent 100%);
 }
 
 .india-presence__world {
@@ -1290,36 +1423,139 @@ main {
   background-size: 2px 2px;
   -webkit-mask: url("assets/world-map-robinson.svg?v=2") center / contain no-repeat;
   mask: url("assets/world-map-robinson.svg?v=2") center / contain no-repeat;
-  opacity: .44;
-  transform: scale(1.1);
-  transition: opacity .3s ease;
-  will-change: opacity;
-}
-
-.india-presence__world--trail {
-  --trail-x: -20%;
-  --trail-y: -20%;
-  opacity: 0;
-  transition: opacity .32s ease;
-  -webkit-mask-image:
-    url("assets/world-map-robinson.svg?v=2"),
-    radial-gradient(circle 190px at var(--trail-x) var(--trail-y), #000 0, rgba(0, 0, 0, .92) 34%, rgba(0, 0, 0, .45) 68%, transparent 100%);
-  -webkit-mask-position: center, center;
-  -webkit-mask-size: contain, 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-composite: source-in;
-  mask-image:
-    url("assets/world-map-robinson.svg?v=2"),
-    radial-gradient(circle 190px at var(--trail-x) var(--trail-y), #000 0, rgba(0, 0, 0, .92) 34%, rgba(0, 0, 0, .45) 68%, transparent 100%);
-  mask-position: center, center;
-  mask-size: contain, 100% 100%;
-  mask-repeat: no-repeat;
-  mask-composite: intersect;
+  opacity: .54;
+  transform: scale(1.03);
   pointer-events: none;
 }
 
-.india-presence.is-map-trailing .india-presence__world--trail {
+.testimonial-map__markers {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+}
+
+.testimonial-marker {
+  position: absolute;
+  left: var(--marker-x);
+  top: var(--marker-y);
+  display: grid;
+  width: clamp(46px, 3.5vw, 54px);
+  height: clamp(46px, 3.5vw, 54px);
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  overflow: hidden;
+  place-items: center;
+  border: 2px solid rgba(250, 250, 248, .94);
+  border-radius: 50%;
+  color: #fff;
+  background: #173650;
+  box-shadow: 0 5px 16px rgba(13, 27, 39, .16);
+  cursor: pointer;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.76);
+  transition:
+    opacity 460ms cubic-bezier(.22, .8, .2, 1),
+    transform 460ms cubic-bezier(.22, .8, .2, 1),
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+  transition-delay: calc(var(--marker-index) * 65ms);
+  will-change: transform, opacity;
+}
+
+.testimonial-map-section.is-testimonial-map-visible .testimonial-marker {
   opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.testimonial-map-section.is-testimonial-map-visible .testimonial-marker:hover,
+.testimonial-map-section.is-testimonial-map-visible .testimonial-marker:focus-visible,
+.testimonial-map-section.is-testimonial-map-visible .testimonial-marker.is-active {
+  z-index: 3;
+  border-color: #7cb8e1;
+  box-shadow: 0 0 0 3px rgba(45, 112, 158, .19), 0 12px 26px rgba(13, 27, 39, .23);
+  transform: translate(-50%, -50%) scale(1.14);
+  transition-delay: 0ms;
+}
+
+.testimonial-marker:focus-visible { outline: 3px solid rgba(21, 57, 84, .42); outline-offset: 4px; }
+
+.testimonial-marker img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonial-marker__fallback {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  background: linear-gradient(145deg, #285d82, #10293c);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .03em;
+}
+
+.testimonial-marker:nth-child(3n + 2) .testimonial-marker__fallback { background: linear-gradient(145deg, #466981, #1b3548); }
+.testimonial-marker:nth-child(3n) .testimonial-marker__fallback { background: linear-gradient(145deg, #355b73, #172f42); }
+
+.testimonial-popover {
+  position: absolute;
+  z-index: 4;
+  width: min(360px, calc(100% - 28px));
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 8px;
+  color: #fff;
+  background: #111a21;
+  box-shadow: 0 18px 44px rgba(12, 20, 26, .22);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 210ms ease, transform 210ms ease;
+  pointer-events: none;
+}
+
+.testimonial-popover[hidden] { display: none; }
+
+.testimonial-popover.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.testimonial-popover__quote-mark {
+  display: block;
+  height: 26px;
+  color: #7cb8e1;
+  font-family: Georgia, serif;
+  font-size: 42px;
+  line-height: 1;
+}
+
+.testimonial-popover blockquote {
+  margin: 10px 0 22px;
+  font-size: 19px;
+  letter-spacing: -.025em;
+  line-height: 1.35;
+}
+
+.testimonial-popover__result {
+  display: inline-block;
+  margin: 0 0 18px;
+  padding: 6px 9px;
+  border: 1px solid rgba(124, 184, 225, .25);
+  border-radius: 999px;
+  color: #b9d9ee;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.testimonial-popover__result[hidden] { display: none; }
+
+.testimonial-popover__person { display: grid; gap: 4px; }
+.testimonial-popover__person strong { font-size: 14px; font-weight: 650; }
+.testimonial-popover__person span { color: rgba(255, 255, 255, .58); font-size: 12px; line-height: 1.35; }
 }
 
 .sectors-panel-copy {
@@ -1494,11 +1730,14 @@ main {
     width: calc(100% - 56px);
   }
 
-  .site-nav { gap: 14px; }
+  .site-nav { gap: 7px; }
+  .site-nav a { padding-inline: 10px; }
+  .site-nav .site-nav__contact { padding-inline: 10px; }
+  .site-nav .site-nav__primary { padding: 5px 5px 5px 16px; }
   .hero-copy { top: 23%; }
   .hero-copy h1 { font-size: clamp(48px, 5.75vw, 92px); }
   .hero-copy p { width: 310px; font-size: 14px; }
-  .hero-mountain { top: 27%; width: 118%; left: -9%; }
+  .hero-mountain { width: 100%; }
   .site-footer__top,
   .site-footer__bottom { grid-template-columns: minmax(280px, .85fr) minmax(440px, 1fr); }
   .solution-section__overview h2 { font-size: clamp(50px, 6vw, 68px); }
@@ -1522,6 +1761,13 @@ main {
     gap: 28px;
   }
   .sectors-copy h2 { font-size: clamp(25px, 3vw, 34px); }
+  .testimonial-map-section {
+    grid-template-columns: minmax(250px, .68fr) minmax(450px, 1.32fr);
+    gap: 28px;
+    padding-inline: 28px;
+  }
+  .testimonial-map__copy h2 { font-size: clamp(38px, 4.7vw, 52px); }
+  .testimonial-map-shell { min-height: 440px; }
 }
 
 @media (max-width: 760px) {
@@ -1533,17 +1779,53 @@ main {
 
   .brand__mark { width: 21px; height: 22px; }
   .brand__wordmark { font-size: 18px; }
-  .site-nav { display: none; }
+  .site-nav {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    display: none;
+    width: min(330px, calc(100vw - 40px));
+    padding: 8px;
+    border: 1px solid rgba(29, 32, 35, .1);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, .96);
+    box-shadow: 0 20px 50px rgba(17, 21, 24, .14);
+    backdrop-filter: blur(20px);
+  }
+
+  .site-header.is-open .site-nav { display: grid; gap: 8px; }
+
+  .site-nav__links {
+    display: grid;
+    gap: 2px;
+    padding: 0;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .site-nav__links a {
+    height: 42px;
+    justify-content: flex-start;
+    padding-inline: 14px;
+  }
+
+  .site-nav__actions { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+  .site-nav .site-nav__contact { height: 42px; padding-inline: 10px; }
+  .site-nav .site-nav__primary { height: 44px; padding: 4px 4px 4px 14px; }
 
   .menu-trigger {
     display: grid;
     width: 40px;
     height: 40px;
     padding: 0;
-    border: 0;
-    background: transparent;
+    border: 1px solid rgba(29, 32, 35, .12);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .72);
     place-content: center;
     gap: 6px;
+    cursor: pointer;
   }
 
   .menu-trigger span {
@@ -1551,7 +1833,11 @@ main {
     width: 22px;
     height: 1.5px;
     background: var(--ink);
+    transition: transform 240ms ease;
   }
+
+  .site-header.is-open .menu-trigger span:first-child { transform: translateY(3.75px) rotate(45deg); }
+  .site-header.is-open .menu-trigger span:last-child { transform: translateY(-3.75px) rotate(-45deg); }
 
   .hero-copy {
     top: 17%;
@@ -1581,11 +1867,13 @@ main {
     left: 50%;
     width: 170%;
     max-width: none;
+    height: auto;
+    object-fit: contain;
     transform: translate3d(
       calc(-50% + var(--mountain-scroll-x)),
       var(--mountain-scroll-y),
       0
-    ) scale(var(--mountain-scale));
+    ) scale(var(--mountain-scale)) scaleY(var(--mountain-y-scale));
   }
 
   .statement-stack { padding: 0; }
@@ -1645,8 +1933,7 @@ main {
     min-height: 0;
     padding: 28px 0;
   }
-  .destination-feature-icon { width: 40px; height: 40px; }
-  .destination-feature-number { margin-bottom: 20px; }
+  .destination-feature-number { width: 40px; height: 40px; }
   .destination-feature h3 { font-size: 25px; }
   .destination-feature p { font-size: 15px; }
 
@@ -1714,6 +2001,31 @@ main {
   .sectors-panel-copy { top: 20px; right: 20px; left: 20px; }
   .sectors-panel-copy h3 { font-size: 32px; }
 
+  .india-presence-pin { height: auto; }
+  .testimonial-map-section {
+    position: relative;
+    display: block;
+    height: auto;
+    min-height: 100svh;
+    padding: 76px 20px 64px;
+    overflow: visible;
+  }
+  .testimonial-map__copy { max-width: 600px; }
+  .testimonial-map__eyebrow { margin-bottom: 16px; font-size: 12px; }
+  .testimonial-map__copy h2 { font-size: clamp(34px, 10vw, 46px); }
+  .testimonial-map__summary { margin-top: 20px; font-size: 15px; }
+  .testimonial-map__cta { margin-top: 26px; }
+  .testimonial-map-shell { height: auto; min-height: 0; margin-top: 34px; }
+  .testimonial-map__canvas { height: clamp(320px, 52svh, 440px); }
+  .testimonial-marker { width: 44px; height: 44px; }
+  .testimonial-popover {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    width: 100%;
+    margin-top: 16px;
+  }
+
   .site-footer { min-height: auto; }
   .site-footer__inner {
     min-height: auto;
@@ -1733,6 +2045,35 @@ main {
   .site-footer__legal { flex-direction: column; gap: 10px; }
 }
 
+@media (hover: none), (pointer: coarse) {
+  .testimonial-map-section {
+    position: relative;
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+  }
+  .india-presence-pin { height: auto; }
+  .testimonial-map-shell { height: auto; min-height: 0; }
+  .testimonial-map__canvas { height: min(60svh, 620px); min-height: 360px; }
+  .testimonial-popover {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    width: 100%;
+    max-width: none;
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .testimonial-map-section { padding-inline: 16px; }
+  .testimonial-map__copy h2 { font-size: 32px; }
+  .testimonial-map__canvas { height: 310px; min-height: 310px; }
+  .testimonial-marker { width: 44px; height: 44px; }
+  .testimonial-popover { padding: 20px; }
+  .testimonial-popover blockquote { font-size: 17px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .products-cta__label,
   .products-cta__icon,
@@ -1742,14 +2083,13 @@ main {
   main {
     --hero-opacity: 1;
     --hero-copy-y: 0vh;
-    --mountain-scale: 1.015;
+    --mountain-scale: 1;
     --mountain-scene-opacity: 1;
   }
 
   .hero-transition { height: auto; }
   .transition-stage { position: relative; height: auto; overflow: visible; }
   .figma-hero { min-height: 100svh; overflow: hidden; }
-  .hero-cursor-trail { display: none; }
   .black-panel { display: none; }
   .statement-section { position: relative; height: auto; margin-top: 0; background: #050609; }
   .statement-stack {
@@ -1792,10 +2132,9 @@ main {
   .destination-feature { opacity: 1; transform: none; transition: none; }
   .roadmap-section { clip-path: inset(0 round 0); transition: none; }
   .roadmap-video {
-    animation: none;
     opacity: 1;
-    filter: blur(12px) saturate(.78) brightness(.76);
-    transform: rotate(90deg) scale(1.68);
+    filter: none;
+    transform: translate(-50%, -50%) rotate(90deg) scale(1.02);
     transition: none;
   }
   .roadmap-heading > *,
@@ -1816,7 +2155,18 @@ main {
   }
   .sectors-panel { position: relative; aspect-ratio: 7 / 8; clip-path: none; }
   .sectors-panel img { height: 100%; transform: none; }
-  .india-presence__world { transition: none; }
-  .india-presence__world--trail { display: none; }
-  .india-presence:hover .india-presence__world:not(.india-presence__world--trail) { opacity: 1; }
+  .testimonial-marker,
+  .testimonial-map-section.is-testimonial-map-visible .testimonial-marker {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    transition: none;
+  }
+  .testimonial-map-section.is-testimonial-map-visible .testimonial-marker:hover,
+  .testimonial-map-section.is-testimonial-map-visible .testimonial-marker:focus-visible,
+  .testimonial-map-section.is-testimonial-map-visible .testimonial-marker.is-active {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .testimonial-popover,
+  .testimonial-map__cta,
+  .testimonial-map__cta span:last-child { transition: none; }
 }

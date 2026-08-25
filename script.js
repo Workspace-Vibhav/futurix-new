@@ -3,48 +3,254 @@ const main = document.querySelector("main");
 const heroMountain = document.querySelector(".hero-mountain");
 const heroHeading = document.querySelector("#hero-title");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const siteHeader = document.querySelector(".site-header");
+const menuTrigger = document.querySelector(".menu-trigger");
+const primaryNavigation = document.querySelector("#primary-navigation");
 
-const mapPresence = document.querySelector(".india-presence");
-const mapTrail = document.querySelector(".india-presence__world--trail");
+if (siteHeader && menuTrigger && primaryNavigation) {
+  const closeNavigation = () => {
+    siteHeader.classList.remove("is-open");
+    menuTrigger.setAttribute("aria-expanded", "false");
+    menuTrigger.setAttribute("aria-label", "Open navigation menu");
+  };
 
-if (mapPresence && mapTrail && !reducedMotion.matches) {
-  const mapArea = mapPresence.querySelector(".india-presence__map");
-  let targetX = 0;
-  let targetY = 0;
-  let trailX = 0;
-  let trailY = 0;
-  let trailFrame = null;
+  menuTrigger.addEventListener("click", () => {
+    const isOpen = !siteHeader.classList.contains("is-open");
+    siteHeader.classList.toggle("is-open", isOpen);
+    menuTrigger.setAttribute("aria-expanded", String(isOpen));
+    menuTrigger.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+  });
 
-  const drawMapTrail = () => {
-    trailFrame = null;
-    trailX += (targetX - trailX) * .16;
-    trailY += (targetY - trailY) * .16;
-    mapTrail.style.setProperty("--trail-x", `${trailX.toFixed(1)}px`);
-    mapTrail.style.setProperty("--trail-y", `${trailY.toFixed(1)}px`);
+  primaryNavigation.addEventListener("click", (event) => {
+    if (event.target.closest("a")) closeNavigation();
+  });
 
-    if (Math.abs(targetX - trailX) > .25 || Math.abs(targetY - trailY) > .25) {
-      trailFrame = requestAnimationFrame(drawMapTrail);
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeNavigation();
+  });
+}
+
+const testimonialMap = document.querySelector("[data-testimonial-map]");
+
+if (testimonialMap) {
+  const testimonialSection = testimonialMap.closest(".testimonial-map-section");
+  const testimonialCanvas = testimonialMap.querySelector("[data-testimonial-canvas]");
+  const markerLayer = testimonialMap.querySelector("[data-testimonial-markers]");
+  const testimonialPopover = testimonialMap.querySelector("[data-testimonial-popover]");
+  const quoteElement = testimonialPopover?.querySelector("[data-testimonial-quote]");
+  const resultElement = testimonialPopover?.querySelector("[data-testimonial-result]");
+  const nameElement = testimonialPopover?.querySelector("[data-testimonial-name]");
+  const metaElement = testimonialPopover?.querySelector("[data-testimonial-meta]");
+  const hoverCapable = window.matchMedia("(hover: hover) and (pointer: fine)");
+  const narrowMap = window.matchMedia("(max-width: 760px)");
+
+  // TODO: Replace every placeholder below with an approved quote, identity,
+  // company, result and portrait path from assets/testimonials/ before launch.
+  const testimonials = [
+    { id: "customer-01", name: "Customer 01", role: "Role to be confirmed", company: "Company Name", quote: "Approved testimonial will appear here.", result: "", image: null, x: 16, y: 35 },
+    { id: "customer-02", name: "Customer 02", role: "Role to be confirmed", company: "Company Name", quote: "Approved testimonial will appear here.", result: "", image: null, x: 25, y: 55 },
+    { id: "customer-03", name: "Customer 03", role: "Role to be confirmed", company: "Company Name", quote: "Approved testimonial will appear here.", result: "", image: null, x: 31, y: 73 },
+    { id: "customer-04", name: "Customer 04", role: "Role to be confirmed", company: "Company Name", quote: "Approved testimonial will appear here.", result: "", image: null, x: 47, y: 31 },
+    { id: "customer-05", name: "Customer 05", role: "Role to be confirmed", company: "Company Name", quote: "Approved testimonial will appear here.", result: "", image: null, x: 52, y: 53 },
+    { id: "customer-06", name: "Customer 06", role: "Role to be confirmed", company: "Company Name", quote: "Approved testimonial will appear here.", result: "", image: null, x: 62, y: 39 },
+    { id: "customer-07", name: "Customer 07", role: "Role to be confirmed", company: "Company Name", quote: "Approved testimonial will appear here.", result: "", image: null, x: 70, y: 51 },
+    { id: "customer-08", name: "Customer 08", role: "Role to be confirmed", company: "Company Name", quote: "Approved testimonial will appear here.", result: "", image: null, x: 82, y: 34 },
+    { id: "customer-09", name: "Customer 09", role: "Role to be confirmed", company: "Company Name", quote: "Approved testimonial will appear here.", result: "", image: null, x: 86, y: 72 },
+  ];
+
+  let activeTestimonialId = null;
+  let activeMarker = null;
+  let closeTimer = 0;
+  let hideTimer = 0;
+  let resizeFrame = 0;
+  let keyboardMode = false;
+
+  const getInitials = (name) => {
+    const placeholderNumber = name.match(/^Customer\s+(\d+)$/i)?.[1];
+    if (placeholderNumber) return placeholderNumber.slice(-2).padStart(2, "0");
+
+    return name
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((part) => part.charAt(0))
+      .join("")
+      .toUpperCase();
+  };
+
+  const createInitialsFallback = (testimonial) => {
+    const fallback = document.createElement("span");
+    fallback.className = "testimonial-marker__fallback";
+    fallback.textContent = getInitials(testimonial.name);
+    fallback.setAttribute("aria-hidden", "true");
+    return fallback;
+  };
+
+  const positionPopover = (marker) => {
+    if (!testimonialPopover || !testimonialCanvas || !hoverCapable.matches || narrowMap.matches) {
+      testimonialPopover?.style.removeProperty("left");
+      testimonialPopover?.style.removeProperty("top");
+      return;
+    }
+
+    const mapBounds = testimonialCanvas.getBoundingClientRect();
+    const shellBounds = testimonialMap.getBoundingClientRect();
+    const markerBounds = marker.getBoundingClientRect();
+    const panelBounds = testimonialPopover.getBoundingClientRect();
+    const edge = 14;
+    const gap = 16;
+    const minLeft = mapBounds.left - shellBounds.left + edge;
+    const maxLeft = mapBounds.right - shellBounds.left - panelBounds.width - edge;
+    const minTop = mapBounds.top - shellBounds.top + edge;
+    const maxTop = mapBounds.bottom - shellBounds.top - panelBounds.height - edge;
+    let left = markerBounds.right - shellBounds.left + gap;
+    let top = markerBounds.top - shellBounds.top - panelBounds.height * .28;
+
+    if (left > maxLeft) left = markerBounds.left - shellBounds.left - panelBounds.width - gap;
+    if (top > maxTop) top = markerBounds.bottom - shellBounds.top + gap;
+
+    testimonialPopover.style.left = `${Math.min(Math.max(left, minLeft), Math.max(minLeft, maxLeft)).toFixed(1)}px`;
+    testimonialPopover.style.top = `${Math.min(Math.max(top, minTop), Math.max(minTop, maxTop)).toFixed(1)}px`;
+  };
+
+  const clearCloseTimer = () => {
+    if (closeTimer) window.clearTimeout(closeTimer);
+    closeTimer = 0;
+  };
+
+  const showTestimonial = (testimonial, marker) => {
+    if (!testimonialPopover || !quoteElement || !resultElement || !nameElement || !metaElement) return;
+    clearCloseTimer();
+    if (hideTimer) window.clearTimeout(hideTimer);
+    hideTimer = 0;
+
+    if (activeMarker && activeMarker !== marker) {
+      activeMarker.classList.remove("is-active");
+      activeMarker.setAttribute("aria-expanded", "false");
+    }
+
+    const isFirstReveal = testimonialPopover.hidden;
+    activeTestimonialId = testimonial.id;
+    activeMarker = marker;
+    marker.classList.add("is-active");
+    marker.setAttribute("aria-expanded", "true");
+    quoteElement.textContent = testimonial.quote;
+    nameElement.textContent = testimonial.name;
+    metaElement.textContent = `${testimonial.role} · ${testimonial.company}`;
+    resultElement.textContent = testimonial.result || "";
+    resultElement.hidden = !testimonial.result;
+    testimonialPopover.setAttribute("aria-label", `Testimonial from ${testimonial.name} at ${testimonial.company}`);
+    testimonialPopover.hidden = false;
+    positionPopover(marker);
+
+    if (isFirstReveal) {
+      testimonialPopover.classList.remove("is-visible");
+      requestAnimationFrame(() => testimonialPopover.classList.add("is-visible"));
+    } else {
+      testimonialPopover.classList.add("is-visible");
     }
   };
 
-  const updateMapTrail = (event) => {
-    const bounds = mapArea.getBoundingClientRect();
-    targetX = event.clientX - bounds.left;
-    targetY = event.clientY - bounds.top;
-
-    if (!mapPresence.classList.contains("is-map-trailing")) {
-      trailX = targetX;
-      trailY = targetY;
-      mapPresence.classList.add("is-map-trailing");
+  const closeTestimonial = (immediate = false) => {
+    clearCloseTimer();
+    if (activeMarker) {
+      activeMarker.classList.remove("is-active");
+      activeMarker.setAttribute("aria-expanded", "false");
     }
+    activeMarker = null;
+    activeTestimonialId = null;
+    if (!testimonialPopover || testimonialPopover.hidden) return;
 
-    if (trailFrame === null) trailFrame = requestAnimationFrame(drawMapTrail);
+    testimonialPopover.classList.remove("is-visible");
+    if (hideTimer) window.clearTimeout(hideTimer);
+    hideTimer = window.setTimeout(() => {
+      if (activeTestimonialId === null) testimonialPopover.hidden = true;
+    }, immediate || reducedMotion.matches ? 0 : 220);
   };
 
-  mapPresence.addEventListener("pointerenter", updateMapTrail, { passive: true });
-  mapPresence.addEventListener("pointermove", updateMapTrail, { passive: true });
-  mapPresence.addEventListener("pointerleave", () => {
-    mapPresence.classList.remove("is-map-trailing");
+  const scheduleClose = () => {
+    clearCloseTimer();
+    closeTimer = window.setTimeout(() => closeTestimonial(), 90);
+  };
+
+  testimonials.forEach((testimonial, index) => {
+    const marker = document.createElement("button");
+    marker.type = "button";
+    marker.className = "testimonial-marker";
+    marker.dataset.testimonialId = testimonial.id;
+    marker.style.setProperty("--marker-x", `${testimonial.x}%`);
+    marker.style.setProperty("--marker-y", `${testimonial.y}%`);
+    marker.style.setProperty("--marker-index", index);
+    marker.setAttribute("aria-label", `${testimonial.name}, ${testimonial.company}`);
+    marker.setAttribute("aria-controls", testimonialPopover?.id || "testimonial-popover");
+    marker.setAttribute("aria-expanded", "false");
+
+    if (testimonial.image) {
+      const image = document.createElement("img");
+      image.src = testimonial.image;
+      image.alt = "";
+      image.loading = "lazy";
+      image.decoding = "async";
+      image.addEventListener("error", () => image.replaceWith(createInitialsFallback(testimonial)), { once: true });
+      marker.append(image);
+    } else {
+      marker.append(createInitialsFallback(testimonial));
+    }
+
+    marker.addEventListener("pointerenter", () => {
+      if (hoverCapable.matches) showTestimonial(testimonial, marker);
+    });
+    marker.addEventListener("pointerleave", () => {
+      if (hoverCapable.matches && !keyboardMode) scheduleClose();
+    });
+    marker.addEventListener("focus", () => {
+      if (hoverCapable.matches || keyboardMode) showTestimonial(testimonial, marker);
+    });
+    marker.addEventListener("blur", () => {
+      window.setTimeout(() => {
+        const focusedMarker = document.activeElement?.closest?.(".testimonial-marker");
+        if (!focusedMarker) closeTestimonial();
+      }, 0);
+    });
+    marker.addEventListener("click", (event) => {
+      if (!hoverCapable.matches) {
+        if (activeTestimonialId === testimonial.id) closeTestimonial();
+        else showTestimonial(testimonial, marker);
+      } else if (event.detail === 0) {
+        showTestimonial(testimonial, marker);
+      }
+    });
+
+    markerLayer?.append(marker);
+  });
+
+  const testimonialVisibilityObserver = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) testimonialSection?.classList.add("is-testimonial-map-visible");
+    else closeTestimonial(true);
+  }, { threshold: .18 });
+
+  if (reducedMotion.matches) testimonialSection?.classList.add("is-testimonial-map-visible");
+  if (testimonialSection) testimonialVisibilityObserver.observe(testimonialSection);
+
+  document.addEventListener("pointerdown", (event) => {
+    keyboardMode = false;
+    if (!hoverCapable.matches && activeTestimonialId && !testimonialMap.contains(event.target)) {
+      closeTestimonial();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    keyboardMode = true;
+    if (event.key === "Escape" && activeTestimonialId) closeTestimonial();
+  });
+
+  window.addEventListener("resize", () => {
+    if (!activeMarker || resizeFrame) return;
+    resizeFrame = requestAnimationFrame(() => {
+      resizeFrame = 0;
+      if (activeMarker) positionPopover(activeMarker);
+    });
   }, { passive: true });
 }
 
@@ -187,7 +393,7 @@ const roadmap = document.querySelector(".roadmap-section");
 const roadmapVideo = roadmap?.querySelector(".roadmap-video");
 
 if (roadmapVideo) {
-  const playbackRate = .25;
+  const playbackRate = 1;
   roadmapVideo.muted = true;
   roadmapVideo.defaultMuted = true;
   roadmapVideo.playsInline = true;
@@ -196,7 +402,7 @@ if (roadmapVideo) {
   roadmapVideo.addEventListener("loadedmetadata", () => {
     roadmapVideo.defaultPlaybackRate = playbackRate;
     roadmapVideo.playbackRate = playbackRate;
-    roadmapVideo.pause();
+    roadmapVideo.play().catch(() => {});
   });
 
   const playRoadmapVideo = () => {
@@ -204,13 +410,10 @@ if (roadmapVideo) {
     roadmapVideo.play().catch(() => {});
   };
 
-  const pauseRoadmapVideo = () => roadmapVideo.pause();
-
-  roadmapVideo.pause();
-  roadmap.addEventListener("pointerenter", playRoadmapVideo);
-  roadmap.addEventListener("pointerleave", pauseRoadmapVideo);
+  playRoadmapVideo();
   document.addEventListener("visibilitychange", () => {
-    if (document.hidden) pauseRoadmapVideo();
+    if (document.hidden) roadmapVideo.pause();
+    else playRoadmapVideo();
   });
 }
 
@@ -362,7 +565,8 @@ if (principles && !reducedMotion.matches) {
     allAnimatedLines.forEach((line, index) => {
       line.style.transform = currentTransforms[index] === "none" ? "translateY(0%)" : currentTransforms[index];
     });
-    principles.classList.toggle("is-dark", nextState !== 1);
+    principles.classList.add("is-dark");
+    principles.dataset.principleState = String(nextState);
 
     const animateLines = (lines, target, baseDelay, start = null) => {
       lines.forEach((line, index) => {
@@ -1161,7 +1365,7 @@ if (!reducedMotion.matches) {
     main.style.setProperty("--hero-opacity", "1");
     main.style.setProperty("--black-panel-y", `${((1 - blackPanel) * 100).toFixed(3)}%`);
     main.style.setProperty("--mountain-scene-opacity", "1");
-    main.style.setProperty("--mountain-scale", "1.015");
+    main.style.setProperty("--mountain-scale", "1");
     main.style.setProperty("--mountain-scroll-x", "0vw");
     main.style.setProperty("--mountain-scroll-y", "0vh");
   };
