@@ -4,180 +4,53 @@ const heroMountain = document.querySelector(".hero-mountain");
 const heroHeading = document.querySelector("#hero-title");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+const mapPresence = document.querySelector(".india-presence");
+const mapTrail = document.querySelector(".india-presence__world--trail");
+
+if (mapPresence && mapTrail && !reducedMotion.matches) {
+  const mapArea = mapPresence.querySelector(".india-presence__map");
+  let targetX = 0;
+  let targetY = 0;
+  let trailX = 0;
+  let trailY = 0;
+  let trailFrame = null;
+
+  const drawMapTrail = () => {
+    trailFrame = null;
+    trailX += (targetX - trailX) * .16;
+    trailY += (targetY - trailY) * .16;
+    mapTrail.style.setProperty("--trail-x", `${trailX.toFixed(1)}px`);
+    mapTrail.style.setProperty("--trail-y", `${trailY.toFixed(1)}px`);
+
+    if (Math.abs(targetX - trailX) > .25 || Math.abs(targetY - trailY) > .25) {
+      trailFrame = requestAnimationFrame(drawMapTrail);
+    }
+  };
+
+  const updateMapTrail = (event) => {
+    const bounds = mapArea.getBoundingClientRect();
+    targetX = event.clientX - bounds.left;
+    targetY = event.clientY - bounds.top;
+
+    if (!mapPresence.classList.contains("is-map-trailing")) {
+      trailX = targetX;
+      trailY = targetY;
+      mapPresence.classList.add("is-map-trailing");
+    }
+
+    if (trailFrame === null) trailFrame = requestAnimationFrame(drawMapTrail);
+  };
+
+  mapPresence.addEventListener("pointerenter", updateMapTrail, { passive: true });
+  mapPresence.addEventListener("pointermove", updateMapTrail, { passive: true });
+  mapPresence.addEventListener("pointerleave", () => {
+    mapPresence.classList.remove("is-map-trailing");
+  }, { passive: true });
+}
+
 document.querySelectorAll("[data-current-year]").forEach((year) => {
   year.textContent = new Date().getFullYear();
 });
-
-const heroPixelCanvas = document.querySelector(".hero-pixel-canvas");
-const figmaHero = heroPixelCanvas?.closest(".figma-hero");
-
-if (
-  heroPixelCanvas
-  && figmaHero
-  && heroMountain
-  && !reducedMotion.matches
-  && window.matchMedia("(hover: hover) and (pointer: fine)").matches
-) {
-  const pixelContext = heroPixelCanvas.getContext("2d");
-  const tileSize = 8;
-  const influenceRadius = 124;
-  const relaxation = .915;
-  let columns = 0;
-  let rows = 0;
-  let displacementX = new Float32Array(0);
-  let displacementY = new Float32Array(0);
-  let previousPointer = null;
-  let pixelFrame = 0;
-  let canvasWidth = 0;
-  let canvasHeight = 0;
-
-  const resizePixelCanvas = () => {
-    const bounds = figmaHero.getBoundingClientRect();
-    const ratio = Math.min(window.devicePixelRatio || 1, 2);
-    canvasWidth = Math.max(1, Math.round(bounds.width));
-    canvasHeight = Math.max(1, Math.round(bounds.height));
-    heroPixelCanvas.width = Math.round(canvasWidth * ratio);
-    heroPixelCanvas.height = Math.round(canvasHeight * ratio);
-    pixelContext.setTransform(ratio, 0, 0, ratio, 0, 0);
-    pixelContext.imageSmoothingEnabled = false;
-
-    const mountainBounds = heroMountain.getBoundingClientRect();
-    columns = Math.max(1, Math.ceil(mountainBounds.width / tileSize));
-    rows = Math.max(1, Math.ceil(mountainBounds.height / tileSize));
-    displacementX = new Float32Array(columns * rows);
-    displacementY = new Float32Array(columns * rows);
-  };
-
-  const renderPixelDistortion = () => {
-    pixelFrame = 0;
-    if (!heroMountain.naturalWidth || !heroMountain.naturalHeight) return;
-
-    const heroBounds = figmaHero.getBoundingClientRect();
-    const mountainBounds = heroMountain.getBoundingClientRect();
-    const renderedTileWidth = mountainBounds.width / columns;
-    const renderedTileHeight = mountainBounds.height / rows;
-    const sourceTileWidth = heroMountain.naturalWidth / columns;
-    const sourceTileHeight = heroMountain.naturalHeight / rows;
-    const mountainX = mountainBounds.left - heroBounds.left;
-    const mountainY = mountainBounds.top - heroBounds.top;
-    let isActive = false;
-
-    pixelContext.clearRect(0, 0, canvasWidth, canvasHeight);
-
-    for (let row = 0; row < rows; row += 1) {
-      for (let column = 0; column < columns; column += 1) {
-        const index = row * columns + column;
-        displacementX[index] *= relaxation;
-        displacementY[index] *= relaxation;
-        const offsetX = displacementX[index];
-        const offsetY = displacementY[index];
-
-        if (Math.abs(offsetX) + Math.abs(offsetY) < .12) {
-          displacementX[index] = 0;
-          displacementY[index] = 0;
-          continue;
-        }
-
-        isActive = true;
-        pixelContext.drawImage(
-          heroMountain,
-          column * sourceTileWidth,
-          row * sourceTileHeight,
-          sourceTileWidth + .5,
-          sourceTileHeight + .5,
-          mountainX + column * renderedTileWidth + offsetX,
-          mountainY + row * renderedTileHeight + offsetY,
-          renderedTileWidth + .5,
-          renderedTileHeight + .5,
-        );
-      }
-    }
-
-    if (isActive) pixelFrame = requestAnimationFrame(renderPixelDistortion);
-  };
-
-  const requestPixelFrame = () => {
-    if (!pixelFrame) pixelFrame = requestAnimationFrame(renderPixelDistortion);
-  };
-
-  const disturbPixels = (event) => {
-    const mountainBounds = heroMountain.getBoundingClientRect();
-    const pointerX = event.clientX - mountainBounds.left;
-    const pointerY = event.clientY - mountainBounds.top;
-
-    if (
-      pointerX < 0
-      || pointerX > mountainBounds.width
-      || pointerY < 0
-      || pointerY > mountainBounds.height
-    ) {
-      previousPointer = null;
-      return;
-    }
-
-    if (!previousPointer) {
-      previousPointer = { x: event.clientX, y: event.clientY };
-      return;
-    }
-
-    const velocityX = event.clientX - previousPointer.x;
-    const velocityY = event.clientY - previousPointer.y;
-    const pointerSpeed = Math.min(1, Math.hypot(velocityX, velocityY) / 18);
-    previousPointer = { x: event.clientX, y: event.clientY };
-    const renderedTileWidth = mountainBounds.width / columns;
-    const renderedTileHeight = mountainBounds.height / rows;
-    const startColumn = Math.max(0, Math.floor((pointerX - influenceRadius) / renderedTileWidth));
-    const endColumn = Math.min(columns - 1, Math.ceil((pointerX + influenceRadius) / renderedTileWidth));
-    const startRow = Math.max(0, Math.floor((pointerY - influenceRadius) / renderedTileHeight));
-    const endRow = Math.min(rows - 1, Math.ceil((pointerY + influenceRadius) / renderedTileHeight));
-
-    for (let row = startRow; row <= endRow; row += 1) {
-      for (let column = startColumn; column <= endColumn; column += 1) {
-        const tileX = (column + .5) * renderedTileWidth;
-        const tileY = (row + .5) * renderedTileHeight;
-        const distance = Math.hypot(tileX - pointerX, tileY - pointerY);
-        if (distance >= influenceRadius) continue;
-
-        const influence = Math.pow(1 - distance / influenceRadius, 1.7);
-        const index = row * columns + column;
-        const randomValueX = Math.sin(column * 12.9898 + row * 78.233) * 43758.5453;
-        const randomValueY = Math.sin(column * 39.3467 + row * 11.135) * 24634.6345;
-        const randomX = (randomValueX - Math.floor(randomValueX)) * 2 - 1;
-        const randomY = (randomValueY - Math.floor(randomValueY)) * 2 - 1;
-        const maxDisplacement = tileSize * 4.2;
-        displacementX[index] = Math.max(
-          -maxDisplacement,
-          Math.min(
-            maxDisplacement,
-            displacementX[index]
-              + (velocityX * .7 + randomX * tileSize * 3 * pointerSpeed) * influence,
-          ),
-        );
-        displacementY[index] = Math.max(
-          -maxDisplacement,
-          Math.min(
-            maxDisplacement,
-            displacementY[index]
-              + (velocityY * .7 + randomY * tileSize * 3 * pointerSpeed) * influence,
-          ),
-        );
-      }
-    }
-
-    requestPixelFrame();
-  };
-
-  figmaHero.addEventListener("pointermove", disturbPixels, { passive: true });
-  figmaHero.addEventListener("pointerleave", () => {
-    previousPointer = null;
-    requestPixelFrame();
-  });
-  window.addEventListener("resize", resizePixelCanvas, { passive: true });
-
-  const initializeHeroPixels = () => resizePixelCanvas();
-  if (heroMountain.complete) initializeHeroPixels();
-  else heroMountain.addEventListener("load", initializeHeroPixels, { once: true });
-}
 
 const footerParticleCanvas = document.querySelector(".site-footer__particle-canvas");
 
@@ -300,7 +173,7 @@ if (footerParticleCanvas) {
 }
 
 const timing = {
-  blackPanel: { start: .04, end: .94 },
+  blackPanel: { start: .35, end: .98 },
 };
 
 const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
@@ -351,6 +224,21 @@ if (roadmap) {
       roadmapObserver.disconnect();
     }, { threshold: .1 });
     roadmapObserver.observe(roadmap);
+  }
+}
+
+const destination = document.querySelector(".destination-section");
+
+if (destination) {
+  if (reducedMotion.matches) {
+    destination.classList.add("is-visible");
+  } else {
+    const destinationObserver = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      destination.classList.add("is-visible");
+      destinationObserver.disconnect();
+    }, { threshold: .12 });
+    destinationObserver.observe(destination);
   }
 }
 
@@ -413,14 +301,15 @@ if (sectors) {
       const rect = sectors.getBoundingClientRect();
       const travel = Math.max(1, rect.height - window.innerHeight);
       const progress = clamp(-rect.top / travel);
+      const sequenceProgress = clamp(progress / (2 / 3));
       const transitionCount = Math.max(1, sectorPanels.length - 1);
-      const nextHeading = Math.min(sectorHeadings.length - 1, Math.floor(progress * transitionCount + .5));
+      const nextHeading = Math.min(sectorHeadings.length - 1, Math.floor(sequenceProgress * transitionCount + .5));
 
       setActiveSectorHeading(nextHeading);
 
       sectorPanels.forEach((panel, index) => {
         const wipe = index < transitionCount
-          ? easeInOutCubic(clamp(progress * transitionCount - index))
+          ? easeInOutCubic(clamp(sequenceProgress * transitionCount - index))
           : 0;
         panel.style.setProperty("--panel-wipe", wipe.toFixed(4));
         panel.setAttribute("aria-hidden", index < transitionCount && wipe > .985 ? "true" : "false");
@@ -473,7 +362,7 @@ if (principles && !reducedMotion.matches) {
     allAnimatedLines.forEach((line, index) => {
       line.style.transform = currentTransforms[index] === "none" ? "translateY(0%)" : currentTransforms[index];
     });
-    principles.classList.toggle("is-dark", nextState === 1);
+    principles.classList.toggle("is-dark", nextState !== 1);
 
     const animateLines = (lines, target, baseDelay, start = null) => {
       lines.forEach((line, index) => {
