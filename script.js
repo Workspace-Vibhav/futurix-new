@@ -4,30 +4,140 @@ const heroMountain = document.querySelector(".hero-mountain");
 const heroHeading = document.querySelector("#hero-title");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const siteHeader = document.querySelector(".site-header");
-const menuTrigger = document.querySelector(".menu-trigger");
-const primaryNavigation = document.querySelector("#primary-navigation");
+const menuToggle = document.querySelector(".menu-toggle");
+const menuTemplate = document.querySelector("#site-menu-template");
+const headerLabel = document.querySelector("[data-header-label]");
 
-if (siteHeader && menuTrigger && primaryNavigation) {
-  const closeNavigation = () => {
-    siteHeader.classList.remove("is-open");
-    menuTrigger.setAttribute("aria-expanded", "false");
-    menuTrigger.setAttribute("aria-label", "Open navigation menu");
+if (siteHeader && menuToggle && menuTemplate && headerLabel) {
+  let menuOverlay = null;
+  let menuIsOpen = false;
+  let servicesOpen = false;
+  let openedOnce = false;
+  let currentSectionLabel = "Enterprise AI";
+
+  const syncServices = () => {
+    if (!menuOverlay) return;
+    const servicesToggle = menuOverlay.querySelector(".menu-overlay__services-toggle");
+    const servicesList = menuOverlay.querySelector(".menu-overlay__services");
+    const symbol = servicesToggle?.querySelector(".menu-overlay__symbol");
+    servicesToggle?.setAttribute("aria-expanded", String(servicesOpen));
+    if (servicesList) servicesList.hidden = !servicesOpen;
+    if (symbol) symbol.textContent = servicesOpen ? "( - )" : "( + )";
   };
 
-  menuTrigger.addEventListener("click", () => {
-    const isOpen = !siteHeader.classList.contains("is-open");
-    siteHeader.classList.toggle("is-open", isOpen);
-    menuTrigger.setAttribute("aria-expanded", String(isOpen));
-    menuTrigger.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
-  });
+  const closeMenu = ({ resetServices = false, restoreFocus = true } = {}) => {
+    if (!menuIsOpen) return;
+    menuIsOpen = false;
+    if (resetServices) servicesOpen = false;
+    menuOverlay?.remove();
+    menuOverlay = null;
+    document.body.classList.remove("menu-is-open");
+    siteHeader.classList.remove("site-header--menu-open");
+    menuToggle.classList.remove("menu-toggle--open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open menu");
+    headerLabel.textContent = currentSectionLabel;
+    if (restoreFocus && openedOnce) requestAnimationFrame(() => menuToggle.focus());
+  };
 
-  primaryNavigation.addEventListener("click", (event) => {
-    if (event.target.closest("a")) closeNavigation();
-  });
+  const handleMenuKeydown = (event) => {
+    if (!menuIsOpen || !menuOverlay) return;
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeMenu({ resetServices: true });
+      return;
+    }
+    if (event.key !== "Tab") return;
 
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeNavigation();
+    const focusable = [menuToggle, ...menuOverlay.querySelectorAll("a, button:not([disabled])")]
+      .filter((element) => !element.hidden && element.offsetParent !== null);
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last?.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first?.focus();
+    }
+  };
+
+  const openMenu = () => {
+    if (menuIsOpen) return;
+    const fragment = menuTemplate.content.cloneNode(true);
+    menuOverlay = fragment.querySelector(".menu-overlay");
+    if (!menuOverlay) return;
+    document.body.appendChild(fragment);
+    menuIsOpen = true;
+    openedOnce = true;
+    document.body.classList.add("menu-is-open");
+    siteHeader.classList.add("site-header--menu-open");
+    menuToggle.classList.add("menu-toggle--open");
+    menuToggle.setAttribute("aria-expanded", "true");
+    menuToggle.setAttribute("aria-label", "Close menu");
+    headerLabel.textContent = "Menu";
+    syncServices();
+
+    menuOverlay.querySelector(".menu-overlay__services-toggle")?.addEventListener("click", () => {
+      servicesOpen = !servicesOpen;
+      syncServices();
+    });
+    menuOverlay.addEventListener("click", (event) => {
+      if (event.target.closest("a")) closeMenu({ resetServices: true, restoreFocus: false });
+    });
+    requestAnimationFrame(() => menuToggle.focus());
+  };
+
+  menuToggle.addEventListener("click", () => {
+    if (menuIsOpen) closeMenu();
+    else openMenu();
   });
+  document.addEventListener("keydown", handleMenuKeydown);
+
+  const labelledSections = [
+    [document.querySelector(".figma-hero"), "Enterprise AI", true],
+    [document.querySelector("#principles"), "Principles", false],
+    [document.querySelector(".destination-section"), "How FuturixAI Builds", true],
+    [document.querySelector("#platform"), "Governance", false],
+    [document.querySelector("#products"), "Products", true],
+    [document.querySelector("#testimonials"), "Enterprise Teams", true],
+  ].filter(([section]) => section);
+
+  if ("IntersectionObserver" in window) {
+    const labelObserver = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      const activeSection = labelledSections.find(([section]) => section === visible.target);
+      currentSectionLabel = activeSection?.[1] || currentSectionLabel;
+      siteHeader.classList.toggle("site-header--on-light", Boolean(activeSection?.[2]));
+      if (!menuIsOpen) headerLabel.textContent = currentSectionLabel;
+    }, { rootMargin: "-35% 0px -45%", threshold: [0, 0.2, 0.5] });
+    labelledSections.forEach(([section]) => labelObserver.observe(section));
+  }
+}
+
+const heroSiteHeader = document.querySelector(".hero-site-header");
+
+if (transition && heroSiteHeader && siteHeader) {
+  let headerModeFrame = 0;
+
+  const syncHeaderMode = () => {
+    headerModeFrame = 0;
+    const transitionRect = transition.getBoundingClientRect();
+    const transitionDistance = Math.max(1, transition.offsetHeight - window.innerHeight);
+    const transitionProgress = Math.min(1, Math.max(0, -transitionRect.top / transitionDistance));
+    document.body.classList.toggle("nav-beyond-hero", transitionProgress >= .3);
+  };
+
+  const requestHeaderMode = () => {
+    if (!headerModeFrame) headerModeFrame = requestAnimationFrame(syncHeaderMode);
+  };
+
+  window.addEventListener("scroll", requestHeaderMode, { passive: true });
+  window.addEventListener("resize", requestHeaderMode, { passive: true });
+  syncHeaderMode();
 }
 
 const testimonialMap = document.querySelector("[data-testimonial-map]");
@@ -41,21 +151,18 @@ if (testimonialMap) {
   const resultElement = testimonialPopover?.querySelector("[data-testimonial-result]");
   const nameElement = testimonialPopover?.querySelector("[data-testimonial-name]");
   const metaElement = testimonialPopover?.querySelector("[data-testimonial-meta]");
+  const avatarElement = testimonialPopover?.querySelector("[data-testimonial-avatar]");
+  const mapVector = testimonialMap.querySelector("[data-testimonial-vector]");
   const hoverCapable = window.matchMedia("(hover: hover) and (pointer: fine)");
   const narrowMap = window.matchMedia("(max-width: 760px)");
 
-  // TODO: Replace every placeholder below with an approved quote, identity,
-  // company, result and portrait path from assets/testimonials/ before launch.
+  // Approved testimonial copy sourced from futurixai.com.
+  // TODO: Add approved portrait paths under assets/testimonials/ when available.
   const testimonials = [
-    { id: "customer-01", name: "Customer 01", role: "Role to be confirmed", company: "Company Name", quote: "Approved testimonial will appear here.", result: "", image: null, x: 16, y: 35 },
-    { id: "customer-02", name: "Customer 02", role: "Role to be confirmed", company: "Company Name", quote: "Approved testimonial will appear here.", result: "", image: null, x: 25, y: 55 },
-    { id: "customer-03", name: "Customer 03", role: "Role to be confirmed", company: "Company Name", quote: "Approved testimonial will appear here.", result: "", image: null, x: 31, y: 73 },
-    { id: "customer-04", name: "Customer 04", role: "Role to be confirmed", company: "Company Name", quote: "Approved testimonial will appear here.", result: "", image: null, x: 47, y: 31 },
-    { id: "customer-05", name: "Customer 05", role: "Role to be confirmed", company: "Company Name", quote: "Approved testimonial will appear here.", result: "", image: null, x: 52, y: 53 },
-    { id: "customer-06", name: "Customer 06", role: "Role to be confirmed", company: "Company Name", quote: "Approved testimonial will appear here.", result: "", image: null, x: 62, y: 39 },
-    { id: "customer-07", name: "Customer 07", role: "Role to be confirmed", company: "Company Name", quote: "Approved testimonial will appear here.", result: "", image: null, x: 70, y: 51 },
-    { id: "customer-08", name: "Customer 08", role: "Role to be confirmed", company: "Company Name", quote: "Approved testimonial will appear here.", result: "", image: null, x: 82, y: 34 },
-    { id: "customer-09", name: "Customer 09", role: "Role to be confirmed", company: "Company Name", quote: "Approved testimonial will appear here.", result: "", image: null, x: 86, y: 72 },
+    { id: "customer-01", label: "01", name: "Anirudh Saraswat", role: "CBO", company: "Oriana Power", quote: "What impressed us most about FuturixAI was their ability to turn complex AI into systems that actually work for people. That's rare and valuable.", result: "", avatar: null, x: 53.5, y: 60.8 },
+    { id: "customer-02", label: "02", name: "Rahul Kothari", role: "", company: "Grit Equities", quote: "The implementation was seamless and the results exceeded our expectations. FuturixAI delivered a solution that transformed how we approach data analytics.", result: "", avatar: null, x: 18.3, y: 34.4 },
+    { id: "customer-03", label: "03", name: "Prof. Ashutosh Modi", role: "Legal AI & Research Lead", company: "IIT Kanpur", quote: "Working with FuturixAI felt like having an extension of our own team. Their deep understanding of our business challenges made all the difference.", result: "", avatar: null, x: 54.9, y: 31.7 },
+    { id: "customer-04", label: "04", name: "Yashika Gupta", role: "Founder & CEO", company: "DYUENDE", quote: "From concept to deployment, FuturixAI demonstrated exceptional technical expertise and a genuine commitment to solving our unique challenges.", result: "", avatar: null, x: 82.8, y: 76.5 },
   ];
 
   let activeTestimonialId = null;
@@ -64,6 +171,49 @@ if (testimonialMap) {
   let hideTimer = 0;
   let resizeFrame = 0;
   let keyboardMode = false;
+  let mapHighlightDots = [];
+
+  const cacheMapHighlightDots = () => {
+    const vectorDocument = mapVector?.contentDocument;
+    if (!vectorDocument) return;
+
+    mapHighlightDots = [...vectorDocument.querySelectorAll('path[fill="#9097A2"]')].map((path) => {
+      const bounds = path.getBBox();
+      return {
+        path,
+        x: bounds.x + bounds.width / 2,
+        y: bounds.y + bounds.height / 2,
+      };
+    });
+  };
+
+  const resetMapHighlight = () => {
+    mapHighlightDots.forEach(({ path }) => path.setAttribute("fill", "#9097A2"));
+  };
+
+  const selectMapHighlight = (testimonial) => {
+    if (!mapHighlightDots.length) cacheMapHighlightDots();
+    if (!mapHighlightDots.length) return;
+
+    resetMapHighlight();
+    const targetX = testimonial.x * 9.31;
+    const targetY = testimonial.y * 5.23;
+    const selectedDots = [...mapHighlightDots]
+      .sort((a, b) => Math.hypot(a.x - targetX, a.y - targetY) - Math.hypot(b.x - targetX, b.y - targetY))
+      .slice(0, 9);
+
+    selectedDots.forEach(({ path }, index) => {
+      path.setAttribute("fill", index === 0 ? "#488AEC" : "#BFD4F4");
+    });
+  };
+
+  mapVector?.addEventListener("load", () => {
+    cacheMapHighlightDots();
+    if (!activeTestimonialId) return;
+    const activeTestimonial = testimonials.find(({ id }) => id === activeTestimonialId);
+    if (activeTestimonial) selectMapHighlight(activeTestimonial);
+  });
+  cacheMapHighlightDots();
 
   const getInitials = (name) => {
     const placeholderNumber = name.match(/^Customer\s+(\d+)$/i)?.[1];
@@ -79,12 +229,26 @@ if (testimonialMap) {
       .toUpperCase();
   };
 
-  const createInitialsFallback = (testimonial) => {
+  const renderPopoverAvatar = (testimonial) => {
+    if (!avatarElement) return;
+    avatarElement.replaceChildren();
+
     const fallback = document.createElement("span");
-    fallback.className = "testimonial-marker__fallback";
     fallback.textContent = getInitials(testimonial.name);
     fallback.setAttribute("aria-hidden", "true");
-    return fallback;
+
+    if (!testimonial.avatar) {
+      avatarElement.append(fallback);
+      return;
+    }
+
+    const image = document.createElement("img");
+    image.src = testimonial.avatar;
+    image.alt = "";
+    image.loading = "lazy";
+    image.decoding = "async";
+    image.addEventListener("error", () => image.replaceWith(fallback), { once: true });
+    avatarElement.append(image);
   };
 
   const positionPopover = (marker) => {
@@ -133,11 +297,14 @@ if (testimonialMap) {
     const isFirstReveal = testimonialPopover.hidden;
     activeTestimonialId = testimonial.id;
     activeMarker = marker;
+    selectMapHighlight(testimonial);
     marker.classList.add("is-active");
     marker.setAttribute("aria-expanded", "true");
     quoteElement.textContent = testimonial.quote;
-    nameElement.textContent = testimonial.name;
-    metaElement.textContent = `${testimonial.role} · ${testimonial.company}`;
+    nameElement.textContent = `${testimonial.name} (${testimonial.company})`;
+    metaElement.textContent = testimonial.role || "";
+    metaElement.hidden = !testimonial.role;
+    renderPopoverAvatar(testimonial);
     resultElement.textContent = testimonial.result || "";
     resultElement.hidden = !testimonial.result;
     testimonialPopover.setAttribute("aria-label", `Testimonial from ${testimonial.name} at ${testimonial.company}`);
@@ -160,6 +327,7 @@ if (testimonialMap) {
     }
     activeMarker = null;
     activeTestimonialId = null;
+    resetMapHighlight();
     if (!testimonialPopover || testimonialPopover.hidden) return;
 
     testimonialPopover.classList.remove("is-visible");
@@ -185,18 +353,6 @@ if (testimonialMap) {
     marker.setAttribute("aria-label", `${testimonial.name}, ${testimonial.company}`);
     marker.setAttribute("aria-controls", testimonialPopover?.id || "testimonial-popover");
     marker.setAttribute("aria-expanded", "false");
-
-    if (testimonial.image) {
-      const image = document.createElement("img");
-      image.src = testimonial.image;
-      image.alt = "";
-      image.loading = "lazy";
-      image.decoding = "async";
-      image.addEventListener("error", () => image.replaceWith(createInitialsFallback(testimonial)), { once: true });
-      marker.append(image);
-    } else {
-      marker.append(createInitialsFallback(testimonial));
-    }
 
     marker.addEventListener("pointerenter", () => {
       if (hoverCapable.matches) showTestimonial(testimonial, marker);
@@ -466,6 +622,9 @@ if (sectors) {
       const isActive = index === nextIndex;
       heading.classList.toggle("is-active", isActive);
       heading.setAttribute("aria-hidden", isActive ? "false" : "true");
+    });
+    sectorPanels.forEach((panel, index) => {
+      panel.classList.toggle("is-active", index === nextIndex);
     });
 
     const ctaState = productCtaStates[nextIndex] || productCtaStates[0];

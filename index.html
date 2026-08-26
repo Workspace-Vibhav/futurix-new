@@ -9,16 +9,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=dual-navigation-3">
 </head>
 <body>
-  <header class="site-header" aria-label="Site header">
+  <header class="hero-site-header" aria-label="Primary site header">
     <a class="brand" href="/" aria-label="FuturixAI home">
       <img class="brand__mark" src="assets/figma-futurix-mark.svg" alt="">
       <span class="brand__wordmark">FuturixAI</span>
     </a>
 
-    <nav id="primary-navigation" class="site-nav" aria-label="Primary navigation">
+    <nav class="site-nav" aria-label="Primary navigation">
       <div class="site-nav__links">
         <a href="/">Home</a>
         <a href="about-us/">About Us</a>
@@ -28,14 +28,58 @@
       </div>
       <div class="site-nav__actions">
         <a class="site-nav__contact" href="contact/">Contact Us</a>
-        <a class="site-nav__primary" href="#products">Try ZeroDesk <span aria-hidden="true">→</span></a>
+        <a class="site-nav__primary" href="#products">Try ZeroDesk</a>
       </div>
     </nav>
+  </header>
 
-    <button class="menu-trigger" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false">
-      <span></span><span></span>
+  <header class="site-header" aria-label="Compact site header">
+    <a class="brand" href="/" aria-label="Go to FuturixAI homepage">
+      <img class="brand__mark" src="assets/figma-futurix-mark.svg" alt="">
+      <span class="brand__wordmark">FuturixAI</span>
+    </a>
+
+    <span class="site-header__label nav-mono" data-header-label aria-live="polite">Enterprise AI</span>
+
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="site-menu" aria-expanded="false">
+      <span></span><span></span><span></span>
     </button>
   </header>
+
+  <template id="site-menu-template">
+    <div class="menu-overlay" id="site-menu" role="dialog" aria-modal="true" aria-label="Site menu">
+      <nav class="menu-overlay__nav" aria-label="Primary navigation">
+        <ul>
+          <li style="--item-index: 0"><a href="/"><span>Home</span><span class="menu-overlay__symbol" aria-hidden="true">↗</span></a></li>
+          <li style="--item-index: 1">
+            <button class="menu-overlay__services-toggle" type="button" aria-expanded="false" aria-controls="menu-services">
+              <span>What we do</span><span class="menu-overlay__symbol" aria-hidden="true">( + )</span>
+            </button>
+            <ul class="menu-overlay__services" id="menu-services" hidden>
+              <li><a href="#principles">Principles</a></li>
+              <li><a href="#platform">Governance</a></li>
+              <li><a href="#products">Products</a></li>
+              <li><a href="#testimonials">Enterprise teams</a></li>
+            </ul>
+          </li>
+          <li style="--item-index: 2"><a href="about-us/"><span>About us</span><span class="menu-overlay__symbol" aria-hidden="true">↗</span></a></li>
+          <li style="--item-index: 3"><a href="media-resources/"><span>Publications</span><span class="menu-overlay__symbol" aria-hidden="true">↗</span></a></li>
+          <li style="--item-index: 4"><a href="contact/"><span>Contact</span><span class="menu-overlay__symbol" aria-hidden="true">↗</span></a></li>
+        </ul>
+      </nav>
+
+      <footer class="menu-overlay__footer nav-mono">
+        <p>Enterprise AI systems</p>
+        <p>Built in India</p>
+        <div>
+          <a href="company-news/">Blogs +</a>
+          <a href="solutions/">Shivaay +</a>
+          <a href="#products">Try ZeroDesk +</a>
+        </div>
+        <a href="contact/">Start a conversation ↗</a>
+      </footer>
+    </div>
+  </template>
 
   <main>
     <section class="hero-transition" aria-label="FuturixAI introduction">
@@ -47,6 +91,9 @@
           </div>
 
           <img class="hero-mountain" src="assets/figma-futurix-hero-mountain-2x.png" alt="" aria-hidden="true" decoding="async" fetchpriority="high">
+          <div class="liquid-backdrop" data-liquid-backdrop aria-hidden="true">
+            <canvas class="liquid-backdrop__canvas"></canvas>
+          </div>
         </section>
 
         <div class="black-panel" aria-hidden="true"></div>
@@ -139,7 +186,7 @@
     <div class="roadmap-pin">
     <section id="platform" class="roadmap-section" aria-labelledby="roadmap-title">
       <video class="roadmap-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-        <source src="assets/futurix-desaturated-motion-loop.mp4" type="video/mp4">
+        <source src="assets/futurix-governance-motion-02.mp4" type="video/mp4">
       </video>
       <div class="roadmap-shade" aria-hidden="true"></div>
 
@@ -221,33 +268,31 @@
     </section>
 
     <div class="india-presence-pin">
-      <section class="india-presence testimonial-map-section" aria-labelledby="testimonial-map-title">
+      <section id="testimonials" class="india-presence testimonial-map-section" aria-labelledby="testimonial-map-title">
         <div class="testimonial-map__copy">
-          <p class="testimonial-map__eyebrow">Trusted by enterprise teams</p>
-          <h2 id="testimonial-map-title">Enterprise transformation, told by the people leading it.</h2>
-          <p class="testimonial-map__summary">Explore how teams are using FuturixAI to connect knowledge, automate work and execute with confidence.</p>
-          <a class="testimonial-map__cta" href="https://www.futurixai.com/contact">
-            <span>Start a conversation</span>
-            <span aria-hidden="true">→</span>
-          </a>
+          <h2 id="testimonial-map-title">Building Enterprises<br>for Tomorrow</h2>
+          <p class="testimonial-map__summary">Our work is shaped by real enterprise challenges. Each engagement helps us build more practical, adaptable and accountable AI systems for complex organizations.</p>
         </div>
 
         <div class="testimonial-map-shell" data-testimonial-map>
           <div class="testimonial-map__canvas" data-testimonial-canvas role="group" aria-label="Global customer testimonial profiles">
-            <div class="india-presence__world" aria-hidden="true"></div>
+            <object class="india-presence__world" data="assets/testimonial-world-map-figma.svg?v=3" type="image/svg+xml" data-testimonial-vector aria-hidden="true" tabindex="-1"></object>
             <div class="testimonial-map__markers" data-testimonial-markers></div>
           </div>
 
           <aside class="testimonial-popover" id="testimonial-popover" data-testimonial-popover aria-live="polite" hidden>
-            <span class="testimonial-popover__quote-mark" aria-hidden="true">“</span>
+            <div class="testimonial-popover__person">
+              <span class="testimonial-popover__avatar" data-testimonial-avatar aria-hidden="true"></span>
+              <div class="testimonial-popover__identity">
+                <strong data-testimonial-name></strong>
+                <span data-testimonial-meta hidden></span>
+              </div>
+            </div>
             <blockquote data-testimonial-quote></blockquote>
             <p class="testimonial-popover__result" data-testimonial-result hidden></p>
-            <div class="testimonial-popover__person">
-              <strong data-testimonial-name></strong>
-              <span data-testimonial-meta></span>
-            </div>
           </aside>
         </div>
+
       </section>
     </div>
   </main>
@@ -300,6 +345,7 @@
     </div>
   </footer>
 
-  <script src="script.js?v=llama-trail-3"></script>
+  <script src="script.js?v=dual-navigation-3"></script>
+  <script src="liquid-trail.js?v=liquid-glass-1"></script>
 </body>
 </html>

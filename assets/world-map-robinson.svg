@@ -11,6 +11,9 @@
 			stroke-width:.1;
 			fill:#c0c0c0; /* gray */
 		}
+		.ATA {
+			display:none;
+		}
 		/* small-country circles are hidden by default */
 		circle {
 			display:none;
